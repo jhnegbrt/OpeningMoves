@@ -2,22 +2,19 @@ const axios = require('axios');
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    let isbn = '0201558025';
-    axios.get(`/books/${isbn}`)
+    let symbol = "TSLA"
+    let resolution = "60"
+    let from = "1587176882"
+    let to = "1619465282"
+    let token = "c23h2raad3ieeb1lcqf0"
+    
+    let query = `symbol=${symbol}&resolution=${resolution}&from=${from}&to=${to}&token=${token}`
+    axios.get(`/search?${query}`)
     .then((response) => {
-        console.log(response); 
+      console.log(response)
     })
-    .catch(function (error) {
-        console.log(error);
-    });
-
-    let query = "grace hopper";
-    axios.get(`/search?string=${query}`)
-    .then((response) => {
-        console.log(response);
+    .catch(error => {
+      console.log(error)
     })
-    .catch(function (error) {
-        console.log(error);
-    });
     
 })
