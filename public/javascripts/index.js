@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let symbol = "TSLA"
     let resolution = "60"
-    let from = "1587176882"
+    let from = "1618712882"
     let to = "1619465282"
     let token = "c23h2raad3ieeb1lcqf0"
     
@@ -16,5 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
     .catch(error => {
       console.log(error)
     })
+
+    let p = document.createElement("p")
+    let text = document.createTextNode("This is our text change")
+    p.appendChild(text)
+    let element = document.getElementById("main")
+    element.appendChild(p)
     
 })

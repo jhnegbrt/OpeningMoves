@@ -6,6 +6,32 @@
     <script type="text/javascript" src="./bundle.js"></script>
   </head>
   <body>
-    <main id='main'></main>
+    <svg></svg>  
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <main id='main'>
+      <form>
+        <label>Ticker:
+          <input type="text" placeholder="e.g. TSLA">
+        </label>
+
+        <label>% Change of Interest:
+          <input type="text" placeholder="e.g. 1.1">
+        </label>
+
+        <!-- <label>Timeframe of Interest
+          <input type="text" placeholder
+        </label> -->
+
+        <label>Data Range:
+          <select>
+            <option value="3 months">3 Months</option>
+            <option value="6 months">6 Year</option>
+            <option value="1 year">1 Year</option>
+            <option value="5 years">5 Years</option>
+          </select>
+        </label>
+
+      </form>
+    </main>
   </body>
 </html>
