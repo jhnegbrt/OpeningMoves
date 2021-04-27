@@ -25,3 +25,16 @@ app.listen(PORT, () => {
   console.log(__dirname);
   console.log(`listening on ${PORT}`)
 })
+
+
+
+
+// app.get('/search', (request, response) => {
+//   fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY_EXTENDED&symbol=${request.query.symbol}&interval=${request.query.interval}&slice=year1month${request.query.index}&apikey=53VI4OM5S9T1PSSI&datatype=JSON`)
+//   .then((response) => {
+//       return response.text();
+//   }).then((body) => {
+//       let rows = body.split(/(?:\r\n|\r|\n)+/).filter(function(row) {return row.length > 0});
+//       response.send(rows.slice(1))
+//     });
+// });

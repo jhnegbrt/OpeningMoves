@@ -15,6 +15,7 @@
     "build": "webpack --watch",
     "start": "node app.js",
     "server": "nodemon app.js",
+    "server:debug": "nodemon --inspect app.js",
     "start:debug": "DEBUG=* node app.js"
   },
   "dependencies": {

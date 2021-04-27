@@ -1,11 +1,14 @@
 import retrieveData from './data_retriever'
+import convertData from './data_converter'
 
 document.addEventListener('DOMContentLoaded', loadPage)
 
 async function loadPage(){
   let data;
   data = await retrieveData()
+
   console.log(data)
+  // let convertedData = convertData(data)
 
   let p = document.createElement("p")
   let text = document.createTextNode("This is our text change")
