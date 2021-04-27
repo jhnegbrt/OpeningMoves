@@ -3,9 +3,9 @@ const axios = require('axios');
 async function retrieveData() {
 
     let symbol = "TSLA"
-    let resolution = "1"
-    let from = "1586871000"
-    let to = "1618430400"
+    let resolution = "D"
+    let from = "1612166400"
+    let to = "1614499200"
     let token = "c23h2raad3ieeb1lcqf0"
     
     let query = `symbol=${symbol}&resolution=${resolution}&from=${from}&to=${to}&token=${token}`

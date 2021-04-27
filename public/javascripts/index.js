@@ -1,14 +1,22 @@
 import retrieveData from './data_retriever'
-import convertData from './data_converter'
+import {convertData, filterData} from './data_handler'
 
 document.addEventListener('DOMContentLoaded', loadPage)
 
 async function loadPage(){
   let data;
   data = await retrieveData()
+      
+  let candles = convertData(data)
 
-  console.log(data)
-  // let convertedData = convertData(data)
+  // let candles = {
+  //   1615334400: "blah",
+  //   1615420800: "blah",
+  //   1615334400: "blah",
+  //   1615334400: "blah",
+  //   1615334400: "blah",
+  // }
+  let filteredCandles = filterData(candles)
 
   let p = document.createElement("p")
   let text = document.createTextNode("This is our text change")
