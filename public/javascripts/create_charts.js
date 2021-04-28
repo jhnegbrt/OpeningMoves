@@ -1,6 +1,6 @@
 export default function createCharts(selectedCandles, allCandles){
 
-  let charts = {}
+  let charts = []
   for (const candle in selectedCandles){
     let chart = {}
     let candleInt = parseInt(candle)
@@ -10,7 +10,7 @@ export default function createCharts(selectedCandles, allCandles){
         chart[candleString] = allCandles[candleString]
       } 
     }
-    charts[candle] = chart
+    charts.push(chart)
   }
 
   return charts

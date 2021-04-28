@@ -14,22 +14,30 @@ async function loadPage(){
 
   let charts = createCharts(selectedCandles, allCandles)
 
-  console.log(charts)
+  let chart = []
+  let chart1 = charts[0]
+  let chartArray = []
+  for(const candle in chart1){
+    chartArray.push(chart1[candle])
+  }
+  console.log(chartArray)
 
-  // console.log(selectedCandles)
+  
 
-  // console.log(candles)
+  const container = d3.select('#second')
+    .style('border', '1px solid blue')
+    .classed('container', true)
 
-  let p = document.createElement("p")
-  let text = document.createTextNode("This is our text change")
-  p.appendChild(text)
-  let element = document.getElementById("main")
-  element.appendChild(p)
+  const candles = container
+    .selectAll('.candle')
+    .data(chartArray)
 
-  let svgWidth = 500;
+
+  let svgWidth = 250;
   let svgHeight = 300;
 
-  let svg = d3.select('svg')
+  let svg = d3.select('#first')
+    .classed('container', true)
     .attr("width", svgWidth)
     .attr("height", svgHeight)
     .attr("class", "bar-chart")
