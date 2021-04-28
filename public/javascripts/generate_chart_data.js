@@ -1,4 +1,4 @@
-export default function createCharts(selectedCandles, allCandles){
+export default function generateChartData(selectedCandles, allCandles){
 
   let charts = []
   for (const candle in selectedCandles){
