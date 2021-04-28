@@ -1,5 +1,6 @@
 import retrieveData from './data_retriever'
 import {convertData, filterData} from './data_handler'
+import createCharts from './create_charts'
 
 document.addEventListener('DOMContentLoaded', loadPage)
 
@@ -7,16 +8,17 @@ async function loadPage(){
   let data;
   data = await retrieveData()
       
-  let candles = convertData(data)
+  let allCandles = convertData(data)
 
-  // let candles = {
-  //   1615334400: "blah",
-  //   1615420800: "blah",
-  //   1615334400: "blah",
-  //   1615334400: "blah",
-  //   1615334400: "blah",
-  // }
-  let filteredCandles = filterData(candles)
+  let selectedCandles = filterData(allCandles)
+
+  let charts = createCharts(selectedCandles, allCandles)
+
+  console.log(charts)
+
+  // console.log(selectedCandles)
+
+  // console.log(candles)
 
   let p = document.createElement("p")
   let text = document.createTextNode("This is our text change")

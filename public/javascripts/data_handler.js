@@ -17,9 +17,7 @@ export function convertData(data){
 export function filterData(candles){
 
   let openingCandles = selectOpeningCandles(candles)
-  console.log(openingCandles)
   let filteredCandles = selectVolatileCandles(openingCandles)
-  console.log(filteredCandles)
   return filteredCandles
 
 }
