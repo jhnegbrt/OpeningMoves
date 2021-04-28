@@ -18,6 +18,6 @@ export function getChartMin(chartArray){
       minPrice = chartArray[i]["l"]
     }
   }
-  return Math.floor(Math.floor(minPrice) * .8)
+  return Math.floor(Math.floor(minPrice) * .9)
 
 }

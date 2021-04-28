@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', loadPage)
 async function loadPage(){
   let data;
   data = await retrieveData()
-      
   let allCandles = convertData(data)
 
   let selectedCandles = filterData(allCandles)
@@ -16,8 +15,9 @@ async function loadPage(){
   let charts = createCharts(selectedCandles, allCandles)
 
   let chart = []
-  let chart1 = charts[7]
+  let chart1 = charts[4]
   let chartArray = []
+  console.log(chart1)
   for(const candle in chart1){
     chartArray.push(chart1[candle])
   }
@@ -35,10 +35,11 @@ async function loadPage(){
 
   const yScale = d3
     .scaleLinear()
-    .domain([0, chartMax])
-    .range([300, 0]);
+    .domain([0, chartMax-chartMin])
+    .range([0, 300]);
 
-  const container = d3.select('#second')
+  const container = d3
+    .select('#second')
     .style('border', '1px solid blue')
     .classed('container', true)
 
@@ -53,7 +54,7 @@ async function loadPage(){
     .attr('height', data => yScale(data.h - data.l))
     .attr('x', data => xScale(data.t))
     // .attr('y', data => yScale(data.h - data.l))
-    .attr('y', 0)
+    .attr('y', data => yScale(chartMax - data.h))
 
 
 

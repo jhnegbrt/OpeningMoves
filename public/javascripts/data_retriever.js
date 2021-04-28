@@ -3,7 +3,7 @@ const axios = require('axios');
 async function retrieveData() {
 
     let symbol = "TSLA"
-    let resolution = "15"
+    let resolution = "5"
     let from = "1612166400"
     let to = "1614499200"
     let token = "c23h2raad3ieeb1lcqf0"
