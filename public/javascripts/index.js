@@ -4,6 +4,6 @@ document.addEventListener('DOMContentLoaded', loadPage)
 
 function loadPage(){
   let form = document.querySelector("form")
-  form.onsubmit = submitForm(form)
+  form.onsubmit = submitForm
 }
 

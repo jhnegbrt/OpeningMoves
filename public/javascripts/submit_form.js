@@ -7,14 +7,18 @@ import createTabs from './components/create_tabs'
 
 export default async function submitForm(form){
 
+  debugger
+
   let ticker = form.target.ticker.value
   let percentChange = form.target.percentChange.value
   let dataRange = form.target.dataRange.value
   let timeFrame = form.target.timeFrame.value
 
   let data;
-  data = await retrieveData()
+  data = await retrieveData(ticker, timeFrame)
   let allCandles = convertData(data)
+
+  // percentChange, dataRange, 
 
   let selectedCandles = filterData(allCandles)
 
