@@ -4,12 +4,11 @@ export default function createChart(chartDataArray){
 
   let chartMax = getChartMax(chartDataArray)
   let chartMin = getChartMin(chartDataArray)
-  
 
   const xScale = d3
     .scaleBand()
     .domain(chartDataArray.map((dataPoint) => dataPoint.t))
-    .rangeRound([0, 800])
+    .rangeRound([20, 800])
     .padding(0.1)
 
   const yScale = d3
@@ -33,7 +32,13 @@ export default function createChart(chartDataArray){
     .enter()
     .append('rect')
     .classed('wick', true)
-    .style('fill', 'black')
+    .style('fill', data =>{
+      if (data.o > data.c){
+        return 'red'
+      } else{
+        return 'green'
+      }
+    })
     .attr('width', 1)
     .attr('height', data => yScale(data.h - data.l))
     .attr('x', data => xScale(data.t) + 3)
@@ -45,7 +50,13 @@ export default function createChart(chartDataArray){
     .enter()
     .append('rect')
     .classed('body', true)
-    .style('fill', 'red')
+    .style('fill', data =>{
+      if (data.o > data.c){
+        return 'red'
+      } else{
+        return 'green'
+      }
+    })
     .attr('width', xScale.bandwidth())
     .attr('height', data => {
       if (data.o > data.c){
