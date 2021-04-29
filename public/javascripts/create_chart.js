@@ -4,17 +4,18 @@ export default function createChart(chartDataArray){
 
   let chartMax = getChartMax(chartDataArray)
   let chartMin = getChartMin(chartDataArray)
+  
 
   const xScale = d3
     .scaleBand()
     .domain(chartDataArray.map((dataPoint) => dataPoint.t))
-    .rangeRound([0, 500])
+    .rangeRound([0, 800])
     .padding(0.1)
 
   const yScale = d3
     .scaleLinear()
     .domain([0, chartMax-chartMin])
-    .range([0, 300]);
+    .range([0, 600]);
 
   const container = d3
     .select("#second")
@@ -30,7 +31,7 @@ export default function createChart(chartDataArray){
     .style('fill', 'black')
     .attr('width', 1)
     .attr('height', data => yScale(data.h - data.l))
-    .attr('x', data => xScale(data.t) + 2)
+    .attr('x', data => xScale(data.t) + 3)
     .attr('y', data => yScale(chartMax - data.h))
 
   const bodies = container
@@ -67,6 +68,7 @@ export default function createChart(chartDataArray){
       .call(x_axis)
 
     container.append("g")
+      .attr("transform", "translate(25,0)")//magic number, change it at will
       .call(y_axis)
 
 }
