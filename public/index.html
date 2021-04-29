@@ -18,27 +18,31 @@
     </div>
     
     <main id='main'>
-      <form>
+      <form class="form">
         <label>Ticker:
-          <input type="text" placeholder="e.g. TSLA">
+          <input type="text" name="ticker" placeholder="e.g. TSLA">
         </label>
 
         <label>% Change of Interest:
-          <input type="text" placeholder="e.g. 1.1">
+          <input type="text" name="percentChange" placeholder="e.g. 1.1">
         </label>
 
-        <!-- <label>Timeframe of Interest
-          <input type="text" placeholder
-        </label> -->
+        <label>Timeframe of Interest
+          <select name="timeFrame">
+            <option value=
+          </select>>
+        </label>
 
         <label>Data Range:
-          <select>
+          <select name="dataRange">
             <option value="3 months">3 Months</option>
             <option value="6 months">6 Year</option>
             <option value="1 year">1 Year</option>
             <option value="5 years">5 Years</option>
           </select>
         </label>
+
+        <input type="submit" value="Get Data!">
 
       </form>
     </main>
