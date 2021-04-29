@@ -19,8 +19,8 @@ export default async function retrieveData(ticker, dataRange) {
     
     let symbol = ticker
     let resolution = "5"
-    let to = Math.floor(Date.now() / 1000)
-    let from = Math.floor(Date.now() / 1000) - 2505600
+    let to = String(Math.floor(Date.now() / 1000))
+    let from = String(Math.floor(Date.now() / 1000) - 2505600)
     let queryString = `symbol=${symbol}&resolution=${resolution}`
 
     if (dataRange === "3m"){
@@ -30,8 +30,8 @@ export default async function retrieveData(ticker, dataRange) {
         for (const key in queryResult){
           results[key] = results[key].concat(queryResult[key])
         }
-        to -= 2505600
-        from -= 2505600
+        to = String(parseInt(to) - 2505600)
+        from = String(parseInt(from)) - 2505600
       }
     } else if (dataRange === "6m"){
 
