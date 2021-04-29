@@ -7,7 +7,7 @@ export function getChartMax(chartArray){
     }
   }
 
-  return Math.floor(Math.floor(maxPrice) * 1.1)
+  return Math.floor(Math.floor(maxPrice) * 1.05)
 }
 
 export function getChartMin(chartArray){
@@ -18,6 +18,6 @@ export function getChartMin(chartArray){
       minPrice = chartArray[i]["l"]
     }
   }
-  return Math.floor(Math.floor(minPrice) * .9)
+  return Math.floor(Math.floor(minPrice) * .95)
 
 }

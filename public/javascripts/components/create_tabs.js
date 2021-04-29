@@ -3,14 +3,13 @@ import createChart from '../create_chart'
 export default function createTabs(charts){
 
   function handleClick(e){
-    debugger
     let newChartDataArray = []
     let newChart = charts[parseInt(e.target.dataset.value)]
     for (const candle in newChart){
       newChartDataArray.push(newChart[candle])
     }
-    d3.select("#second").selectAll('.candle').remove()
-
+    d3.select("#second").selectAll('.body').remove()
+    d3.select("#second").selectAll('.wick').remove()
     createChart(newChartDataArray)
 
   }

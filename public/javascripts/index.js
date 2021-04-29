@@ -26,46 +26,6 @@ async function loadPage(){
   }
 
   createChart(chartDataArray)
-
-  // let newChartDataArray = []
-  // let newChart = charts[4]
-  // for (const candle in newChart){
-  //   newChartDataArray.push(newChart[candle])
-  // }
-
-  // setTimeout(newfunc, 15000)
-
-  // function newfunc(){
-
-  //   let chartMax = getChartMax(chartDataArray)
-  //   let chartMin = getChartMin(chartDataArray)
-
-  //   const yScale = d3
-  //   .scaleLinear()
-  //   .domain([0, chartMax-chartMin])
-  //   .range([0, 300]);
-
-  //   const xScale = d3
-  //   .scaleBand()
-  //   .domain(chartDataArray.map((dataPoint) => dataPoint.t))
-  //   .rangeRound([0, 500])
-  //   .padding(0.1)
-
-  //   console.log("CALLING")
-    
-      
-  //     // .data(newChartDataArray)
-  //     // .exit().remove()
-  //     // 
-  //     // .enter()
-  //     // .append('rect')
-  //     // .attr('height', data => yScale(data.h - data.l))
-  //     // .attr('x', data => xScale(data.t))
-  //     // .attr('y', data => yScale(chartMax - data.h))
-      
-  //   createChart(newChartDataArray)
-  // }
-
   
 
 }
