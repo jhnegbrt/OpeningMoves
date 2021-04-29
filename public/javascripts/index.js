@@ -1,7 +1,7 @@
 import retrieveData from './data_retriever'
 import {convertData, filterData} from './data_handler'
 import generateChartData from './generate_chart_data'
-import createCharts from './create_charts'
+import createChart from './create_chart'
 import createTabs from './components/create_tabs'
 
 document.addEventListener('DOMContentLoaded', loadPage)
@@ -15,11 +15,15 @@ async function loadPage(){
 
   let charts = generateChartData(selectedCandles, allCandles)
 
-  let chart = []
-
   createTabs(charts)
 
-  createCharts(charts)
+  
+  let chartDataArray = []
+  let chart = charts[0]
+  for (const candle in chart){
+    chartDataArray.push(chart[candle])
+  }
 
-    
+  createChart(chartDataArray)
+
 }

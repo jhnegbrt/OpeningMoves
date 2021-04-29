@@ -18,13 +18,3 @@
   border: 1px solid blue
 }
 
-
-/* Chart */
-
-.hidden{
-  display: none
-}
-
-.display{
-  display: absolute
-}
