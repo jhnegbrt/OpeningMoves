@@ -3,6 +3,7 @@ import {convertData, filterData} from './data_handler'
 import generateChartData from './generate_chart_data'
 import createChart from './create_chart'
 import createTabs from './components/create_tabs'
+import { getChartMax, getChartMin } from './chart_util'
 
 document.addEventListener('DOMContentLoaded', loadPage)
 
@@ -35,8 +36,36 @@ async function loadPage(){
   setTimeout(newfunc, 15000)
 
   function newfunc(){
+
+    let chartMax = getChartMax(chartDataArray)
+    let chartMin = getChartMin(chartDataArray)
+
+    const yScale = d3
+    .scaleLinear()
+    .domain([0, chartMax-chartMin])
+    .range([0, 300]);
+
+    const xScale = d3
+    .scaleBand()
+    .domain(chartDataArray.map((dataPoint) => dataPoint.t))
+    .rangeRound([0, 500])
+    .padding(0.1)
+
     console.log("CALLING")
+    d3.select("#second").selectAll('.candle').remove()
+      
+      // .data(newChartDataArray)
+      // .exit().remove()
+      // 
+      // .enter()
+      // .append('rect')
+      // .attr('height', data => yScale(data.h - data.l))
+      // .attr('x', data => xScale(data.t))
+      // .attr('y', data => yScale(chartMax - data.h))
+      
     createChart(newChartDataArray)
   }
+
+  
 
 }

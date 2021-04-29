@@ -2,8 +2,6 @@ import { getChartMax, getChartMin } from './chart_util'
 
 export default function createChart(chartDataArray){
 
-  debugger
-
   let chartMax = getChartMax(chartDataArray)
   let chartMin = getChartMin(chartDataArray)
 
@@ -34,7 +32,6 @@ export default function createChart(chartDataArray){
     .attr('height', data => yScale(data.h - data.l))
     .attr('x', data => xScale(data.t))
     .attr('y', data => yScale(chartMax - data.h))
-
 }
 
 
