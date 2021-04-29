@@ -28,7 +28,7 @@ export default function createChart(chartDataArray){
     .append('rect')
     .classed('wick', true)
     .style('fill', 'black')
-    .attr('width', 2)
+    .attr('width', 1)
     .attr('height', data => yScale(data.h - data.l))
     .attr('x', data => xScale(data.t) + 2)
     .attr('y', data => yScale(chartMax - data.h))
@@ -58,6 +58,17 @@ export default function createChart(chartDataArray){
       }
       
     })
+
+    const x_axis = d3.axisBottom().scale(xScale).ticks(1)
+
+    const y_axis = d3.axisLeft().scale(yScale)
+
+    container.append("g")
+      .call(x_axis)
+
+    container.append("g")
+      .call(y_axis)
+
 }
 
 
