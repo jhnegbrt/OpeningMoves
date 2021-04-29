@@ -26,4 +26,17 @@ async function loadPage(){
 
   createChart(chartDataArray)
 
+  let newChartDataArray = []
+  let newChart = charts[4]
+  for (const candle in newChart){
+    newChartDataArray.push(newChart[candle])
+  }
+
+  setTimeout(newfunc, 15000)
+
+  function newfunc(){
+    console.log("CALLING")
+    createChart(newChartDataArray)
+  }
+
 }

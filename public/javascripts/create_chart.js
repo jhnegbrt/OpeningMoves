@@ -19,7 +19,7 @@ export default function createChart(chartDataArray){
     .range([0, 300]);
 
   const container = d3
-    .select("second")
+    .select("#second")
     .style('border', '1px solid blue')
     .classed('container', true)
 
