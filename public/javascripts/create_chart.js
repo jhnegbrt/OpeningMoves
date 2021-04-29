@@ -13,7 +13,6 @@ export default function createChart(chartDataArray){
 
   let containerSize = document.getElementById("second")
   console.log(containerSize.width.baseVal.value)
-  debugger
 
   const xScale = d3
     .scaleBand()
@@ -72,7 +71,6 @@ export default function createChart(chartDataArray){
     })
     .attr('x', data => xScale(data.t))
     .attr('y', data => {
-      debugger
       if (data.o > data.c){
         return yScale(chartMax - data.o)
       } else {
