@@ -17,6 +17,11 @@ export default function createChart(chartDataArray){
     .domain([0, chartMax-chartMin])
     .range([0, 600]);
 
+  const yAxisScale = d3
+    .scaleLinear()
+    .domain([chartMin, chartMax])
+    .range([600, 0]);
+
   const container = d3
     .select("#second")
     .style('border', '1px solid blue')
@@ -62,10 +67,10 @@ export default function createChart(chartDataArray){
 
     const x_axis = d3.axisBottom().scale(xScale).ticks(1)
 
-    const y_axis = d3.axisLeft().scale(yScale)
+    const y_axis = d3.axisLeft().scale(yAxisScale)
 
-    container.append("g")
-      .call(x_axis)
+    // container.append("g")
+    //   .call(x_axis)
 
     container.append("g")
       .attr("transform", "translate(25,0)")//magic number, change it at will

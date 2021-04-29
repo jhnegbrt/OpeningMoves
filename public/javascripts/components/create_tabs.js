@@ -10,6 +10,7 @@ export default function createTabs(charts){
     }
     d3.select("#second").selectAll('.body').remove()
     d3.select("#second").selectAll('.wick').remove()
+    d3.select("#second").selectAll('g').remove()
     createChart(newChartDataArray)
 
   }
