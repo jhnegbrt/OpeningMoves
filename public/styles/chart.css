@@ -1,18 +1,16 @@
 /* main container */
 
 .container{
-  width: 800px;
-  height: 600px;
-  padding-left: 100px
+  width: 70vw;
+  height: 90vh;
+
 }
-
-
 /* chart tabs */
 #chartTabs{
-  width: 500px;
+  /* width: 70vw; */
   display: flex;
   list-style: none;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 #chartTabs li{

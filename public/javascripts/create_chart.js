@@ -5,26 +5,31 @@ export default function createChart(chartDataArray){
   let chartMax = getChartMax(chartDataArray)
   let chartMin = getChartMin(chartDataArray)
 
+  
+
+  const container = d3
+    .select("#second")
+    .style('border', '1px solid blue')
+
+  let containerSize = document.getElementById("second")
+  console.log(containerSize.width.baseVal.value)
+  debugger
+
   const xScale = d3
     .scaleBand()
     .domain(chartDataArray.map((dataPoint) => dataPoint.t))
-    .rangeRound([20, 800])
+    .rangeRound([20, containerSize.width.baseVal.value])
     .padding(0.1)
 
   const yScale = d3
     .scaleLinear()
     .domain([0, chartMax-chartMin])
-    .range([0, 600]);
+    .range([0, containerSize.height.baseVal.value]);
 
   const yAxisScale = d3
     .scaleLinear()
     .domain([chartMin, chartMax])
-    .range([600, 0]);
-
-  const container = d3
-    .select("#second")
-    .style('border', '1px solid blue')
-    .classed('container', true)
+    .range([containerSize.height.baseVal.value, 0]);
 
   const wicks = container
     .selectAll('.wick')
