@@ -1,4 +1,30 @@
+/* main container */
+
 .container{
   width: 500px;
   height: 300px
+}
+
+
+/* chart tabs */
+#chartTabs{
+  width: 500px;
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+}
+
+#chartTabs li{
+  border: 1px solid blue
+}
+
+
+/* Chart */
+
+.hidden{
+  display: none
+}
+
+.display{
+  display: absolute
 }
