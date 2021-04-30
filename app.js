@@ -16,13 +16,13 @@ app.get('/search', (request, response) => {
       return response.text();
   }).then((body) => {
       let results = JSON.parse(body)
-      console.log(results)
+      // console.log(results)
       response.send(results)
     });
 });
 
 app.get('/news', (request, response) =>{
-  fetch(`https://finnhub.io/api/v1/company-news?symbol=${request.query.string}`)
+  fetch(`https://finnhub.io/api/v1/company-news?symbol=${request.query.symbol}&from=${request.query.from}&to=${request.query.to}&token=${request.query.token}`)
   .then((response) =>{
     return response.text()
   }).then((body)=>{

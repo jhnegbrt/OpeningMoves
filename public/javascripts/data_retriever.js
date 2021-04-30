@@ -18,7 +18,6 @@ async function queryHelper(queryString, from, to, times){
   let results = {}
   for(let i = 0; i < times; i++){
     let queryResult = await query(queryString, from, to, )
-    debugger
     for (const key in queryResult){
       if (i === 0){
         results[key] = queryResult[key]
