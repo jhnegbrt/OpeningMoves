@@ -12,6 +12,5 @@ export default function generateChartData(selectedCandles, allCandles){
     }
     charts.push(chart)
   }
-
   return charts
 }

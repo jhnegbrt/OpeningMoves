@@ -20,15 +20,15 @@
     <main id='main'>
       <form class="form">
         <label>Ticker:
-          <input type="text" name="ticker" placeholder="e.g. TSLA">
+          <input type="text" name="ticker" placeholder="e.g. TSLA" required>
         </label>
 
         <label>% Change of Interest:
-          <input type="text" name="percentChange" placeholder="e.g. 1.1">
+          <input type="text" name="percentChange" placeholder="e.g. '1.1' OR '2'" required>
         </label>
 
         <label>Timeframe of Interest
-          <select name="timeFrame">
+          <select name="timeFrame" required>
             <option value="5">5 minutes</option>
             <option value="15">15 minutes</option>
             <option value="30">30 minutes</option>
@@ -36,7 +36,7 @@
         </label>
 
         <label>Data Range:
-          <select name="dataRange">
+          <select name="dataRange" required>
             <option value="3m">3 Months</option>
             <option value="6m">6 Months</option>
             <option value="1y">1 Year</option>
