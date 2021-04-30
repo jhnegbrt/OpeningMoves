@@ -36,7 +36,7 @@ export function renderNews(newsBits){
 
 function switchNews(newsBits, i){
   debugger
-  let oldNews = document.getElementsByClassName("news-snippet")
+  let oldNews = document.getElementsByClassName("news-block")
   if (oldNews.length > 0){
     oldNews[0].parentElement.removeChild(oldNews[0])
   }
@@ -45,6 +45,7 @@ function switchNews(newsBits, i){
   newsImg.classList.add("news-image")
   let newsBlock = document.createElement("div")
   let news = document.createElement("div")
+  news.classList.add("news-snippet")
   let newsHeadline = document.createElement("p")
   let newsHeadlineText = document.createTextNode(newsBits[i].headline)
   newsHeadline.appendChild(newsHeadlineText)
@@ -55,7 +56,7 @@ function switchNews(newsBits, i){
   let newsLinkAuthor = document.createElement("p")
   let newsLinkAuthorText = document.createTextNode("-" + newsBits[i].source)
   newsLinkAuthor.appendChild(newsLinkAuthorText)
-  newsBlock.classList.add("news-snippet")
+  newsBlock.classList.add("news-block")
   news.appendChild(newsHeadline)
   news.appendChild(newsLink)
   news.appendChild(newsLinkAuthor)

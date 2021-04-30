@@ -37,14 +37,18 @@
   height: auto
 }
 
-.news-snippet{
+.news-block{
   display: flex;
   justify-content: space-around
 }
 
-.news-snippet p{
-  width: 25%;
+.news-snippet{
+  width: 50%
 }
+
+/* .news-block p{
+  width: 25%;
+} */
 
 #button-container{
   position:relative;
