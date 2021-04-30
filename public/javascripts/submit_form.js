@@ -15,7 +15,7 @@ export default async function submitForm(form){
   let dataRange = form.target.dataRange.value
   let timeFrame = form.target.timeFrame.value
    
-  renderLoadingModal(dataRange)
+  renderLoadingModal(dataRange, ticker)
 
   let data;
  
