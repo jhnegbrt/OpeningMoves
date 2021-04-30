@@ -13,41 +13,44 @@ export async function getNews(ticker){
 }
 
 export function renderNews(newsBits){
+  debugger
   let newsContainer = document.createElement("div")
   newsContainer.setAttribute("id", "news-container")
   let modal = document.getElementsByClassName("loading-modal")[0]
   modal.appendChild(newsContainer)
   let i = 0;
-  switchNews(newsBits, i)
-  // setInterval(function(){
-  //   if (i > 3){
-  //     i = 0
-  //   } else if (i < 4){
-  //     i++
-  //   }
-  //   switchNews(newsBits, i)
-  // },3000)
+  setNews(newsBits, i)
+  setInterval(function(){
+    if (i > 3){
+      i = 0
+    } else if (i < 4){
+      i++
+    }
+    switchNews(newsBits, i)
+  },2500)
 }
 
-async function switchNews(newsBits, i){
+function setNews(newsBits){
+  let news = document.createElement("p")
+  let newsText = document.createTextNode(newsBits[0].headline)
+  news.classList.add("news-snippet")
+  news.appendChild(newsText)
+  let newsContainer = document.getElementById("news-container")
+  newsContainer.appendChild(news)
+}
+
+function switchNews(newsBits, i){
   debugger
   let oldNews = document.getElementsByClassName("news-snippet")
-  if (oldNews.length > 0){
+  // if (oldNews.length > 0){
     oldNews[0].parentElement.removeChild(oldNews[0])
-  }
+  // }
   let news = document.createElement("p")
   let newsText = document.createTextNode(newsBits[i].headline)
   news.classList.add("news-snippet")
   news.appendChild(newsText)
   let newsContainer = document.getElementById("news-container")
   newsContainer.appendChild(news)
-  if (i < 4){
-    i ++
-  } else {
-    i = 0
-  }
-  await new Promise( r => setTimeout(r, 3000))
-  switchNews(newsBits, i)
 }
 
 export function createDateString(unix){
