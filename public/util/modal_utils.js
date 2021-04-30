@@ -13,6 +13,10 @@ export async function getNews(ticker){
 }
 
 export function renderNews(newsBits){
+  let newsContainer = document.createElement("div")
+  newsContainer.setAttribute("id", "news-container")
+  let modal = document.getElementsByClassName("loading-modal")[0]
+  modal.appendChild(newsContainer)
   let i = 0;
   switchNews(newsBits, i)
   setInterval(function(){
@@ -35,8 +39,8 @@ function switchNews(newsBits, i){
   let newsText = document.createTextNode(newsBits[i].headline)
   news.classList.add("news-snippet")
   news.appendChild(newsText)
-  let modal = document.getElementsByClassName("loading-modal")[0]
-  modal.appendChild(news)
+  let newsContainer = document.getElementById("news-container")
+  newsContainer.appendChild(news)
   if (i < 4){
     i ++
   } else {

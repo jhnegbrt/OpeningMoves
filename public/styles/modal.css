@@ -28,3 +28,15 @@
 .loading-modal p{
   text-align: center
 }
+
+.modal-close-button{
+  text-align: center;
+  padding: 5px;
+  border-radius: 10px;
+
+}
+
+.modal-close-buttom{
+  animation: glowing 2000ms infinite
+}
+

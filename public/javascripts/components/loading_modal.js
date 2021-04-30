@@ -22,10 +22,23 @@ export async function renderLoadingModal(dataRange, ticker){
 
 
 
-export function removeLoadingModal(){
+export function renderModalClose(){
 
-  let modal = document.getElementsByClassName("loading-modal-container")
+  let modal = document.getElementsByClassName("loading-modal")
+  let buttonContainer = document.createElement("div")
+  buttonContainer.setAttribute("id", "button-container")
+  let closeButton = document.createElement("button")
+  let buttonText = document.createTextNode("View Your Data!")
+  closeButton.classList.add("modal-close-button")
+  closeButton.addEventListener("click", handleClick)
+  closeButton.appendChild(buttonText)
+  buttonContainer.appendChild(closeButton)
+  modal[0].appendChild(buttonContainer)
 
-  modal[0].parentElement.removeChild(modal[0])
+}
 
+function handleClick(){
+  debugger
+  let modalContainer = document.getElementsByClassName("loading-modal-container")
+  modalContainer[0].parentElement.removeChild(modalContainer[0])
 }

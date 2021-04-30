@@ -3,7 +3,7 @@ import {convertData, filterData} from './data_handler'
 import generateChartData from './generate_chart_data'
 import createChart from './create_chart'
 import createTabs from './components/create_tabs'
-import {removeLoadingModal, renderLoadingModal} from './components/loading_modal'
+import {renderModalClose, renderLoadingModal} from './components/loading_modal'
 
 
 export default async function submitForm(form){
@@ -40,7 +40,7 @@ export default async function submitForm(form){
 
   createChart(chartDataArray)
 
-  // removeLoadingModal()
+  renderModalClose()
   
 
 }
