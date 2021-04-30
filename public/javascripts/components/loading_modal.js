@@ -20,6 +20,4 @@ export function removeLoadingModal(){
   debugger
   modal[0].parentElement.removeChild(modal[0])
 
-
-
 }

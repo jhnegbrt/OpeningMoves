@@ -14,6 +14,24 @@ async function query(queryString, from, to){
   return response
 }
 
+async function queryHelper(queryString, from, to, times){
+  let results = {}
+  for(let i = 0; i < times; i++){
+    let queryResult = await query(queryString, from, to, )
+    debugger
+    for (const key in queryResult){
+      if (i === 0){
+        results[key] = queryResult[key]
+      } else {
+        results[key] = results[key].concat(queryResult[key])
+      }
+    }
+    to = String(parseInt(to) - 2505600)
+    from = String(parseInt(from)) - 2505600
+  }
+  return results
+}
+
 export default async function retrieveData(ticker, dataRange) {
     
     let symbol = ticker
@@ -23,56 +41,12 @@ export default async function retrieveData(ticker, dataRange) {
     let queryString = `symbol=${symbol}&resolution=${resolution}`
 
     if (dataRange === "3m"){
-      let results = {}
-      for(let i = 0; i < 3; i++){
-        let queryResult = await query(queryString, from, to)
-        debugger
-        for (const key in queryResult){
-          if (i === 0){
-            results[key] = queryResult[key]
-          } else {
-            results[key] = results[key].concat(queryResult[key])
-          }
-        }
-        to = String(parseInt(to) - 2505600)
-        from = String(parseInt(from)) - 2505600
-      }
-      return results
+      return queryHelper(queryString, from, to, 3)
     } else if (dataRange === "6m"){
-      let results = {}
-      for(let i = 0; i < 6; i++){
-        let queryResult = await query(queryString, from, to)
-        debugger
-        for (const key in queryResult){
-          if (i === 0){
-            results[key] = queryResult[key]
-          } else {
-            results[key] = results[key].concat(queryResult[key])
-          }
-        }
-        to = String(parseInt(to) - 2505600)
-        from = String(parseInt(from)) - 2505600
-      }
-      return results
+      return queryHelper(queryString, from, to, 6)
     } else if (dataRange === "1y"){
-      let results = {}
-      for(let i = 0; i < 12; i++){
-        let queryResult = await query(queryString, from, to)
-        debugger
-        for (const key in queryResult){
-          if (i === 0){
-            results[key] = queryResult[key]
-          } else {
-            results[key] = results[key].concat(queryResult[key])
-          }
-        }
-        to = String(parseInt(to) - 2505600)
-        from = String(parseInt(from)) - 2505600
-      }
-      return results
+      return queryHelper(queryString, from, to, 12)
     }    
   
-
-
 }
 

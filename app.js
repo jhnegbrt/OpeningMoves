@@ -21,6 +21,16 @@ app.get('/search', (request, response) => {
     });
 });
 
+app.get('/news', (request, response) =>{
+  fetch(`https://finnhub.io/api/v1/company-news?symbol=${request.query.string}`)
+  .then((response) =>{
+    return response.text()
+  }).then((body)=>{
+    let results = JSON.parse(body)
+    response.send(results)
+  })
+})
+
 app.listen(PORT, () => {
   console.log(__dirname);
   console.log(`listening on ${PORT}`)
