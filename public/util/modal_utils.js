@@ -16,6 +16,9 @@ export function renderNews(newsBits){
   debugger
   let newsContainer = document.createElement("div")
   newsContainer.setAttribute("id", "news-container")
+  // let newsImageContainer = document.createElement("div")
+  // newsImageContainer.classList.add("news-image-container")
+  // newsContainer.appendChild(newsImageContainer)
   let modal = document.getElementsByClassName("loading-modal")[0]
   modal.appendChild(newsContainer)
   let i = 0;

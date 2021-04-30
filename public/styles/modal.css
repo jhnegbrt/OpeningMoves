@@ -28,18 +28,34 @@
 }
 
 /* NEWS */
+
+#news-container{
+  height: 65%
+}
 .news-image{
   width: 20%;
   height: auto
 }
 
+.news-snippet{
+  display: flex;
+  justify-content: space-around
+}
+
+.news-snippet p{
+  width: 25%;
+}
+
 #button-container{
   position:relative;
+  
 }
 
 .modal-close-button{
+
   display: block;
   margin: 0 auto;
+  bottom: 0;
   padding: 5px;
   border-radius: 10px;
   width: 20%;
