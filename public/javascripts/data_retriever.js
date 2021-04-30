@@ -56,7 +56,7 @@ export default async function retrieveData(ticker, dataRange) {
       return results
     } else if (dataRange === "1y"){
       let results = {}
-      for(let i = 0; i < 6; i++){
+      for(let i = 0; i < 12; i++){
         let queryResult = await query(queryString, from, to)
         debugger
         for (const key in queryResult){
@@ -70,23 +70,25 @@ export default async function retrieveData(ticker, dataRange) {
         from = String(parseInt(from)) - 2505600
       }
       return results
-    } else if (dataRange === "5y"){
-      let results = {}
-      for(let i = 0; i < 6; i++){
-        let queryResult = await query(queryString, from, to)
-        debugger
-        for (const key in queryResult){
-          if (i === 0){
-            results[key] = queryResult[key]
-          } else {
-            results[key] = results[key].concat(queryResult[key])
-          }
-        }
-        to = String(parseInt(to) - 2505600)
-        from = String(parseInt(from)) - 2505600
-      }
-      return results
-    }
+    } 
+    
+    // else if (dataRange === "5y"){
+    //   let results = {}
+    //   for(let i = 0; i < 60; i++){
+    //     let queryResult = await query(queryString, from, to)
+    //     debugger
+    //     for (const key in queryResult){
+    //       if (i === 0){
+    //         results[key] = queryResult[key]
+    //       } else {
+    //         results[key] = results[key].concat(queryResult[key])
+    //       }
+    //     }
+    //     to = String(parseInt(to) - 2505600)
+    //     from = String(parseInt(from)) - 2505600
+    //   }
+    //   return results
+    // }
 
     
   
