@@ -38,7 +38,6 @@ export function renderModalClose(){
 }
 
 function handleClick(){
-  debugger
   let modalContainer = document.getElementsByClassName("loading-modal-container")
   modalContainer[0].parentElement.removeChild(modalContainer[0])
 }

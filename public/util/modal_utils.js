@@ -19,17 +19,17 @@ export function renderNews(newsBits){
   modal.appendChild(newsContainer)
   let i = 0;
   switchNews(newsBits, i)
-  setInterval(function(){
-    if (i > 3){
-      i = 0
-    } else if (i < 4){
-      i++
-    }
-    switchNews(newsBits, i)
-  },3000)
+  // setInterval(function(){
+  //   if (i > 3){
+  //     i = 0
+  //   } else if (i < 4){
+  //     i++
+  //   }
+  //   switchNews(newsBits, i)
+  // },3000)
 }
 
-function switchNews(newsBits, i){
+async function switchNews(newsBits, i){
   debugger
   let oldNews = document.getElementsByClassName("news-snippet")
   if (oldNews.length > 0){
@@ -46,6 +46,8 @@ function switchNews(newsBits, i){
   } else {
     i = 0
   }
+  await new Promise( r => setTimeout(r, 3000))
+  switchNews(newsBits, i)
 }
 
 export function createDateString(unix){

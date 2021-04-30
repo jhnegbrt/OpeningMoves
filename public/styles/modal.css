@@ -16,9 +16,7 @@
   height: 50%;
   margin-left: 25%;
   margin-top: 10%;
-  /* margin: 25%;
-  margin-bottom: 25%; */
-  background-color: rgb(74, 114, 73);
+  background-color: rgb(192, 221, 191);
   color: black;
   border: 2px solid black;
   border-radius: 25px;
@@ -29,14 +27,41 @@
   text-align: center
 }
 
+#button-container{
+  position:relative;
+}
+
 .modal-close-button{
-  text-align: center;
+  display: block;
+  margin: 0 auto;
   padding: 5px;
   border-radius: 10px;
+  width: 20%;
+  border: none;
+  /* box-shadow: 0 0 5px #2ba805; */
 
 }
 
-.modal-close-buttom{
+@keyframes glowing{
+  0% {
+    box-shadow: 0 0 5px #2ba805;
+  }
+
+  33% {
+    box-shadow: 0 0 10px #49e819;
+  }
+
+  66% {
+    box-shadow: 0 0 5px #2ba805;
+  }
+
+  100% {
+    box-shadow: 0 0 5px #2ba805;
+  }
+
+}
+
+.modal-close-button{
   animation: glowing 2000ms infinite
 }
 
