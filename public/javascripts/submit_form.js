@@ -40,7 +40,7 @@ export default async function submitForm(form){
 
   createChart(chartDataArray)
 
-  removeLoadingModal()
+  // removeLoadingModal()
   
 
 }
