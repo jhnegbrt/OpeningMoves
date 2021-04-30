@@ -4,7 +4,7 @@
   overflow-y: hidden;
   overflow-x: hidden;
   z-index: 2;
-  background-color:rgba(37, 36, 36, 0.377);
+  background-color:rgba(20, 20, 20, 0.377);
   position: fixed;
   top: 0;
   left: 0
@@ -14,8 +14,17 @@
 
   width: 50%;
   height: 50%;
-  margin: 25%;
-  background-color: rgb(112, 226, 108);
-  color: black
+  margin-left: 25%;
+  margin-top: 10%;
+  /* margin: 25%;
+  margin-bottom: 25%; */
+  background-color: rgb(74, 114, 73);
+  color: black;
+  border: 2px solid black;
+  border-radius: 25px;
   
+}
+
+.loading-modal p{
+  text-align: center
 }
