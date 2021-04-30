@@ -3,5 +3,19 @@
   height: 100%;
   overflow-y: hidden;
   overflow-x: hidden;
+  z-index: 2;
+  background-color:rgba(37, 36, 36, 0.377);
+  position: fixed;
+  top: 0;
+  left: 0
+}
 
+.loading-modal{
+
+  width: 50%;
+  height: 50%;
+  margin: 25%;
+  background-color: rgb(112, 226, 108);
+  color: black
+  
 }
