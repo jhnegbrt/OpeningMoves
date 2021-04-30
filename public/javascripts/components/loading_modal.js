@@ -16,6 +16,10 @@ export function renderLoadingModal(dataRange){
 
 export function removeLoadingModal(){
 
+  let modal = document.getElementsByClassName("loading-modal-container")
+  debugger
+  modal[0].parentElement.removeChild(modal[0])
+
 
 
 }
