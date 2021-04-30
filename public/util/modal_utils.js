@@ -19,7 +19,7 @@ export function renderNews(newsBits){
   let modal = document.getElementsByClassName("loading-modal")[0]
   modal.appendChild(newsContainer)
   let i = 0;
-  setNews(newsBits, i)
+  switchNews(newsBits, i)
   setInterval(function(){
     if (i > 3){
       i = 0
@@ -30,27 +30,25 @@ export function renderNews(newsBits){
   },2500)
 }
 
-function setNews(newsBits){
-  let news = document.createElement("p")
-  let newsText = document.createTextNode(newsBits[0].headline)
-  news.classList.add("news-snippet")
-  news.appendChild(newsText)
-  let newsContainer = document.getElementById("news-container")
-  newsContainer.appendChild(news)
-}
 
 function switchNews(newsBits, i){
   debugger
   let oldNews = document.getElementsByClassName("news-snippet")
-  // if (oldNews.length > 0){
+  if (oldNews.length > 0){
     oldNews[0].parentElement.removeChild(oldNews[0])
-  // }
+  }
+  let newsImg = document.createElement("img")
+  newsImg.setAttribute("src", newsBits[i].image)
+  newsImg.classList.add("news-image")
+  let newsBlock = document.createElement("div")
   let news = document.createElement("p")
   let newsText = document.createTextNode(newsBits[i].headline)
-  news.classList.add("news-snippet")
+  newsBlock.classList.add("news-snippet")
   news.appendChild(newsText)
+  newsBlock.appendChild(newsImg)
+  newsBlock.appendChild(news)
   let newsContainer = document.getElementById("news-container")
-  newsContainer.appendChild(news)
+  newsContainer.appendChild(newsBlock)
 }
 
 export function createDateString(unix){

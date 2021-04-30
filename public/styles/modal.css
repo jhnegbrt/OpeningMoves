@@ -27,6 +27,12 @@
   text-align: center
 }
 
+/* NEWS */
+.news-image{
+  width: 20%;
+  height: auto
+}
+
 #button-container{
   position:relative;
 }
