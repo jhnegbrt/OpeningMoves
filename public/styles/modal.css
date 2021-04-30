@@ -16,7 +16,7 @@
   height: 50%;
   margin-left: 25%;
   margin-top: 10%;
-  background-color: rgb(192, 221, 191);
+  background-color: white;
   color: black;
   border: 2px solid black;
   border-radius: 25px;
@@ -39,11 +39,25 @@
 
 .news-block{
   display: flex;
-  justify-content: space-around
+  justify-content: space-around;
+  background-color: rgb(192, 221, 191);
+  border-radius: 10px;
+  padding: 2%;
+  margin-right: 3%;
+  margin-left: 3%
 }
 
 .news-snippet{
-  width: 50%
+  width: 60%;
+  text-align: center;
+  background-color: white;
+  padding: 2%;
+  border-radius: 5px;
+
+}
+
+.news-snippet a{
+  color: rgb(91, 158, 88);
 }
 
 /* .news-block p{
