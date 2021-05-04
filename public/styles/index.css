@@ -3,3 +3,39 @@
 *{
   font-family: 'Roboto Condensed', sans-serif;
 }
+
+
+#page{
+  display:flex;
+}
+
+.form label{
+  display: block;
+  margin-bottom: 2vh;
+  margin-top: 1vh;
+}
+
+.form input{
+  width: 6vw;
+}
+
+.form{
+  /* text-align: center; */
+  padding: 1vh;
+  height: 30vh;
+  border-radius: 5px;
+  background-color: rgb(192, 221, 191);
+}
+
+.button-container{
+  text-align: center;
+}
+
+.form input[type="submit"]{
+  background-color: white;
+  border: 1px solid black;
+}
+
+.form input[type="submit"]:hover{
+  cursor: pointer
+}
