@@ -15,14 +15,13 @@ export async function renderLoadingModal(dataRange, ticker){
   page.appendChild(modalContainer)
   let news = await getNews(ticker)
   let newsBits = news.data.slice(0, 5)
-  renderNews(newsBits, 0)
-  // modal.appendChild(news)
-
+  let modalInterval = renderNews(newsBits, 0)
+  return modalInterval
 }
 
 
 
-export function renderModalClose(){
+export function renderModalClose(modalInterval){
 
   let modal = document.getElementsByClassName("loading-modal")
   let buttonContainer = document.createElement("div")
@@ -30,14 +29,15 @@ export function renderModalClose(){
   let closeButton = document.createElement("button")
   let buttonText = document.createTextNode("View Your Data!")
   closeButton.classList.add("modal-close-button")
-  closeButton.addEventListener("click", handleClick)
+  closeButton.addEventListener("click", closeModal)
+  closeButton.addEventListener("click", clearInterval(1))
   closeButton.appendChild(buttonText)
   buttonContainer.appendChild(closeButton)
   modal[0].appendChild(buttonContainer)
 
 }
 
-function handleClick(){
+function closeModal(){
   let modalContainer = document.getElementsByClassName("loading-modal-container")
   modalContainer[0].parentElement.removeChild(modalContainer[0])
 }

@@ -14,6 +14,7 @@
 }
 
 #chartTabs li{
-  border: 1px solid blue
+  border: 1px solid rgb(127, 231, 153);
+  margin: 2vw;
 }
 

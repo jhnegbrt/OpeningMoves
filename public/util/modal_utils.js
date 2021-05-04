@@ -22,7 +22,7 @@ export function renderNews(newsBits){
   modal.appendChild(newsContainer)
   let i = 0;
   switchNews(newsBits, i)
-  setInterval(function(){
+  let modalInterval = setInterval(function(){
     if (i > 3){
       i = 0
     } else if (i < 4){
@@ -30,6 +30,7 @@ export function renderNews(newsBits){
     }
     switchNews(newsBits, i)
   },2500)
+  return modalInterval
 }
 
 

@@ -15,8 +15,7 @@ export default async function submitForm(form){
   let dataRange = form.target.dataRange.value
   let timeFrame = form.target.timeFrame.value
    
-  renderLoadingModal(dataRange, ticker)
-
+  let modalInterval = renderLoadingModal(dataRange, ticker)
   let data;
  
   data = await retrieveData(ticker, dataRange)
@@ -40,7 +39,7 @@ export default async function submitForm(form){
 
   createChart(chartDataArray)
 
-  renderModalClose()
+  renderModalClose(modalInterval)
   
 
 }
