@@ -30,7 +30,7 @@ export function renderModalClose(modalInterval){
   let buttonText = document.createTextNode("View Your Data!")
   closeButton.classList.add("modal-close-button")
   closeButton.addEventListener("click", closeModal)
-  closeButton.addEventListener("click", clearInterval(modalInterval))
+  closeButton.addEventListener("click", ()=>{clearInterval(modalInterval)})
   closeButton.appendChild(buttonText)
   buttonContainer.appendChild(closeButton)
   modal[0].appendChild(buttonContainer)
