@@ -9,6 +9,8 @@
 }
 /* chart tabs */
 #chartTabs{
+  height: 80vh;
+  overflow-y: scroll;
   /* width: 70vw; */
   /* display: flex; */
   list-style: none;
