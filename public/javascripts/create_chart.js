@@ -9,7 +9,7 @@ export default function createChart(chartDataArray){
 
   const container = d3
     .select("#second")
-    .style('border', '1px solid blue')
+    // .style('border', '1px solid blue')
 
   let containerSize = document.getElementById("second")
   console.log(containerSize.width.baseVal.value)

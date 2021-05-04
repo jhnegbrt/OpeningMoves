@@ -11,14 +11,13 @@
 #chartTabs{
   height: 80vh;
   overflow-y: scroll;
-  /* width: 70vw; */
-  /* display: flex; */
+  /* display:none; */
   list-style: none;
-  /* justify-content: space-between; */
+  width: 10vw;
 }
 
 #chartTabs li{
-  width: 5vh;
+  width: 6vw;
   border: 1px solid rgb(127, 231, 153);
   margin: 2vw;
 }
