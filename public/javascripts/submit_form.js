@@ -15,7 +15,7 @@ export default async function submitForm(form){
   let dataRange = form.target.dataRange.value
   let timeFrame = form.target.timeFrame.value
    
-  let modalInterval = renderLoadingModal(dataRange, ticker)
+  let modalInterval = await renderLoadingModal(dataRange, ticker)
   let data;
  
   data = await retrieveData(ticker, dataRange)

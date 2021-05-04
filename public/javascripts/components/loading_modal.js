@@ -22,7 +22,7 @@ export async function renderLoadingModal(dataRange, ticker){
 
 
 export function renderModalClose(modalInterval){
-
+  debugger
   let modal = document.getElementsByClassName("loading-modal")
   let buttonContainer = document.createElement("div")
   buttonContainer.setAttribute("id", "button-container")
@@ -30,7 +30,7 @@ export function renderModalClose(modalInterval){
   let buttonText = document.createTextNode("View Your Data!")
   closeButton.classList.add("modal-close-button")
   closeButton.addEventListener("click", closeModal)
-  closeButton.addEventListener("click", clearInterval(1))
+  closeButton.addEventListener("click", clearInterval(modalInterval))
   closeButton.appendChild(buttonText)
   buttonContainer.appendChild(closeButton)
   modal[0].appendChild(buttonContainer)
