@@ -14,10 +14,10 @@ export function convertData(data){
   return candles
 }
 
-export function filterData(candles){
+export function filterData(candles, percentChange){
 
   let openingCandles = selectOpeningCandles(candles)
-  let filteredCandles = selectVolatileCandles(openingCandles)
+  let filteredCandles = selectVolatileCandles(openingCandles, percentChange)
   return filteredCandles
 
 }
@@ -35,8 +35,8 @@ function selectOpeningCandles(candles){
   return openingCandles
 }
 
-function volatileCandle(candle){
-  if((candle["o"] - candle["l"]) / candle["o"] >= .01 || (candle["h"] - candle["o"]) / candle["o"] >= .01){
+function volatileCandle(candle, percentChange){
+  if((candle["o"] - candle["l"]) / candle["o"] >= (parseFloat(percentChange) / 100) || (candle["h"] - candle["o"]) / candle["o"] >= (parseFloat(percentChange) / 100)){
     return true
   } else{
     return false
@@ -44,11 +44,11 @@ function volatileCandle(candle){
   
 }
 
-function selectVolatileCandles(openingCandles){
-
+function selectVolatileCandles(openingCandles, percentChange){
+  
   let filteredCandles = {}
   for (const candle in openingCandles){
-    if(volatileCandle(openingCandles[candle])){
+    if(volatileCandle(openingCandles[candle], percentChange)){
       filteredCandles[candle] = openingCandles[candle]
     }
   }

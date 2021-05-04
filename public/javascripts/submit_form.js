@@ -25,7 +25,7 @@ export default async function submitForm(form){
 
   // percentChange, dataRange, 
 
-  let selectedCandles = filterData(allCandles)
+  let selectedCandles = filterData(allCandles, percentChange)
 
   let charts = generateChartData(selectedCandles, allCandles)
 

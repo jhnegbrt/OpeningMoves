@@ -13,7 +13,6 @@ export async function getNews(ticker){
 }
 
 export function renderNews(newsBits){
-  debugger
   let newsContainer = document.createElement("div")
   newsContainer.setAttribute("id", "news-container")
   // let newsImageContainer = document.createElement("div")
@@ -35,7 +34,6 @@ export function renderNews(newsBits){
 
 
 function switchNews(newsBits, i){
-  debugger
   let oldNews = document.getElementsByClassName("news-block")
   if (oldNews.length > 0){
     oldNews[0].parentElement.removeChild(oldNews[0])
