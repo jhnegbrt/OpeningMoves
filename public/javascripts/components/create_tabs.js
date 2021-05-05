@@ -2,6 +2,12 @@ import createChart from '../create_chart'
 
 export default function createTabs(charts){
 
+  let oldTabs = document.querySelectorAll(".chart-tab")
+  debugger
+  oldTabs.forEach((oldTab) =>{
+    return oldTab.parentElement.removeChild(oldTab)
+  })
+
   function handleClick(e){
     let newChartDataArray = []
     let newChart = charts[parseInt(e.target.dataset.value)]
@@ -22,6 +28,7 @@ export default function createTabs(charts){
     let text = document.createTextNode(Object.keys(chart)[0])
     tab.appendChild(text)
     tab.addEventListener("click", handleClick)
+    tab.classList.add("chart-tab")
     chartTabs.appendChild(tab)
   })
 
