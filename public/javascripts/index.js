@@ -8,8 +8,6 @@ function loadPage(){
   activateEnterButton()
   let form = document.querySelector("form")
   form.onsubmit = submitForm
-  // renderLoadingModal()
-  // renderModalClose()
 }
 
 
