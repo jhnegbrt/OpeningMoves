@@ -1,6 +1,6 @@
 function enterSite(){
   let modal = document.querySelector(".instructions-modal-container")
-  modal.classList.add("hide")
+  modal.parentElement.removeChild(modal)
 }
 
 export default function activateEnterButton(){
