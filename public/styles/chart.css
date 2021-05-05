@@ -1,19 +1,41 @@
 /* main container */
+
+
 .chart-module{
+  padding:0;
   display: flex;
+  margin: 5%;
+  margin-left: 4%;
+  box-sizing: border-box;
+  border-radius: 20px;
+  height: 82vh;
+  border: 3px solid green;
+  /* align-items:center; */
 }
 .container{
-  width: 70vw;
-  height: 90vh;
 
+  box-sizing: border-box;
+  width: 60vw;
+  height: 80vh;
+  border-radius: 25px;
+
+}
+
+#chartContainer{
+  height: 100%;
 }
 /* chart tabs */
 #chartTabs{
-  height: 80vh;
+  margin-top: 0;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  height: 81.5vh;
   overflow-y: scroll;
   /* display:none; */
   list-style: none;
   width: 10vw;
+  border-left: 3px solid rgb(0, 0, 0);
+  padding: 0;
 }
 
 #chartTabs li{

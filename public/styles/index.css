@@ -1,18 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 
 *{
   font-family: 'Roboto Condensed', sans-serif;
 }
 
+body{
+  height: 100vh;
+  overflow-y: hidden;
+  box-sizing: border-box;
 
-#page{
-  display:flex;
 }
+
+#logo{
+  width: 20vw;
+  margin-top: 2vh;
+  /* margin-left: 5vw; */
+}
+#page{
+  box-sizing: border-box;
+  /* height: 100vh; */
+  display:flex;
+  /* overflow-y: hidden; */
+} 
 
 .form label{
   display: block;
-  margin-bottom: 2vh;
-  margin-top: 1vh;
+  margin-bottom: 3vh;
+  margin-top: 2vh;
 }
 
 .form input{
@@ -20,7 +36,9 @@
 }
 
 .form{
-  /* text-align: center; */
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  margin-left: 2vw;
   padding: 1vh;
   height: 30vh;
   border-radius: 5px;
@@ -38,4 +56,15 @@
 
 .form input[type="submit"]:hover{
   cursor: pointer
+}
+
+.instructions{
+  font-family: 'Poppins', sans-serif;
+  margin-top: 2vh;
+  margin-left: 4vw;
+}
+
+.instructions li{
+  margin-top: 1vh;
+  list-style:disc
 }

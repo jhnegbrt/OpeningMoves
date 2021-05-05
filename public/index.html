@@ -5,41 +5,62 @@
     <title></title>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script type="text/javascript" src="./bundle.js"></script>
+    <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/index.css">
     <link rel="stylesheet" href="styles/chart.css">
     <link rel="stylesheet" href="styles/modal.css">
   </head>
   <body>
+    <div class="instructions-modal-container">
+      <div class="instructions-modal">
+        <h2>Welcome to OpeningMoves!</h2>
+        <h3>Investor & Trading Research</h3>
+        <h3>Motivation: Investors and Traders alike seek to capitalize on patterns within the equities market to increase returns and profitability for themselves and clients.</h3>
+        <h3>The stock-market 'open' (9:30 EST) is commonly known as one of the most critical times of the day, but its effects on the direction of the market for the rest of the day, most traders
+          would concede, is difficult to determine
+        </h3>
+        <h3>One pattern o
+        </h3>
+      </div>
+    </div>
     <div id="page">
-      <form class="form">
-        <label>Ticker:
-          <input type="text" name="ticker" placeholder="e.g. TSLA" required>
-        </label>
-
-        <label>% Change of Interest:
-          <input type="text" name="percentChange" placeholder="e.g. '1.1' OR '2'" required>
-        </label>
-
-        <label>Timeframe of Interest:
-          <select name="timeFrame" required>
-            <option value="5">5 minutes</option>
-            <option value="15">15 minutes</option>
-            <option value="30">30 minutes</option>
-          </select>
-        </label>
-
-        <label>Data Range:
-          <select name="dataRange" required>
-            <option value="3m">3 Months</option>
-            <option value="6m">6 Months</option>
-            <option value="1y">1 Year</option>
-          </select>
-        </label>
-        <div class="button-container">
-          <input type="submit" value="Get Data!">
-        </div>
-        
-      </form>
+      <div class="left">
+        <img src="images/opening-moves-logo-2.PNG" id="logo">
+        <form class="form">
+          <label>Ticker:
+            <input type="text" name="ticker" placeholder="e.g. TSLA" required>
+          </label>
+  
+          <label>% Change:
+            <input type="text" name="percentChange" placeholder="e.g. '1.1' OR '2'" required>
+          </label>
+  
+          <label>Timeframe:
+            <select name="timeFrame" required>
+              <option value="5">5 minutes</option>
+              <option value="15">15 minutes</option>
+              <option value="30">30 minutes</option>
+            </select>
+          </label>
+  
+          <label>Data Range:
+            <select name="dataRange" required>
+              <option value="3m">3 Months</option>
+              <option value="6m">6 Months</option>
+              <option value="1y">1 Year</option>
+            </select>
+          </label>
+          <div class="button-container">
+            <input type="submit" value="Get Data!">
+          </div>
+        </form>
+        <ul class="instructions">
+          <li><p>Enter ticker in abbreviated form: "TSLA"</p></li>
+          <li><p>% Change refers to the percent change threshold a stock or index must change across the specified 'Timeframe' to meet the selection criterion</p></li>
+          <li><p>If you are interested in looking at stocks that have moved at least 1% within the first 10 minutes of the day, select '10 minutes' for Timeframe</p></li>
+          <li><p>Data Range: The amount of historical data provided</p></li>
+        </ul>
+      </div>
       <div class="chart-module">
         <div id="chartContainer">
           <svg class="container" id="second"></svg>
