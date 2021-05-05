@@ -5,7 +5,9 @@ export default function createChart(chartDataArray){
   let chartMax = getChartMax(chartDataArray)
   let chartMin = getChartMin(chartDataArray)
 
-  
+  d3.select("#second").selectAll('.body').remove()
+  d3.select("#second").selectAll('.wick').remove()
+  d3.select("#second").selectAll('g').remove()
 
   const container = d3
     .select("#second")
