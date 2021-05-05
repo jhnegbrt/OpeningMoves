@@ -1,11 +1,11 @@
 import submitForm from './submit_form'
 import {renderModalClose,renderLoadingModal} from './components/loading_modal'  
-import renderInstructionsModal from './components/instructionsModal'
+import activateEnterButton from './components/instructions_modal'
 
 document.addEventListener('DOMContentLoaded', loadPage)
 
 function loadPage(){
-  renderInstructionsModal()
+  activateEnterButton()
   let form = document.querySelector("form")
   form.onsubmit = submitForm
   // renderLoadingModal()
