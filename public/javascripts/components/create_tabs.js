@@ -24,8 +24,11 @@ export default function createTabs(charts){
   charts.forEach((chart, i) =>{
     let tab = document.createElement("li")
     tab.setAttribute("data-value", i)
-    let text = document.createTextNode(Object.keys(chart)[0])
-    tab.appendChild(text)
+    let unix = parseInt(Object.keys(chart)[0])
+    let date = new Date(unix * 1000)
+    let dateString = String(date.getMonth() + 1) + "/" + String(date.getDate()) + "/" + String(date.getFullYear())
+    let dateNode = document.createTextNode(dateString)
+    tab.appendChild(dateNode)
     tab.addEventListener("click", handleClick)
     tab.classList.add("chart-tab")
     chartTabs.appendChild(tab)
