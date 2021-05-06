@@ -4,7 +4,6 @@ function enterSite(){
 }
 
 export default function activateEnterButton(){
-  debugger
   let enterButton = document.getElementById("enter-button")
   enterButton.addEventListener("click", enterSite)
 }

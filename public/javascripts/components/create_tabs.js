@@ -3,7 +3,6 @@ import createChart from '../create_chart'
 export default function createTabs(charts){
 
   let oldTabs = document.querySelectorAll(".chart-tab")
-  debugger
   oldTabs.forEach((oldTab) =>{
     return oldTab.parentElement.removeChild(oldTab)
   })
