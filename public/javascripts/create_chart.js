@@ -89,9 +89,11 @@ export default function createChart(chartDataArray){
     //   .call(x_axis)
 
     container.append("g")
-      .attr("transform", "translate(25,0)")//magic number, change it at will
+      .attr("transform", "translate(25,0)")//magic number, change it at will'
+      .attr("color", "white")
       .call(y_axis)
-
+      .style('fill', 'white')
+      .style('stroke', 'white')
 }
 
 
