@@ -193,3 +193,12 @@ body{
   background-color: white;
   border-radius: 10px;
 }
+
+#chartTabs{
+  scrollbar-color: white;
+  scrollbar-width: thin;
+}
+
+*{
+  scrollbar-color: white rgb(42, 51, 47);
+}

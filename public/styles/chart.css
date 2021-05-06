@@ -29,13 +29,17 @@
   margin-top: 0;
   margin-bottom: 0;
   box-sizing: border-box;
-  height: 81.5vh;
+  height: 81vh;
   overflow-y: scroll;
   /* display:none; */
   list-style: none;
   width: 10vw;
   border-left: 3px solid rgb(0, 0, 0);
   padding: 0;
+}
+
+.chart-tabs-container{
+  padding: 2px;
 }
 
 #chartTabs li{
