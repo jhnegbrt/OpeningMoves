@@ -10,6 +10,7 @@ body{
   height: 100vh;
   overflow-y: hidden;
   box-sizing: border-box;
+  background-color: rgb(43, 43, 43);
 
 }
 
@@ -42,10 +43,10 @@ body{
 }
 
 #welcome-logo{
-  /* margin-left: 80%; */
-  width: 12vw;
+  margin-left: 60vw;
+  width: 5vw;
   height: auto;
-  border: 1px solid white;
+  /* border: 1px solid white; */
   border-radius: 3px;
   position: absolute;
 }
@@ -107,8 +108,11 @@ body{
 }
 
 #logo{
+  border: 2px solid white;
+  border-radius: 5px;
+  margin-left:2vw;
   width: 20vw;
-  margin-top: 2vh;
+  margin-top: 8vh;
   /* margin-left: 5vw; */
 }
 #page{
@@ -119,23 +123,28 @@ body{
 } 
 
 .form label{
+  color: white;
   display: block;
   margin-bottom: 3vh;
   margin-top: 2vh;
 }
 
 .form input{
+  color: black;
   width: 6vw;
 }
 
 .form{
+  border: 2px solid white;
+  margin-top:4vh;
   text-align: center;
   font-family: 'Poppins', sans-serif;
   margin-left: 2vw;
   padding: 1vh;
   height: 30vh;
   border-radius: 5px;
-  background-color: rgb(192, 221, 191);
+  background-color: rgb(42, 51, 47);
+  
 }
 
 .button-container{
@@ -143,6 +152,7 @@ body{
 }
 
 .form input[type="submit"]{
+  color: black;
   background-color: white;
   border: 1px solid black;
 }
@@ -152,12 +162,20 @@ body{
 }
 
 .instructions{
+  color: black;
+  background-color: white;
   font-family: 'Poppins', sans-serif;
-  margin-top: 2vh;
-  margin-left: 4vw;
+  padding-left: 1vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  margin-top: 4vh;
+  margin-left: 2vw;
+  list-style-position: inside;
+  border-radius: 5px;
+  border: 2px solid black;
+  /* list-style-type: decimal; */
 }
 
 .instructions li{
   margin-top: 1vh;
-  list-style:disc
 }
