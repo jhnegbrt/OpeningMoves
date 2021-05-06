@@ -179,3 +179,17 @@ body{
 .instructions li{
   margin-top: 1vh;
 }
+
+
+#chartTabs::-webkit-scrollbar {
+  width: .5em;
+}
+ 
+#chartTabs::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+#chartTabs::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 10px;
+}
