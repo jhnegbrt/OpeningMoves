@@ -85,13 +85,14 @@ export default function createChart(chartDataArray){
 
     const y_axis = d3.axisLeft().scale(yAxisScale)
 
-    // container.append("g")
-    //   .call(x_axis)
+    container.append("g")
+      .call(x_axis)
 
     container.append("g")
       .attr("transform", "translate(25,0)")//magic number, change it at will'
-      .attr("color", "white")
       .call(y_axis)
+      .attr("font-size", "1.5vh")
+      .attr("font-family", "helvetica")
       .style('fill', 'white')
       .style('stroke', 'white')
 }
