@@ -9,7 +9,7 @@ export default function createChart(chartDataArray){
   d3.select("#second").selectAll('.wick').remove()
   d3.select("#second").selectAll('g').remove()
 
-  let margin = {top: 50, right: 30, bottom: 20, left: 40}
+  let margin = {top: 50, right: 30, bottom: 30, left: 40}
 
   const container = d3
     .select("#second")
@@ -124,6 +124,14 @@ export default function createChart(chartDataArray){
       .attr("y", xLabelHeight)
       .text("Time (EST)")
       .style('stroke', 'white')
+    
+
+    container.append("text")
+      .attr("x", 3)
+      .attr("y", margin.bottom - 8)
+      .text("Price (USD)")
+      .style('stroke', 'white')
+      .selectAll("text")
       
 
     container.append("g")
