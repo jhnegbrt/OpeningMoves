@@ -68,7 +68,6 @@ export default function createChart(chartDataArray){
     .attr('width', xScale.bandwidth())
     .attr('height', data => {
       if (data.o > data.c){
-        debugger
         return yScale(data.o - data.c) - margin.bottom
       } else{
         return yScale(data.c-data.o) - margin.bottom
@@ -91,13 +90,14 @@ export default function createChart(chartDataArray){
         return date.getMinutes() === 0 || date.getMinutes() === 30
       }))
       .tickFormat((d) =>{
-        debugger
         let date = new Date(d * 1000 + 10800000)
         let minutes;
         let hours;
         date.getMinutes() === 0 ? minutes = "00" : ""
+        debugger
+
         parseInt(date.getHours()) > 12 ? hours = parseInt(date.getHours() - 12) : undefined
-        let amPm = date.getHours < 12 ? "AM" : "PM"
+        let amPm = date.getHours > 12 ? "AM" : "PM"
         return (hours ? String(hours) : date.getHours()) + ":" + (minutes || date.getMinutes()) + ` ${amPm}`
       })
       
@@ -106,7 +106,6 @@ export default function createChart(chartDataArray){
     const y_axis = d3.axisLeft().scale(yAxisScale)
     // .tickSize(-200)
 
-    debugger
     let height = containerSize.height.baseVal.value - margin.top
 
     container.append("g")
@@ -121,13 +120,13 @@ export default function createChart(chartDataArray){
     let xLabelWidth = containerSize.width.baseVal.value
     container.append("text")
       .attr("x", xLabelWidth/2 )
-      .attr("y", xLabelHeight)
+      .attr("y", xLabelHeight -5)
       .text("Time (EST)")
       .style('stroke', 'white')
     
 
     container.append("text")
-      .attr("x", 3)
+      .attr("x", 5)
       .attr("y", margin.bottom - 8)
       .text("Price (USD)")
       .style('stroke', 'white')
