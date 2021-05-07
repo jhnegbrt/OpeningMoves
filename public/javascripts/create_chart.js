@@ -88,13 +88,20 @@ export default function createChart(chartDataArray){
         return date.getMinutes() === 0 || date.getMinutes() === 30
       }))
       .tickFormat((d) =>{
+        debugger
         let date = new Date(d * 1000 + 10800000)
-        return date.getHours() + ":" + date.getMinutes()
+        let minutes;
+        let hours;
+        date.getMinutes() === 0 ? minutes = "00" : ""
+        parseInt(date.getHours()) > 12 ? hours = parseInt(date.getHours() - 12) : undefined
+        debugger
+        return (hours ? String(hours) : date.getHours()) + ":" + (minutes || date.getMinutes())
       })
       
       
 
-    const y_axis = d3.axisLeft().scale(yAxisScale).tickSize(-200)
+    const y_axis = d3.axisLeft().scale(yAxisScale)
+    // .tickSize(-200)
 
     debugger
     let height = containerSize.height.baseVal.value - 25
@@ -104,14 +111,16 @@ export default function createChart(chartDataArray){
       .call(x_axis)
       .attr("font-size", "1.5vh")
       .attr("font-family", "helvetica")
+      .style('fill', 'white')
       .style('stroke', 'white')
+      
 
     container.append("g")
       .attr("transform", "translate(25,0)")//magic number, change it at will'
       .call(y_axis)
       .attr("font-size", "1.5vh")
       .attr("font-family", "helvetica")
-      // .style('fill', 'white')
+      .style('fill', 'white')
       .style('stroke', 'white')
       
 }
