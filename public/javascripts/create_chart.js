@@ -9,6 +9,8 @@ export default function createChart(chartDataArray){
   d3.select("#second").selectAll('.wick').remove()
   d3.select("#second").selectAll('g').remove()
 
+  let margin = {top: 20, right: 30, bottom: 30, left: 40}
+
   const container = d3
     .select("#second")
     // .style('border', '1px solid blue')
@@ -19,13 +21,13 @@ export default function createChart(chartDataArray){
   const xScale = d3
     .scaleBand()
     .domain(chartDataArray.map((dataPoint) => dataPoint.t))
-    .rangeRound([20, containerSize.width.baseVal.value])
+    .rangeRound([margin.left, containerSize.width.baseVal.value - margin.right])
     .padding(0.1)
 
   const yScale = d3
     .scaleLinear()
     .domain([0, chartMax-chartMin])
-    .range([0, containerSize.height.baseVal.value]);
+    .range([margin.bottom, containerSize.height.baseVal.value - margin.top]);
 
   const yAxisScale = d3
     .scaleLinear()
@@ -46,7 +48,7 @@ export default function createChart(chartDataArray){
       }
     })
     .attr('width', 1)
-    .attr('height', data => yScale(data.h - data.l))
+    .attr('height', data => yScale(data.h - data.l) - 30)
     .attr('x', data => xScale(data.t) + 3)
     .attr('y', data => yScale(chartMax - data.h))
 
@@ -66,9 +68,10 @@ export default function createChart(chartDataArray){
     .attr('width', xScale.bandwidth())
     .attr('height', data => {
       if (data.o > data.c){
-        return yScale(data.o - data.c)
+        debugger
+        return yScale(data.o - data.c) - 30
       } else{
-        return yScale(data.c-data.o)
+        return yScale(data.c-data.o) - 30
       }
     })
     .attr('x', data => xScale(data.t))
