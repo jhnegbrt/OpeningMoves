@@ -83,13 +83,26 @@ export default function createChart(chartDataArray){
 
     const x_axis = d3.axisBottom()
       .scale(xScale)
-      .tickValues(xScale.domain().filter(function(time) {
-        debugger
-        let date = new Date(time * 1000)
+      .tickValues(xScale.domain().filter(function(unix){
+        let date = new Date(unix * 1000 + 10800000)
         return date.getMinutes() === 0 || date.getMinutes() === 30
       }))
+      .tickFormat((d) =>{
+        let date = new Date(d * 1000 + 10800000)
+        return date.getHours() + ":" + date.getMinutes()
+      })
+      
+      
+      // .map(function(time) {
+        
+      //   let date = new Date(time * 1000 + 10800000)
+        
+      //   return String(date.getHours()) + ":" + String(date.getMinutes())
+      // }).filter(function(date){
+      //   debugger
+      //   return date.endsWith(":30") || date.endsWith(":00")
+      // }))
 
-    debugger 
     const y_axis = d3.axisLeft().scale(yAxisScale).tickSize(-200)
 
     container.append("g")
