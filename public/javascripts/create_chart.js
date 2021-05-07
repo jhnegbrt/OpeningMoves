@@ -9,7 +9,7 @@ export default function createChart(chartDataArray){
   d3.select("#second").selectAll('.wick').remove()
   d3.select("#second").selectAll('g').remove()
 
-  let margin = {top: 20, right: 30, bottom: 30, left: 40}
+  let margin = {top: 50, right: 30, bottom: 20, left: 40}
 
   const container = d3
     .select("#second")
@@ -48,7 +48,7 @@ export default function createChart(chartDataArray){
       }
     })
     .attr('width', 1)
-    .attr('height', data => yScale(data.h - data.l) - 30)
+    .attr('height', data => yScale(data.h - data.l) - margin.bottom)
     .attr('x', data => xScale(data.t) + 3)
     .attr('y', data => yScale(chartMax - data.h))
 
@@ -69,9 +69,9 @@ export default function createChart(chartDataArray){
     .attr('height', data => {
       if (data.o > data.c){
         debugger
-        return yScale(data.o - data.c) - 30
+        return yScale(data.o - data.c) - margin.bottom
       } else{
-        return yScale(data.c-data.o) - 30
+        return yScale(data.c-data.o) - margin.bottom
       }
     })
     .attr('x', data => xScale(data.t))
@@ -97,8 +97,8 @@ export default function createChart(chartDataArray){
         let hours;
         date.getMinutes() === 0 ? minutes = "00" : ""
         parseInt(date.getHours()) > 12 ? hours = parseInt(date.getHours() - 12) : undefined
-        debugger
-        return (hours ? String(hours) : date.getHours()) + ":" + (minutes || date.getMinutes())
+        let amPm = date.getHours < 12 ? "AM" : "PM"
+        return (hours ? String(hours) : date.getHours()) + ":" + (minutes || date.getMinutes()) + ` ${amPm}`
       })
       
       
@@ -107,7 +107,7 @@ export default function createChart(chartDataArray){
     // .tickSize(-200)
 
     debugger
-    let height = containerSize.height.baseVal.value - 25
+    let height = containerSize.height.baseVal.value - margin.top
 
     container.append("g")
       .attr("transform", "translate(0," + height +")")
@@ -115,6 +115,14 @@ export default function createChart(chartDataArray){
       .attr("font-size", "1.5vh")
       .attr("font-family", "helvetica")
       .style('fill', 'white')
+      .style('stroke', 'white')
+    
+    let xLabelHeight = containerSize.height.baseVal.value
+    let xLabelWidth = containerSize.width.baseVal.value
+    container.append("text")
+      .attr("x", xLabelWidth/2 )
+      .attr("y", xLabelHeight)
+      .text("Time (EST)")
       .style('stroke', 'white')
       
 
