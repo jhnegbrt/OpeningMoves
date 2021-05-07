@@ -32,7 +32,7 @@ export default function createChart(chartDataArray){
   const yAxisScale = d3
     .scaleLinear()
     .domain([chartMin, chartMax])
-    .range([containerSize.height.baseVal.value, 0]);
+    .range([containerSize.height.baseVal.value - margin.top, margin.bottom]);
 
   const wicks = container
     .selectAll('.wick')
@@ -119,7 +119,7 @@ export default function createChart(chartDataArray){
       
 
     container.append("g")
-      .attr("transform", "translate(25,0)")//magic number, change it at will'
+      .attr("transform", "translate(40,0)")//magic number, change it at will'
       .call(y_axis)
       .attr("font-size", "1.5vh")
       .attr("font-family", "helvetica")
