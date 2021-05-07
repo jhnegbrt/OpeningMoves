@@ -81,9 +81,16 @@ export default function createChart(chartDataArray){
       
     })
 
-    const x_axis = d3.axisBottom().scale(xScale).ticks(1)
+    const x_axis = d3.axisBottom()
+      .scale(xScale)
+      .tickValues(xScale.domain().filter(function(time) {
+        debugger
+        let date = new Date(time * 1000)
+        return date.getMinutes() === 0 || date.getMinutes() === 30
+      }))
 
-    const y_axis = d3.axisLeft().scale(yAxisScale)
+    debugger 
+    const y_axis = d3.axisLeft().scale(yAxisScale).tickSize(-200)
 
     container.append("g")
       .call(x_axis)
@@ -93,8 +100,9 @@ export default function createChart(chartDataArray){
       .call(y_axis)
       .attr("font-size", "1.5vh")
       .attr("font-family", "helvetica")
-      .style('fill', 'white')
+      // .style('fill', 'white')
       .style('stroke', 'white')
+      
 }
 
 
