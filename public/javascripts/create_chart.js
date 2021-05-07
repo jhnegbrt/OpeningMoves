@@ -93,20 +93,18 @@ export default function createChart(chartDataArray){
       })
       
       
-      // .map(function(time) {
-        
-      //   let date = new Date(time * 1000 + 10800000)
-        
-      //   return String(date.getHours()) + ":" + String(date.getMinutes())
-      // }).filter(function(date){
-      //   debugger
-      //   return date.endsWith(":30") || date.endsWith(":00")
-      // }))
 
     const y_axis = d3.axisLeft().scale(yAxisScale).tickSize(-200)
 
+    debugger
+    let height = containerSize.height.baseVal.value - 25
+
     container.append("g")
+      .attr("transform", "translate(0," + height +")")
       .call(x_axis)
+      .attr("font-size", "1.5vh")
+      .attr("font-family", "helvetica")
+      .style('stroke', 'white')
 
     container.append("g")
       .attr("transform", "translate(25,0)")//magic number, change it at will'
