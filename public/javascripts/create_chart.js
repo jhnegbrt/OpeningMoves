@@ -32,7 +32,7 @@ export default function createChart(chartDataArray){
   const yAxisScale = d3
     .scaleLinear()
     .domain([chartMin, chartMax])
-    .range([containerSize.height.baseVal.value - margin.top, margin.bottom]);
+    .range([containerSize.height.baseVal.value - margin.top + 1, margin.bottom - 1]);
 
   const wicks = container
     .selectAll('.wick')

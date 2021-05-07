@@ -65,3 +65,12 @@
   color: rgb(63, 77, 70);
 }
 
+#chart-logo{
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-30%, -50%);
+  width: 30%;
+  height: auto
+}
+
