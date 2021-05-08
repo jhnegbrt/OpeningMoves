@@ -1,6 +1,6 @@
 import { getChartMax, getChartMin } from './chart_util'
 
-export default function createChart(chartDataArray){
+export default function createChart(chartDataArray, ticker){
 
   let chartMax = getChartMax(chartDataArray)
   let chartMin = getChartMin(chartDataArray)
@@ -108,9 +108,19 @@ export default function createChart(chartDataArray){
 
     let height = containerSize.height.baseVal.value - margin.top
 
+ 
+
     container.append("g")
       .attr("transform", "translate(0," + height +")")
       .call(x_axis)
+      .attr("font-size", "1.5vh")
+      .attr("font-family", "helvetica")
+      .style('fill', 'white')
+      .style('stroke', 'white')
+
+    container.append("g")
+      .attr("transform", "translate(40,0)")//magic number, change it at will'
+      .call(y_axis)
       .attr("font-size", "1.5vh")
       .attr("font-family", "helvetica")
       .style('fill', 'white')
@@ -131,15 +141,15 @@ export default function createChart(chartDataArray){
       .text("Price (USD)")
       .style('stroke', 'white')
       .selectAll("text")
-      
+    
 
-    container.append("g")
-      .attr("transform", "translate(40,0)")//magic number, change it at will'
-      .call(y_axis)
-      .attr("font-size", "1.5vh")
-      .attr("font-family", "helvetica")
-      .style('fill', 'white')
+    container.append("text")
+      .attr("x", xLabelWidth/2)
+      .attr("y", xLabelHeight /5)
+      .text(ticker)
       .style('stroke', 'white')
+      .attr("font-size", "10vh")
+      .attr("font-family", "helvetica")
       
 }
 

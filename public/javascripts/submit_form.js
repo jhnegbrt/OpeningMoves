@@ -37,7 +37,7 @@ export default async function submitForm(form){
     chartDataArray.push(chart[candle])
   }
 
-  createChart(chartDataArray)
+  createChart(chartDataArray, ticker)
 
   renderModalClose(modalInterval)
   
