@@ -8,6 +8,7 @@ export default function createChart(chartDataArray, ticker){
   d3.select("#second").selectAll('.body').remove()
   d3.select("#second").selectAll('.wick').remove()
   d3.select("#second").selectAll('g').remove()
+  d3.select("#second").selectAll('text').remove()
 
   let margin = {top: 50, right: 30, bottom: 30, left: 40}
 
@@ -16,7 +17,6 @@ export default function createChart(chartDataArray, ticker){
     // .style('border', '1px solid blue')
 
   let containerSize = document.getElementById("second")
-  console.log(containerSize.width.baseVal.value)
 
   const xScale = d3
     .scaleBand()
