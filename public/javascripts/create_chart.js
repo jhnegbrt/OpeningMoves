@@ -8,7 +8,9 @@ export default function createChart(chartDataArray, ticker){
   d3.select("#second").selectAll('.body').remove()
   d3.select("#second").selectAll('.wick').remove()
   d3.select("#second").selectAll('g').remove()
-  d3.select("#second").selectAll('text').remove()
+  if(ticker){
+    d3.select("#second").selectAll('text').remove()
+  }
 
   let margin = {top: 50, right: 30, bottom: 30, left: 40}
 

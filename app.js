@@ -12,9 +12,10 @@ app.get('/', (request, res) => {
 
 app.get('/search', (request, response) => {
   fetch(`https://finnhub.io/api/v1/stock/candle?symbol=${request.query.symbol}&resolution=${request.query.resolution}&from=${request.query.from}&to=${request.query.to}&token=${request.query.token}`)
-  .then((response) => {
-      return response.text();
-  }).then((body) => {
+  // .then((response) => {
+  //     return response.text();
+  // })
+  .then((body) => {
       let results = JSON.parse(body)
       // console.log(results)
       response.send(results)
@@ -23,9 +24,10 @@ app.get('/search', (request, response) => {
 
 app.get('/news', (request, response) =>{
   fetch(`https://finnhub.io/api/v1/company-news?symbol=${request.query.symbol}&from=${request.query.from}&to=${request.query.to}&token=${request.query.token}`)
-  .then((response) =>{
-    return response.text()
-  }).then((body)=>{
+  // .then((response) =>{
+  //   return response.text()
+  // })
+  .then((body)=>{
     let results = JSON.parse(body)
     response.send(results)
   })
