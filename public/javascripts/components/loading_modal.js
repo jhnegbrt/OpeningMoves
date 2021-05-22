@@ -7,16 +7,27 @@ export async function renderLoadingModal(dataRange, ticker){
   modalContainer.classList.add("loading-modal-container")
   let modal = document.createElement("div")
   modal.classList.add("loading-modal")
-  let modalText = document.createElement("p")
-  let text = document.createTextNode("Processing over 80,000 data points...")
-  modalText.appendChild(text)
-  modal.appendChild(modalText)
-  modalContainer.appendChild(modal)
-  page.appendChild(modalContainer)
   let news = await getNews(ticker)
-  let newsBits = news.data.slice(0, 5)
-  let modalInterval = renderNews(newsBits, 0)
-  return modalInterval
+  debugger
+  if (news.data.length > 0){
+    let modalText = document.createElement("p")
+    let text = document.createTextNode("Processing over 80,000 data points...")
+    modalText.appendChild(text)
+    modal.appendChild(modalText)
+    modalContainer.appendChild(modal)
+    page.appendChild(modalContainer)
+    let newsBits = news.data.slice(0, 5)
+    let modalInterval = renderNews(newsBits, 0)
+    return modalInterval
+  } else {
+    let modalText = document.createElement("p")
+    let text = document.createTextNode("No news available!")
+    modalText.appendChild(text)
+    modal.appendChild(modalText)
+    modalContainer.appendChild(modal)
+    page.appendChild(modalContainer)
+  }
+
 }
 
 

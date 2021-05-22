@@ -96,7 +96,6 @@ export default function createChart(chartDataArray, ticker){
         let minutes;
         let hours;
         date.getMinutes() === 0 ? minutes = "00" : ""
-        debugger
 
         parseInt(date.getHours()) > 12 ? hours = parseInt(date.getHours() - 12) : undefined
         let amPm = date.getHours() < 12 ? "AM" : "PM"

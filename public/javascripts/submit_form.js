@@ -20,6 +20,7 @@ export default async function submitForm(form){
  
   data = await retrieveData(ticker, dataRange)
 
+  debugger
   let allCandles = convertData(data)
 
   // percentChange, dataRange, 
