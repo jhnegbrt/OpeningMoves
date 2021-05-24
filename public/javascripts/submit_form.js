@@ -19,7 +19,7 @@ async function inValidInput(errors){
   errors.forEach((error)=>{
     return errorList.appendChild(error)
   })
-
+  errorList.classList.add("errors-list")
   form.insertAdjacentElement("afterend", errorList)
 
 }
@@ -44,6 +44,13 @@ async function validInput(dataRange, ticker, percentChange){
 
 }
 
+function clearErrors(){
+  let errors = Array.from(document.getElementsByClassName("errors-list"))
+  errors.forEach(error =>{
+    return error.remove()
+  })
+}
+
 
 export default async function submitForm(form){
 
@@ -54,8 +61,8 @@ export default async function submitForm(form){
   let dataRange = form.target.dataRange.value
   let timeFrame = form.target.timeFrame.value
 
-  let {valid, errors} = validateInput(ticker)
-  debugger
+  clearErrors()
+  let {valid, errors} = validateInput(ticker, percentChange)
 
   if (valid){
     validInput(dataRange, ticker, percentChange)

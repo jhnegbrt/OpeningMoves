@@ -144,11 +144,12 @@ body{
   height: 30vh;
   border-radius: 5px;
   background-color: rgb(42, 51, 47);
-  
+  position: relative
 }
 
 .button-container{
   text-align: center;
+  margin-top: 4vh;
 }
 
 .form input[type="submit"]{
@@ -159,6 +160,19 @@ body{
 
 .form input[type="submit"]:hover{
   cursor: pointer
+}
+
+#data-range{
+  margin-bottom: 1vh;
+}
+
+.errors-list{
+  margin-top: 1vh;
+  color: #e0ba4e;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto
 }
 
 .instructions{

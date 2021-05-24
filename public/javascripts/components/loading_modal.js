@@ -8,7 +8,6 @@ export async function renderLoadingModal(dataRange, ticker){
   let modal = document.createElement("div")
   modal.classList.add("loading-modal")
   let news = await getNews(ticker)
-  debugger
   if (news.data.length > 0){
     let modalText = document.createElement("p")
     let text = document.createTextNode("Processing over 80,000 data points...")

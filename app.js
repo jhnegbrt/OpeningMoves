@@ -19,7 +19,6 @@ app.get('/search', (request, response) => {
       response.send(results)
     })
   .catch((err)=>{
-    debugger
   });
 });
 
