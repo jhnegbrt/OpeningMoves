@@ -6,7 +6,21 @@ import createTabs from './components/create_tabs'
 import {renderModalClose, renderLoadingModal} from './components/loading_modal'
 import validateInput from './validate_input'
 
-async function inValidInput(){
+async function inValidInput(errors){
+
+  errors = errors.map((el)=>{
+    let errorText = document.createTextNode(el)
+    let error = document.createElement("li")
+    error.appendChild(errorText)
+    return error
+  })
+  let form = document.getElementById("data-range")
+  let errorList = document.createElement("ul")
+  errors.forEach((error)=>{
+    return errorList.appendChild(error)
+  })
+
+  form.insertAdjacentElement("afterend", errorList)
 
 }
 
