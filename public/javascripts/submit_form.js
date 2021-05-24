@@ -6,11 +6,11 @@ import createTabs from './components/create_tabs'
 import {renderModalClose, renderLoadingModal} from './components/loading_modal'
 import validateInput from './validate_input'
 
-async function validInput(){
+async function inValidInput(){
 
 }
 
-async function inValidInput(dataRange, ticker, percentChange){
+async function validInput(dataRange, ticker, percentChange){
   let modalInterval = await renderLoadingModal(dataRange, ticker)
   let data = await retrieveData(ticker, dataRange)
   let allCandles = convertData(data)
@@ -40,12 +40,13 @@ export default async function submitForm(form){
   let dataRange = form.target.dataRange.value
   let timeFrame = form.target.timeFrame.value
 
-  let validated = validateInput(ticker)
+  let {valid, errors} = validateInput(ticker)
+  debugger
 
-  if (validated){
+  if (valid){
     validInput(dataRange, ticker, percentChange)
   } else {
-    inValidInput()
+    inValidInput(errors)
   }
    
 }
