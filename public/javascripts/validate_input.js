@@ -8,7 +8,7 @@ export default function validateInput(ticker, percent){
   debugger
   if ((/^[\d]*(\.[\d]+)?$/).test(percent) === false){
     validated = false
-    errors.push("Please enter a valid percentage, excluding '%'")
+    errors.push("Please enter a valid numerical value")
   }
   return {valid: validated, errors: errors}
 

@@ -141,7 +141,6 @@ body{
   font-family: 'Poppins', sans-serif;
   margin-left: 2vw;
   padding: 1vh;
-  height: 30vh;
   border-radius: 5px;
   background-color: rgb(42, 51, 47);
   position: relative
@@ -149,7 +148,7 @@ body{
 
 .button-container{
   text-align: center;
-  margin-top: 4vh;
+  margin-top: 2vh;
 }
 
 .form input[type="submit"]{
@@ -169,10 +168,14 @@ body{
 .errors-list{
   margin-top: 1vh;
   color: #e0ba4e;
-  position: absolute;
   left: 0;
   right: 0;
-  margin: auto
+  margin: auto;
+  list-style-position: inside;
+}
+
+.errors-list li{
+  list-style-type: disc;
 }
 
 .instructions{
