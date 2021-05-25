@@ -46,11 +46,10 @@ function selectOpeningCandles(candles, timeFrame){
       }
     }
   }
-  debugger
   return openingCandles
 }
 
-function volatileCandle(candle, percentChange){
+function volatileOpen(candle, percentChange){
   if((candle["o"] - candle["l"]) / candle["o"] >= (parseFloat(percentChange) / 100) || (candle["h"] - candle["o"]) / candle["o"] >= (parseFloat(percentChange) / 100)){
     return true
   } else{
@@ -60,13 +59,30 @@ function volatileCandle(candle, percentChange){
 }
 
 function selectVolatileCandles(openingCandles, percentChange){
-  
+
   let filteredCandles = {}
-  for (const candle in openingCandles){
-    if(volatileCandle(openingCandles[candle], percentChange)){
-      filteredCandles[candle] = openingCandles[candle]
-    }
-  }
-  return filteredCandles
+  openingCandles = openingCandles.map(morning => {
+    let high;
+    let low;
+    let open = morning[0][1]["o"]
+    morning.forEach(candle =>{
+      if (candle[1]["h"] > high || high === undefined){
+        high = candle[1]["h"]
+      }
+      if (candle[1]["l"] < low || low === undefined){
+        low = candle[1]["l"]
+      }
+    })
+    debugger
+    return {[morning[0][1].t]: [open, high, low]}
+  })
+  
+  // let filteredCandles = {}
+  // for (const candle in openingCandles){
+  //   if(volatileOpen(openingCandles[candle], percentChange)){
+  //     filteredCandles[candle] = openingCandles[candle]
+  //   }
+  // }
+  // return filteredCandles
 }
 
