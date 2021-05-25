@@ -30,7 +30,7 @@ function selectOpeningCandles(candles, timeFrame){
     debugger
     let convertedTime = date.toLocaleTimeString("en-US", {timeZone: "America/New_York"})
     let minutes = parseInt(convertedTime.slice(-8,-6))
-    if (convertedTime.slice(-2) === "AM" && parseInt(convertedTime) === 9 && 55 >= minutes && miunutes >= 30){
+    if (convertedTime.slice(-2) === "AM" && parseInt(convertedTime) === 9 && (30 + 5 * timeFrame) > minutes && minutes >= 30){
       openingCandles[candle] = candles[candle]
     }
   }
