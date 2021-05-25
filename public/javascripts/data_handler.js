@@ -49,8 +49,8 @@ function selectOpeningCandles(candles, timeFrame){
   return openingCandles
 }
 
-function volatileOpen(candle, percentChange){
-  if((candle["o"] - candle["l"]) / candle["o"] >= (parseFloat(percentChange) / 100) || (candle["h"] - candle["o"]) / candle["o"] >= (parseFloat(percentChange) / 100)){
+function volatileOpen(prices, percentChange){
+  if((candle[0] - prices[2]) / prices[0] >= (parseFloat(percentChange) / 100) || (prices[1] - prices[0]) / prices[0] >= (parseFloat(percentChange) / 100)){
     return true
   } else{
     return false
