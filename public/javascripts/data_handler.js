@@ -60,8 +60,7 @@ function volatileOpen(candle, percentChange){
 
 function selectVolatileCandles(openingCandles, percentChange){
 
-  let filteredCandles = {}
-  openingCandles = openingCandles.map(morning => {
+  let mornings = openingCandles.map(morning => {
     let high;
     let low;
     let open = morning[0][1]["o"]
@@ -73,16 +72,19 @@ function selectVolatileCandles(openingCandles, percentChange){
         low = candle[1]["l"]
       }
     })
-    debugger
     return {[morning[0][1].t]: [open, high, low]}
   })
+
+  debugger
+
+  let filteredCandles = []
+  mornings.forEach(morning => {
+    let prices = Object.values(morning)
+    if (volatileOpen(prices, percentChange)){
+      return filteredCandles.push(Object.keys(mornings[0])[0])
+    }
+  })
   
-  // let filteredCandles = {}
-  // for (const candle in openingCandles){
-  //   if(volatileOpen(openingCandles[candle], percentChange)){
-  //     filteredCandles[candle] = openingCandles[candle]
-  //   }
-  // }
-  // return filteredCandles
+  return filteredCandles
 }
 
