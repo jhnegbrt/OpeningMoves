@@ -50,7 +50,7 @@ function selectOpeningCandles(candles, timeFrame){
 }
 
 function volatileOpen(prices, percentChange){
-  if((candle[0] - prices[2]) / prices[0] >= (parseFloat(percentChange) / 100) || (prices[1] - prices[0]) / prices[0] >= (parseFloat(percentChange) / 100)){
+  if((prices[0] - prices[2]) / prices[0] >= (parseFloat(percentChange) / 100) || (prices[1] - prices[0]) / prices[0] >= (parseFloat(percentChange) / 100)){
     return true
   } else{
     return false
@@ -75,16 +75,16 @@ function selectVolatileCandles(openingCandles, percentChange){
     return {[morning[0][1].t]: [open, high, low]}
   })
 
-  debugger
-
   let filteredCandles = []
   mornings.forEach(morning => {
-    let prices = Object.values(morning)
+    let prices = Object.values(morning)[0]
     if (volatileOpen(prices, percentChange)){
-      return filteredCandles.push(Object.keys(mornings[0])[0])
+      
+      return filteredCandles.push(Object.keys(morning)[0])
     }
   })
-  
+
   return filteredCandles
+
 }
 
