@@ -61,8 +61,6 @@ export default async function submitForm(form){
   let dataRange = form.target.dataRange.value
   let timeFrame = parseInt(form.target.timeFrame.value) / 5
 
-
-  debugger
   clearErrors()
   let {valid, errors} = validateInput(ticker, percentChange)
 

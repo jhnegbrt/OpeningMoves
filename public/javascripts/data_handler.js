@@ -16,19 +16,21 @@ export function convertData(data){
 
 export function filterData(candles, percentChange, timeFrame){
 
-  let openingCandles = selectOpeningCandles(candles)
-  let filteredCandles = selectVolatileCandles(openingCandles, percentChange)
+  let openingCandles = selectOpeningCandles(candles, timeFrame)
+  let filteredCandles = selectVolatileCandles(openingCandles, percentChange, timeFrame)
   return filteredCandles
 
 }
 
 
-function selectOpeningCandles(candles){
+function selectOpeningCandles(candles, timeFrame){
   let openingCandles = {}
   for(const candle in candles){
-    var date = new Date(candle * 1000)
-    var convertedTime = date.toLocaleTimeString("en-US", {timeZone: "America/New_York"})
-    if (convertedTime === "9:30:00 AM"){
+    let date = new Date(candle * 1000)
+    debugger
+    let convertedTime = date.toLocaleTimeString("en-US", {timeZone: "America/New_York"})
+    let minutes = parseInt(convertedTime.slice(-8,-6))
+    if (convertedTime.slice(-2) === "AM" && parseInt(convertedTime) === 9 && 55 >= minutes && miunutes >= 30){
       openingCandles[candle] = candles[candle]
     }
   }
