@@ -22,18 +22,32 @@ export function filterData(candles, percentChange, timeFrame){
 
 }
 
+function createDateString(date){
+  return date.getDate() + date.getMonth() + date.getFullYear()
+}
+
 
 function selectOpeningCandles(candles, timeFrame){
-  let openingCandles = {}
+  let openingCandles = []
   for(const candle in candles){
     let date = new Date(candle * 1000)
-    debugger
     let convertedTime = date.toLocaleTimeString("en-US", {timeZone: "America/New_York"})
     let minutes = parseInt(convertedTime.slice(-8,-6))
     if (convertedTime.slice(-2) === "AM" && parseInt(convertedTime) === 9 && (30 + 5 * timeFrame) > minutes && minutes >= 30){
-      openingCandles[candle] = candles[candle]
+      debugger
+      if (openingCandles.length === 0){
+        openingCandles.push([[date, candles[candle]]])
+      } else {
+        let lastCandleDate = openingCandles[openingCandles.length-1][0][0]
+        if (createDateString(lastCandleDate) === createDateString(date)){
+          openingCandles[-1].push([date, candles[candle]])
+        } else {
+          openingCandles.push([[date, candles[candle]]])
+        }
+      }
     }
   }
+  debugger
   return openingCandles
 }
 
