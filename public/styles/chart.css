@@ -23,6 +23,7 @@
 
 #chartContainer{
   height: 100%;
+  position: relative;
 }
 /* chart tabs */
 #chartTabs{
@@ -31,10 +32,8 @@
   box-sizing: border-box;
   height: 81vh;
   overflow-y: scroll;
-  /* display:none; */
   list-style: none;
   width: 10vw;
-  /* border-left: 3px solid white; */
   padding: 0;
   background-color: rgb(42, 51, 47);
 
@@ -72,6 +71,16 @@
   transform: translate(-30%, -50%);
   width: 30%;
   height: auto
+}
+
+.no-chart-display{
+  position: absolute;
+  color: white;
+  top: 45%;
+  width: 100%;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 4vh;
 }
 
 

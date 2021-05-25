@@ -2,6 +2,27 @@ import { getChartMax, getChartMin } from './chart_util'
 
 export default function createChart(chartDataArray, ticker){
 
+  if (chartDataArray.length !== 0){
+    renderCharts(chartDataArray, ticker)
+  } else {
+    renderNoCharts(ticker)
+  }
+      
+}
+
+function renderNoCharts(ticker){
+
+  let chartContainer = document.getElementById("chartContainer")
+  let display = document.createElement("div")
+  let displayText = document.createTextNode(`No results for ${ticker} given current input!`)
+  display.appendChild(displayText)
+  display.classList.add("no-chart-display")
+  chartContainer.appendChild(display)
+
+}
+
+function renderCharts(chartDataArray, ticker){
+
   let chartMax = getChartMax(chartDataArray)
   let chartMin = getChartMin(chartDataArray)
 
@@ -105,11 +126,8 @@ export default function createChart(chartDataArray, ticker){
       
 
     const y_axis = d3.axisLeft().scale(yAxisScale)
-    // .tickSize(-200)
 
     let height = containerSize.height.baseVal.value - margin.top
-
- 
 
     container.append("g")
       .attr("transform", "translate(0," + height +")")
@@ -151,8 +169,9 @@ export default function createChart(chartDataArray, ticker){
       .style('stroke', 'white')
       .attr("font-size", "10vh")
       .attr("font-family", "helvetica")
-      
+
 }
+
 
 
 
