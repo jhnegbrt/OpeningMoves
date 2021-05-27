@@ -3,6 +3,7 @@ import renderOverview from './render_overview'
 
 function createOverviewTab(master, chartTabs){
 
+  
   d3.select("#second").selectAll('.body').remove()
   d3.select("#second").selectAll('.wick').remove()
   d3.select("#second").selectAll('g').remove()

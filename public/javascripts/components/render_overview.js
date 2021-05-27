@@ -1,10 +1,12 @@
-export default function renderOverview(charts, ticker, percentChange, timeFrame, openingCandles){
+export default function renderOverview(master){
 
   let overviewContainer = document.createElement("div")
-
-
-  let num
-
-  debugger
+  let ticker = document.createTextNode(master.ticker)
+  let overviewHeader = document.createElement("h2")
+  overviewHeader.appendChild(ticker)
+  overviewContainer.appendChild(overviewHeader)
+  overviewContainer.classList.add("charts-overview")
+  let chartContainer = document.getElementById("chartContainer")
+  chartContainer.appendChild(overviewContainer)
 
 }
