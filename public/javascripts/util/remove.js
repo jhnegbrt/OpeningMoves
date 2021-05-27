@@ -7,6 +7,8 @@ export function removeCharts(){
 
 
 export function removeOverview(){
-  let overview = document.getElementsByClassName("charts-overview")[0]
-  overview.parentElement.removeChild(overview)
+  let overview = document.getElementsByClassName("charts-overview")
+  if (overview.length > 0){
+    overview[0].parentElement.removeChild(overview[0])  
+  } 
 }
