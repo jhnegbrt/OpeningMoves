@@ -1,4 +1,6 @@
 import { getChartMax, getChartMin } from './chart_util'
+import {removeOverview} from "./util/remove"
+
 
 export default function createChart(chartDataArray, ticker){
 
@@ -26,6 +28,7 @@ function renderCharts(chartDataArray, ticker){
   let chartMax = getChartMax(chartDataArray)
   let chartMin = getChartMin(chartDataArray)
 
+  removeOverview()
   d3.select("#second").selectAll('.body').remove()
   d3.select("#second").selectAll('.wick').remove()
   d3.select("#second").selectAll('g').remove()

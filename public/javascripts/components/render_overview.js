@@ -1,16 +1,11 @@
-function removeCharts(){
-  d3.select("#second").selectAll('.body').remove()
-  d3.select("#second").selectAll('.wick').remove()
-  d3.select("#second").selectAll('g').remove()
-  d3.select("#second").selectAll('text').remove()
-}
+import {removeCharts, removeOverview} from "../util/remove"
 
-
-function removeO
-
-export default function renderOverview(master){
+export default function renderOverview(master, firstRender){
 
   removeCharts()
+  if (!firstRender){
+    removeOverview()
+  }
   let overviewContainer = document.createElement("div")
   let ticker = document.createTextNode(master.ticker)
   let overviewHeader = document.createElement("h2")
