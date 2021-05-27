@@ -83,4 +83,19 @@
   font-size: 4vh;
 }
 
+.charts-overview{
+  position: absolute;
+  width: 70%;
+  height: 70%;
+  top: 15%;
+  left: 15%;
+  border-radius: 15px;
+  font-family: 'Poppins', sans-serif;
+  background-color: white;
+}
+
+.charts-overview h2{
+  text-align: center;
+}
+
 
