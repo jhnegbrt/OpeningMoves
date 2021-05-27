@@ -18,7 +18,7 @@ export function filterData(candles, percentChange, timeFrame){
 
   let openingCandles = selectOpeningCandles(candles, timeFrame)
   let filteredCandles = selectVolatileCandles(openingCandles, percentChange, timeFrame)
-  return {filtereCandles: filteredCandles, openingCandles: openingCandles}
+  return {selectedCandles: filteredCandles, openingCandles: openingCandles}
 
 }
 
