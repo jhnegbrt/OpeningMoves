@@ -5,6 +5,7 @@ import createChart from './create_chart'
 import createTabs from './components/create_tabs'
 import {renderModalClose, renderLoadingModal} from './components/loading_modal'
 import validateInput from './validate_input'
+import renderOverview from './components/render_overview'
 
 async function inValidInput(errors){
 
@@ -32,13 +33,7 @@ async function validInput(dataRange, ticker, percentChange, timeFrame){
   let charts = generateChartData(selectedCandles, allCandles)
   createTabs(charts)
 
-  // let chartDataArray = []
-  // let chart = charts[0]
-  // for (const candle in chart){
-  //   chartDataArray.push(chart[candle])
-  // }
-
-  // createChart(chartDataArray, ticker)
+  renderOverview(charts)
 
   renderModalClose(modalInterval)
 
