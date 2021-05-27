@@ -1,7 +1,7 @@
 import createChart from '../create_chart'
 import renderOverview from './render_overview'
 
-function createOverviewTab(charts, chartTabs){
+function createOverviewTab(master, chartTabs){
 
   d3.select("#second").selectAll('.body').remove()
   d3.select("#second").selectAll('.wick').remove()
@@ -10,12 +10,12 @@ function createOverviewTab(charts, chartTabs){
   let tab = document.createElement("li")
   let overviewText = document.createTextNode("Overview")
   tab.appendChild(overviewText)
-  tab.addEventListener("click", ()=>renderOverview(charts))
+  tab.addEventListener("click", ()=>renderOverview(master))
   chartTabs.appendChild(tab)
-  
+
 }
 
-export default function createTabs(charts){
+export default function createTabs(master){
 
   let oldTabs = document.querySelectorAll(".chart-tab")
   oldTabs.forEach((oldTab) =>{
@@ -24,7 +24,7 @@ export default function createTabs(charts){
 
   function handleClick(e){
     let newChartDataArray = []
-    let newChart = charts[parseInt(e.target.dataset.value)]
+    let newChart = master.charts[parseInt(e.target.dataset.value)]
     for (const candle in newChart){
       newChartDataArray.push(newChart[candle])
     }
@@ -37,8 +37,8 @@ export default function createTabs(charts){
 
   let chartTabs = document.getElementById("chartTabs")
 
-  createOverviewTab(charts, chartTabs)
-  charts.forEach((chart, i) =>{
+  createOverviewTab(master, chartTabs)
+  master.charts.forEach((chart, i) =>{
     let tab = document.createElement("li")
     tab.setAttribute("data-value", i)
     let unix = parseInt(Object.keys(chart)[0])
@@ -59,6 +59,3 @@ export default function createTabs(charts){
 // the date range
 // the title of the stock
 //  
-
-[1, 2, 3]
-[2, 3]

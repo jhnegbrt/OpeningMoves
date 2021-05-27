@@ -33,9 +33,11 @@ async function validInput(dataRange, ticker, percentChange, timeFrame){
   let openingCandles = filteredData.openingCandles
   let selectedCandles = filteredData.selectedCandles
   let charts = generateChartData(selectedCandles, allCandles)
-  createTabs(charts)
 
-  renderOverview(charts, ticker, percentChange, timeFrame, openeingCandles)
+  let master = {charts, ticker, percentChange, timeFrame, openingCandles}
+
+  createTabs(master)
+  renderOverview(master)
 
   renderModalClose(modalInterval)
 
