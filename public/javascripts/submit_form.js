@@ -29,11 +29,13 @@ async function validInput(dataRange, ticker, percentChange, timeFrame){
   let modalInterval = await renderLoadingModal(dataRange, ticker)
   let data = await retrieveData(ticker, dataRange)
   let allCandles = convertData(data)
-  let selectedCandles = filterData(allCandles, percentChange, timeFrame)
+  let filteredData = filterData(allCandles, percentChange, timeFrame)
+  let openingCandles = filteredData.openingCandles
+  let selectedCandles = filteredData.selectedCandles
   let charts = generateChartData(selectedCandles, allCandles)
   createTabs(charts)
 
-  renderOverview(charts)
+  renderOverview(charts, ticker, percentChange, timeFrame, openeingCandles)
 
   renderModalClose(modalInterval)
 

@@ -1,6 +1,8 @@
 import createChart from '../create_chart'
+import renderOverview from './render_overview'
 
 function createOverviewTab(charts, chartTabs){
+
   d3.select("#second").selectAll('.body').remove()
   d3.select("#second").selectAll('.wick').remove()
   d3.select("#second").selectAll('g').remove()
@@ -8,7 +10,9 @@ function createOverviewTab(charts, chartTabs){
   let tab = document.createElement("li")
   let overviewText = document.createTextNode("Overview")
   tab.appendChild(overviewText)
+  tab.addEventListener("click", ()=>renderOverview(charts))
   chartTabs.appendChild(tab)
+  
 }
 
 export default function createTabs(charts){
