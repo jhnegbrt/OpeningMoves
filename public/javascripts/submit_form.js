@@ -32,13 +32,13 @@ async function validInput(dataRange, ticker, percentChange, timeFrame){
   let charts = generateChartData(selectedCandles, allCandles)
   createTabs(charts)
 
-  let chartDataArray = []
-  let chart = charts[0]
-  for (const candle in chart){
-    chartDataArray.push(chart[candle])
-  }
+  // let chartDataArray = []
+  // let chart = charts[0]
+  // for (const candle in chart){
+  //   chartDataArray.push(chart[candle])
+  // }
 
-  createChart(chartDataArray, ticker)
+  // createChart(chartDataArray, ticker)
 
   renderModalClose(modalInterval)
 
