@@ -37,11 +37,23 @@ function addHeader(overviewContainer, ticker){
 
 }
 
+function addSummary(master, overviewContainer){
+  debugger
+  let volatilePercent = (master.charts.length/master.openingCandles.length * 100).toFixed(2)
+  let string = `Of the ${master.openingCandles.length} trading days within your data range, ${master.ticker} moved 
+  ${parseInt(master.percentChange) * 5}% or more ${master.charts.length} times (${volatilePercent}% of days)`
+  let textNode = document.createTextNode(string)
+  let element = document.createElement("h2")
+  element.appendChild(textNode)
+  overviewContainer.appendChild(element)
+
+}
+
 function addData(master, overviewContainer){
 
-  let volatilePercent = (master.charts.length/master.openingCandles.length * 100).toFixed(2)
+  debugger
 
-  
+  addSummary(master, overviewContainer)
 
   debugger
 
