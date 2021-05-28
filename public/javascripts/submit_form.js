@@ -32,9 +32,12 @@ async function validInput(dataRange, ticker, percentChange, timeFrame){
   let filteredData = filterData(allCandles, percentChange, timeFrame)
   let openingCandles = filteredData.openingCandles
   let selectedCandles = filteredData.selectedCandles
-  let charts = generateChartData(selectedCandles, allCandles)
+  let firstSelectedCandles = selectedCandles.map(object=>{
+    return Object.keys(object)[0]
+  })
+  let charts = generateChartData(firstSelectedCandles, allCandles)
 
-  let master = {charts, ticker, percentChange, timeFrame, openingCandles}
+  let master = {charts, ticker, percentChange, timeFrame, openingCandles, selectedCandles}
 
   createTabs(master)
   renderOverview(master)

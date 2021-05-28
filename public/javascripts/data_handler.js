@@ -79,8 +79,8 @@ function selectVolatileCandles(openingCandles, percentChange){
   mornings.forEach(morning => {
     let prices = Object.values(morning)[0]
     if (volatileOpen(prices, percentChange)){
-      
-      return filteredCandles.push(Object.keys(morning)[0])
+      filteredCandles.push(morning)
+      // filteredCandles.push(Object.keys(morning)[0])
     }
   })
 

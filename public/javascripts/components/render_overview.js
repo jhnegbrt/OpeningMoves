@@ -38,7 +38,6 @@ function addHeader(overviewContainer){
 }
 
 function addSummary(master, overviewContainer){
-  debugger
   let volatilePercent = (master.charts.length/master.openingCandles.length * 100).toFixed(2)
   let string = `Of the ${master.openingCandles.length} trading days within your data range, ${master.ticker} moved 
   ${master.percentChange}% or more within the first ${master.timeFrame * 5} minutes of the stock market open ${master.charts.length} times (${volatilePercent}% of days).`
@@ -46,12 +45,14 @@ function addSummary(master, overviewContainer){
   let element = document.createElement("h3")
   element.appendChild(textNode)
   overviewContainer.appendChild(element)
-
 }
 
 function addData(master, overviewContainer){
 
+  debugger
+
   addSummary(master, overviewContainer)
+
 
 }
 

@@ -48,10 +48,3 @@ export default function createTabs(master){
   })
 
 }
-
-//what data do we want in the dashboard?
-//how many days searched
-//how many days we returned
-// the date range
-// the title of the stock
-//  
