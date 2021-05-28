@@ -47,12 +47,28 @@ function addSummary(master, overviewContainer){
   overviewContainer.appendChild(element)
 }
 
+function addAverageExcursion(master, overviewContainer){
+
+  let positiveExcursions = []
+  let negativeExcursions = []
+  for(const key in master.selectedCandles){
+    let array = master.selectedCandles[key]
+    if ((array[1] - array[0]) / array[0] >= master.percentChange){
+      Excursions.push(array)
+    }
+    if ((array[0] - array[2]) / array[0] >= master.percentChange){
+      Excursions.push(array)
+    }
+  }
+}
+
 function addData(master, overviewContainer){
 
   debugger
 
   addSummary(master, overviewContainer)
 
+  addAverageExcursion(master, overviewContainer)
 
 }
 
