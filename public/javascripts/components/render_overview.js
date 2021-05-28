@@ -1,7 +1,7 @@
 import {removeCharts, removeOverview} from "../util/remove"
 
 function addClickTabInstructions(overviewContainer){
-  let text = document.createTextNode("Use tabs on right to select individual days")
+  let text = document.createTextNode("Use tabs on right to view these charts")
   let element = document.createElement("p")
   element.appendChild(text)
   overviewContainer.appendChild(element)
@@ -20,7 +20,7 @@ function addDate(master, overviewContainer){
   firstDay = `${days[firstDay.getDay()]}, ${months[firstDay.getMonth()]} ${firstDay.getDate()}, ${firstDay.getFullYear()}`
   lastDay = `${days[lastDay.getDay()]}, ${months[lastDay.getMonth()]} ${lastDay.getDate()}, ${lastDay.getFullYear()}`
 
-  let dateString = `From ${firstDay} to ${lastDay}`
+  let dateString = `${master.ticker}: ${firstDay} to ${lastDay}`
   dateString = document.createTextNode(dateString)
   let date = document.createElement("h3")
   date.appendChild(dateString)
@@ -28,11 +28,11 @@ function addDate(master, overviewContainer){
 
 }
 
-function addHeader(overviewContainer, ticker){
+function addHeader(overviewContainer){
 
-  ticker = document.createTextNode(ticker)
+  let overview = document.createTextNode('Overview')
   let overviewHeader = document.createElement("h2")
-  overviewHeader.appendChild(ticker)
+  overviewHeader.appendChild(overview)
   overviewContainer.appendChild(overviewHeader)
 
 }
@@ -41,9 +41,9 @@ function addSummary(master, overviewContainer){
   debugger
   let volatilePercent = (master.charts.length/master.openingCandles.length * 100).toFixed(2)
   let string = `Of the ${master.openingCandles.length} trading days within your data range, ${master.ticker} moved 
-  ${parseInt(master.percentChange) * 5}% or more ${master.charts.length} times (${volatilePercent}% of days)`
+  ${master.percentChange}% or more within the first ${master.timeFrame * 5} minutes of the stock market open ${master.charts.length} times (${volatilePercent}% of days).`
   let textNode = document.createTextNode(string)
-  let element = document.createElement("h2")
+  let element = document.createElement("h3")
   element.appendChild(textNode)
   overviewContainer.appendChild(element)
 
@@ -51,11 +51,7 @@ function addSummary(master, overviewContainer){
 
 function addData(master, overviewContainer){
 
-  debugger
-
   addSummary(master, overviewContainer)
-
-  debugger
 
 }
 
