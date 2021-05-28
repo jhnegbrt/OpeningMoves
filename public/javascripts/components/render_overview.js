@@ -28,12 +28,22 @@ function addDate(master, overviewContainer){
 
 }
 
-function createHeader(overviewContainer, ticker){
+function addHeader(overviewContainer, ticker){
 
   ticker = document.createTextNode(ticker)
   let overviewHeader = document.createElement("h2")
   overviewHeader.appendChild(ticker)
   overviewContainer.appendChild(overviewHeader)
+
+}
+
+function addData(master, overviewContainer){
+
+  let volatilePercent = (master.charts.length/master.openingCandles.length * 100).toFixed(2)
+
+  
+
+  debugger
 
 }
 
@@ -45,9 +55,11 @@ export default function renderOverview(master){
   let overviewContainer = document.createElement("div")
   overviewContainer.classList.add("charts-overview")
   
-  createHeader(overviewContainer, master.ticker)
+  addHeader(overviewContainer, master.ticker)
 
   addDate(master, overviewContainer)
+
+  addData(master, overviewContainer)
 
   addClickTabInstructions(overviewContainer)
 

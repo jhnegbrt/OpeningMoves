@@ -94,6 +94,8 @@
   background-color: white;
 }
 
+.charts-overview p,
+.charts-overview h3,
 .charts-overview h2{
   text-align: center;
 }
