@@ -49,26 +49,54 @@ function addSummary(master, overviewContainer){
 
 function addAverageExcursion(master, overviewContainer){
 
+  let positiveCount = 0
+  let negativeCount = 0
+
   let positiveExcursions = []
   let negativeExcursions = []
-  for(const key in master.selectedCandles){
-    let array = master.selectedCandles[key]
-    if ((array[1] - array[0]) / array[0] >= master.percentChange){
-      Excursions.push(array)
+
+  
+  master.selectedCandles.forEach(day =>{
+    let array = Object.values(day)[0]
+    let positiveChange = ((array[1] - array[0]) / array[0]) * 100
+    let negativeChange = ((array[0] - array[2]) / array[0]) * 100
+    if (positiveChange >= parseInt(master.percentChange)){
+      positiveExcursions.push(array)
+      positiveCount += (positiveChange / array[0]) * 100
     }
-    if ((array[0] - array[2]) / array[0] >= master.percentChange){
-      Excursions.push(array)
+    if (negativeChange >= parseInt(master.percentChange)){
+      negativeExcursions.push(array)
+      negativeCount += (negativeChange / array[0]) * 100
     }
-  }
+  })
+
+  let aNExcursion = negativeCount / negativeExcursions.length
+  let aPExcursion = positiveCount / positiveExcursions.length
+  let avgExcursion = ((positiveCount + negativeCount) / 2) / master.selectedCandles.length
+  
+  let averageText = document.createTextNode(`The average 'Morning Move' across all ${master.selectedCandles.length} selected days was ${avgExcursion}%`)
+  let positiveText = document.createTextNode(`The average 'Morning Move' when ${master.ticker} moved upward, across ${positiveExcursions.length} days was ${aPExcursion}%`)
+  let negativeText = document.createTextNode(`The average 'Morning Move' when ${master.ticker} moved downward, across ${negativeExcursions.length} days was ${aNExcursion}%`)
+  let average = document.createElement("p").appendChild(averageText)
+  let negative = document.createElement("p").appendChild(negativeText)
+  let positive = document.createElement("p").appendChild(positiveText)
+  overviewContainer.appendChild(average).appendChild(positive).appendChild(negative)
+  
+}
+
+function addAverageDailyChange(){
+
 }
 
 function addData(master, overviewContainer){
 
-  debugger
+  
 
   addSummary(master, overviewContainer)
 
   addAverageExcursion(master, overviewContainer)
+  
+  addAverageDailyChange()
 
 }
 
