@@ -18,11 +18,12 @@ body{
   color: white;
   height: 100vh;
   width: 100vw;
-  display: block;
+  display: flex;
   z-index:1000;
   top:0;
   background-color: rgb(42, 51, 47);
-
+  flex-direction: column;
+  justify-content: space-evenly;
   position:fixed;
 }
 
@@ -31,12 +32,9 @@ body{
   padding-left: 2%;
   padding-right: 2%;
   background-color: rgb(4, 27, 16);
-  
   font-family: 'Roboto Condensed', sans-serif;
-  /* text-align: center; */
   width: 66%;
   margin-left: 15%;
-  margin-top: 2%;
   border-radius: 25px;
   border: 3px solid white
   
