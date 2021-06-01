@@ -107,95 +107,13 @@ body{
   display:none;
 }
 
-#logo{
-  border: 2px solid white;
-  border-radius: 5px;
-  margin-left:2vw;
-  width: 20vw;
-  margin-top: 8vh;
-  /* margin-left: 5vw; */
-}
+
 #page{
   box-sizing: border-box;
-  /* height: 100vh; */
   display:flex;
-  /* overflow-y: hidden; */
 } 
 
-.form label{
-  color: white;
-  display: block;
-  margin-bottom: 3vh;
-  margin-top: 2vh;
-}
 
-.form input{
-  color: black;
-  width: 6vw;
-}
-
-.form{
-  border: 2px solid white;
-  margin-top:4vh;
-  text-align: center;
-  font-family: 'Poppins', sans-serif;
-  margin-left: 2vw;
-  padding: 1vh;
-  border-radius: 5px;
-  background-color: rgb(42, 51, 47);
-  position: relative
-}
-
-.button-container{
-  text-align: center;
-  margin-top: 2vh;
-}
-
-.form input[type="submit"]{
-  color: black;
-  background-color: white;
-  border: 1px solid black;
-}
-
-.form input[type="submit"]:hover{
-  cursor: pointer
-}
-
-#data-range{
-  margin-bottom: 1vh;
-}
-
-.errors-list{
-  margin-top: 1vh;
-  color: #e0ba4e;
-  left: 0;
-  right: 0;
-  margin: auto;
-  list-style-position: inside;
-}
-
-.errors-list li{
-  list-style-type: disc;
-}
-
-.instructions{
-  color: black;
-  background-color: white;
-  font-family: 'Poppins', sans-serif;
-  padding-left: 1vw;
-  padding-top: 1vh;
-  padding-bottom: 1vh;
-  margin-top: 4vh;
-  margin-left: 2vw;
-  list-style-position: inside;
-  border-radius: 5px;
-  border: 2px solid black;
-  /* list-style-type: decimal; */
-}
-
-.instructions li{
-  margin-top: 1vh;
-}
 
 
 #chartTabs::-webkit-scrollbar {
