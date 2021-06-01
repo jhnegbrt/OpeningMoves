@@ -70,9 +70,9 @@ function addAverageExcursion(master, overviewContainer){
     }
   })
 
-  let aNExcursion = negativeCount / negativeExcursions.length
-  let aPExcursion = positiveCount / positiveExcursions.length
-  let avgExcursion = ((positiveCount + negativeCount) / 2) / master.selectedCandles.length
+  let aNExcursion = (negativeCount / negativeExcursions.length) * 100
+  let aPExcursion = (positiveCount / positiveExcursions.length) * 100
+  let avgExcursion = (((positiveCount + negativeCount)) / master.selectedCandles.length) * 100
   
   let averageText = document.createTextNode(`The average 'Morning Move' across all ${master.selectedCandles.length} selected days was ${avgExcursion}%`)
   let positiveText = document.createTextNode(`The average 'Morning Move' when ${master.ticker} moved upward, across ${positiveExcursions.length} days was ${aPExcursion}%`)
@@ -80,7 +80,9 @@ function addAverageExcursion(master, overviewContainer){
   let average = document.createElement("p").appendChild(averageText)
   let negative = document.createElement("p").appendChild(negativeText)
   let positive = document.createElement("p").appendChild(positiveText)
-  overviewContainer.appendChild(average).appendChild(positive).appendChild(negative)
+  overviewContainer.appendChild(average)
+  overviewContainer.appendChild(positive)
+  overviewContainer.appendChild(negative)
   
 }
 
