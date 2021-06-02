@@ -1,4 +1,4 @@
-import {removeCharts, removeOverview} from "../util/remove"
+import {removeCharts, removeOverview, removeInstructions} from "../util/remove"
 
 function addClickTabInstructions(overviewContainer){
   let text = document.createTextNode("Use tabs on right to view these charts")
@@ -111,7 +111,7 @@ export default function renderOverview(master){
 
   removeCharts()
   removeOverview()
-  
+  removeInstructions()
   let overviewContainer = document.createElement("div")
   overviewContainer.classList.add("charts-overview")
   
@@ -123,7 +123,7 @@ export default function renderOverview(master){
 
   addClickTabInstructions(overviewContainer)
 
-  let chartContainer = document.getElementById("chartContainer")
+  let chartContainer = document.getElementById("chart-container")
   chartContainer.appendChild(overviewContainer)
 
 }

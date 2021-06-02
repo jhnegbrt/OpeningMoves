@@ -1,5 +1,5 @@
 import { getChartMax, getChartMin } from './chart_util'
-import {removeOverview} from "./util/remove"
+import {removeOverview, removeInstructions} from "./util/remove"
 
 
 export default function createChart(chartDataArray, ticker){
@@ -14,7 +14,7 @@ export default function createChart(chartDataArray, ticker){
 
 function renderNoCharts(ticker){
 
-  let chartContainer = document.getElementById("chartContainer")
+  let chartContainer = document.getElementById("chart-container")
   let display = document.createElement("div")
   let displayText = document.createTextNode(`No results for ${ticker} given current input!`)
   display.appendChild(displayText)
@@ -28,6 +28,7 @@ function renderCharts(chartDataArray, ticker){
   let chartMax = getChartMax(chartDataArray)
   let chartMin = getChartMin(chartDataArray)
 
+  removeInstructions()
   removeOverview()
   d3.select("#second").selectAll('.body').remove()
   d3.select("#second").selectAll('.wick').remove()
@@ -40,7 +41,7 @@ function renderCharts(chartDataArray, ticker){
 
   const container = d3
     .select("#second")
-    // .style('border', '1px solid blue')
+
 
   let containerSize = document.getElementById("second")
 
