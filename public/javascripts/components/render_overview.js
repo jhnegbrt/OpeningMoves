@@ -97,7 +97,6 @@ function addAverageDailyChange(){
 
 function addData(master, overviewContainer){
 
-  
 
   addSummary(master, overviewContainer)
 

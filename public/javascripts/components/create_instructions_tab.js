@@ -7,6 +7,7 @@ export default function createInstructionsTab(){
   let instructionsText = document.createTextNode("Instructions")
   tab.appendChild(instructionsText)
   tab.addEventListener("click", renderInstructions)
+  let chartTabs = document.getElementById("chart-tabs")
   chartTabs.appendChild(tab)
 
 }
