@@ -114,20 +114,20 @@ body{
 } 
 
 
-#chartTabs::-webkit-scrollbar {
+#chart-tabs::-webkit-scrollbar {
   width: .5em;
 }
  
-#chartTabs::-webkit-scrollbar-track {
+#chart-tabs::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
  
-#chartTabs::-webkit-scrollbar-thumb {
+#chart-tabs::-webkit-scrollbar-thumb {
   background-color: white;
   border-radius: 10px;
 }
 
-#chartTabs{
+#chart-tabs{
   scrollbar-color: white;
   scrollbar-width: thin;
 }

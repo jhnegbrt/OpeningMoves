@@ -31,7 +31,7 @@ export default function createTabs(master){
 
   }
 
-  let chartTabs = document.getElementById("chartTabs")
+  let chartTabs = document.getElementById("chart-tabs")
 
   createOverviewTab(master, chartTabs)
   master.charts.forEach((chart, i) =>{

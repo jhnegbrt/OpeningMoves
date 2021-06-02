@@ -27,7 +27,7 @@
 }
 
 /* chart tabs */
-#chartTabs{
+#chart-tabs{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,7 +45,7 @@
   padding: 1px;
 }
 
-#chartTabs li{
+#chart-tabs li{
   text-align: center;
   background-color: rgb(63, 77, 70);
   color: white;
@@ -59,7 +59,7 @@
   border-radius: 5px;
 }
 
-#chartTabs li:hover{
+#chart-tabs li:hover{
   cursor: pointer;
   background-color: white;
   color: rgb(63, 77, 70);
