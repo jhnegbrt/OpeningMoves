@@ -1,6 +1,6 @@
 import renderInstructions from './render_instructions'
 
-export default function createInstructions(){
+export default function createInstructionsTab(){
 
   let tab = document.createElement("li")
   tab.classList.add("directions-tab")

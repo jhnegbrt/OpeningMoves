@@ -1,6 +1,7 @@
 import submitForm from './submit_form' 
 import activateEnterButton from './components/instructions_modal'
-import createInstructions from './components/create_instructions_tab'
+import createInstructionsTab from './components/create_instructions_tab'
+import renderInstructions from './components/render_instructions'
 const axios = require('axios');
 
 
@@ -10,7 +11,8 @@ async function loadPage(){
   activateEnterButton()
   let form = document.querySelector("form")
   form.onsubmit = submitForm
-  createInstructions()
+  createInstructionsTab()
+  renderInstructions()
   let symbols = await axios.get('/symbols')
   window.symbols = {}
   symbols.data.forEach(symbol =>{
