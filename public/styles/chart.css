@@ -98,6 +98,7 @@
   box-sizing: border-box;
 }
 
+.charts-instructions,
 .charts-overview h2{
   font-size: 3vh;
   margin-bottom: 2%;
@@ -115,6 +116,7 @@
   font-weight: bold;
 }
 
+.charts-instructions h2,
 .charts-overview p,
 .charts-overview h3,
 .charts-overview h2{
