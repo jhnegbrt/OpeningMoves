@@ -27,7 +27,7 @@ export default function createTabs(master){
     d3.select("#second").selectAll('.body').remove()
     d3.select("#second").selectAll('.wick').remove()
     d3.select("#second").selectAll('g').remove()
-    createChart(newChartDataArray)
+    createChart(newChartDataArray, master.ticker)
 
   }
 
