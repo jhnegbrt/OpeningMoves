@@ -101,6 +101,10 @@ body{
   height: 4vh;
 }
 
+#enter-button:hover{
+  cursor: pointer
+}
+
 .hide{
   display:none;
 }

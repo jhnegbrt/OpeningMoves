@@ -37,12 +37,18 @@ function renderCharts(chartDataArray, ticker){
     d3.select("#second").selectAll('text').remove()
   }
 
-  let margin = {top: 50, right: 30, bottom: 30, left: 40}
+  debugger
+  let containerSize = document.getElementById("second")
+
+  let margin = {
+    top: containerSize.height.baseVal.value/15, 
+    right: containerSize.width.baseVal.value/30, 
+    bottom: containerSize.height.baseVal.value/25, 
+    left: containerSize.width.baseVal.value/30
+  }
 
   const container = d3
     .select("#second")
-
-  let containerSize = document.getElementById("second")
 
   const xScale = d3
     .scaleBand()
@@ -58,7 +64,8 @@ function renderCharts(chartDataArray, ticker){
   const yAxisScale = d3
     .scaleLinear()
     .domain([chartMin, chartMax])
-    .range([containerSize.height.baseVal.value - margin.top + 1, margin.bottom - 1]);
+    // .range([containerSize.height.baseVal.value - margin.top + 1, margin.bottom - 1]);
+    .range([containerSize.height.baseVal.value - margin.top, margin.bottom]);
 
   const wicks = container
     .selectAll('.wick')

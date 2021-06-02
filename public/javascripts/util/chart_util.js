@@ -29,7 +29,7 @@ export default function getChartMinMAx(chartArray){
 
   let dailyRange = max - min
 
-  return [max + dailyRange * .8, min - dailyRange * .8]
+  return [max + dailyRange * .6, min - dailyRange * .6]
 
 
 
