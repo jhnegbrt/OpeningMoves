@@ -65,12 +65,17 @@
             <input type="submit" value="Get Data!">
           </div>
         </form>
-        <ol class="instructions">
-          <li>Enter ticker in abbreviated form: "TSLA"</li>
-          <li>% Change refers to the percent change threshold a stock or index must change across the specified 'Timeframe' to meet the selection criterion</li>
-          <li>If you are interested in looking at stocks that have moved at least 1% within the first 10 minutes of the day, select '10 minutes' for Timeframe</li>
-          <li>Data Range: The amount of historical data provided</li>
-        </ol>
+        <div class="data-note">
+          <h3>Note on data and x-axes:</h3>
+          <p>
+            The price data API used for this project occassionally returns incomplete data-sets, which may impact the quality of research
+            done using this tool.
+          </p>
+          <p>
+            When an incomplete dataset is returned, you will notice that the x-axis of the corresponding graph has missing ticks where data is
+            missing.
+          </p>
+        </div>
       </div>
       <div class="chart-module">
         <div id="chart-container">
