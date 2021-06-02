@@ -12,3 +12,10 @@ export function removeOverview(){
     overview[0].parentElement.removeChild(overview[0])  
   } 
 }
+
+export function removeInstructions(){
+  let instructions = document.getElementsByClassName("charts-instructions")
+  if (instructions.length > 0){
+    instructions[0].parentElement.removeChild(instructions[0])  
+  }
+}

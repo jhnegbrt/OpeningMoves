@@ -1,4 +1,4 @@
-
+import renderInstructions from './render_instructions'
 
 export default function createInstructions(){
 
