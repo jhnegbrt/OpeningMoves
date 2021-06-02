@@ -1,4 +1,4 @@
-export function getChartMax(chartArray){
+function getDailyMax(chartArray){
 
   let maxPrice = 0
   for (let i = 0; i < chartArray.length; i++){
@@ -7,10 +7,10 @@ export function getChartMax(chartArray){
     }
   }
 
-  return Math.floor(Math.floor(maxPrice) * 1.05)
+  return maxPrice
 }
 
-export function getChartMin(chartArray){
+function getDailyMin(chartArray){
 
   let minPrice;
   for (let i = 0; i < chartArray.length; i++){
@@ -18,6 +18,20 @@ export function getChartMin(chartArray){
       minPrice = chartArray[i]["l"]
     }
   }
-  return Math.floor(Math.floor(minPrice) * .95)
+  return minPrice
+
+}
+
+export default function getChartMinMAx(chartArray){
+
+  let min = getDailyMin(chartArray)
+  let max = getDailyMax(chartArray)
+
+  let dailyRange = max - min
+
+  return [max + dailyRange * .8, min - dailyRange * .8]
+
+
+
 
 }

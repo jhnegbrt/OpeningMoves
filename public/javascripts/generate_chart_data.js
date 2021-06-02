@@ -24,7 +24,8 @@ export default function generateChartData(selectedCandles, allCandles){
           h: ((priorCandle.h + followingCandle.h) / 2),
           l: ((priorCandle.l + followingCandle.l) / 2),
           o: ((priorCandle.o + followingCandle.o) / 2),
-          t: j
+          t: j,
+          flag: true
         }
         chart[candleString] = fillCandle
       }

@@ -1,4 +1,4 @@
-import { getChartMax, getChartMin } from './chart_util'
+import getChartMinMax from './util/chart_util'
 import {removeOverview, removeInstructions} from "./util/remove"
 
 
@@ -25,8 +25,8 @@ function renderNoCharts(ticker){
 
 function renderCharts(chartDataArray, ticker){
 
-  let chartMax = getChartMax(chartDataArray)
-  let chartMin = getChartMin(chartDataArray)
+  let [chartMax, chartMin] = getChartMinMax(chartDataArray)
+  
 
   removeInstructions()
   removeOverview()
@@ -41,7 +41,6 @@ function renderCharts(chartDataArray, ticker){
 
   const container = d3
     .select("#second")
-
 
   let containerSize = document.getElementById("second")
 
@@ -86,7 +85,9 @@ function renderCharts(chartDataArray, ticker){
     .append('rect')
     .classed('body', true)
     .style('fill', data =>{
-      if (data.o > data.c){
+      if (data.flag === true){
+        return 'yellow'
+      } else if (data.o > data.c){
         return 'red'
       } else{
         return 'green'
