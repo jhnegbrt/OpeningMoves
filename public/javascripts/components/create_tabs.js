@@ -4,11 +4,11 @@ import renderOverview from './render_overview'
 function createOverviewTab(master, chartTabs){
 
   let tab = document.createElement("li")
+  tab.classList.add("chart-tab")
   let overviewText = document.createTextNode("Overview")
   tab.appendChild(overviewText)
   tab.addEventListener("click", ()=>renderOverview(master))
   chartTabs.appendChild(tab)
-
 }
 
 export default function createTabs(master){
