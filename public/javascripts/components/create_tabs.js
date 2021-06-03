@@ -47,6 +47,8 @@ export default function createTabs(master){
     chartTabs.appendChild(tab)
   })
 
+
+
   
 
 }
