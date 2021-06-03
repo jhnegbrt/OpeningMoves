@@ -52,11 +52,15 @@
   font-family: 'Poppins', sans-serif;
   width: 7vw;
   margin-top: 1vh;
-  margin-bottom: 1vh;
+  margin-bottom: .5vh;
   margin-left: 1vh;
   text-decoration: underline;
   padding: 5%;
   border-radius: 5px;
+}
+
+#chart-tabs li:active{
+  background-color: blue;
 }
 
 .directions-tab,
