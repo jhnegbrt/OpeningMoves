@@ -37,14 +37,13 @@ function renderCharts(chartDataArray, ticker){
     d3.select("#second").selectAll('text').remove()
   }
 
-  debugger
   let containerSize = document.getElementById("second")
 
   let margin = {
     top: containerSize.height.baseVal.value/15, 
     right: containerSize.width.baseVal.value/30, 
     bottom: containerSize.height.baseVal.value/25, 
-    left: containerSize.width.baseVal.value/30
+    left: containerSize.width.baseVal.value/24
   }
 
   const container = d3
@@ -53,8 +52,8 @@ function renderCharts(chartDataArray, ticker){
   const xScale = d3
     .scaleBand()
     .domain(chartDataArray.map((dataPoint) => dataPoint.t))
-    .rangeRound([margin.left, containerSize.width.baseVal.value - margin.right])
-    .padding(0.1)
+    .rangeRound([margin.left, containerSize.width.baseVal.value])
+    .padding(0.16)
 
   const yScale = d3
     .scaleLinear()
@@ -149,8 +148,9 @@ function renderCharts(chartDataArray, ticker){
       .style('fill', 'white')
       .style('stroke', 'white')
 
+    
     container.append("g")
-      .attr("transform", "translate(40,0)")//magic number, change it at will'
+      .attr("transform", "translate(" + margin.left + ",0)")//magic number, change it at will'
       .call(y_axis)
       .attr("font-size", "1.5vh")
       .attr("font-family", "helvetica")
