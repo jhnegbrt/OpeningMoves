@@ -58,10 +58,12 @@ body{
 .subheading{
   text-align: center;
   margin-top:1%;
+  font-size: 2.2vh
 }
 
 .caption{
-  font-size: 3vh;
+  padding-left: 3%;
+  font-size: 4vh;
   margin-top: 2vh;
   margin-bottom: 1vh;
 }
@@ -79,6 +81,7 @@ body{
   margin-bottom: 3vh;
 }
 
+.instructions-modal p:nth-of-type(3),
 .instructions-modal p:nth-of-type(2){
   margin-bottom: 1vh;
 }
