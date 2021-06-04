@@ -63,7 +63,7 @@
   background-color: blue;
 }
 
-.directions-tab,
+#chart-tabs .selected,
 #chart-tabs li:hover{
   cursor: pointer;
   background-color: white;

@@ -1,6 +1,6 @@
 import createChart from '../create_chart'
 import renderOverview from './render_overview'
-import removeSelectedTab from '../util/remove_selected'
+import {removeSelectedTab} from '../util/remove'
 
 function createOverviewTab(master, chartTabs){
 
@@ -20,9 +20,11 @@ export default function createTabs(master){
   })
 
   function handleClick(e){
+
     removeSelectedTab()
-    let newChartDataArray = []
     e.target.classList.add("selected")
+
+    let newChartDataArray = []
     let newChart = master.charts[parseInt(e.target.dataset.value)]
     for (const candle in newChart){
       newChartDataArray.push(newChart[candle])

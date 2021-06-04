@@ -21,7 +21,9 @@ export function removeInstructions(){
 }
 
 export function removeSelectedTab(){
-  tabs = Array.from(document.querySelectorAll(".chart-tab"))
-  tabs.push(document.querySelectorAll(".directions-tab"))
+  let tabs = Array.from(document.querySelectorAll(".chart-tab"))
+  debugger
+  tabs.push(document.querySelector(".directions-tab"))
   tabs.forEach(tab=>{tab.classList.remove("chart-tab")})
+
 }
