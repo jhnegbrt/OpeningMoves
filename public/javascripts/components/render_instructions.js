@@ -1,4 +1,4 @@
-import {removeCharts, removeOverview, removeInstructions} from "../util/remove"
+import {removeCharts, removeSelectedTab, removeOverview, removeInstructions} from "../util/remove"
 
 export default function renderInstructions(){
 
@@ -10,10 +10,13 @@ export default function renderInstructions(){
     "OpeningMoves will then display the daily-chart for each day that meets your selection criterion. Use the tabs on the right to toggle between charts"
   ]
 
-
+  removeSelectedTab()
   removeCharts()
   removeOverview()
   removeInstructions()
+
+  let directions = document.querySelector(".directions-tab")
+  directions.classList.add("selected")
 
   let instructionsContainer = document.createElement("div")
   instructionsContainer.classList.add("charts-instructions")
