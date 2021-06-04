@@ -19,3 +19,9 @@ export function removeInstructions(){
     instructions[0].parentElement.removeChild(instructions[0])  
   }
 }
+
+export function removeSelectedTab(){
+  tabs = Array.from(document.querySelectorAll(".chart-tab"))
+  tabs.push(document.querySelectorAll(".directions-tab"))
+  tabs.forEach(tab=>{tab.classList.remove("chart-tab")})
+}
