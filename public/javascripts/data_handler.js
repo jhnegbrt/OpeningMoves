@@ -60,6 +60,8 @@ function volatileOpen(prices, percentChange){
 
 function selectVolatileCandles(openingCandles, percentChange){
 
+  debugger
+
   let mornings = openingCandles.map(morning => {
     let high;
     let low;
