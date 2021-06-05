@@ -12,10 +12,22 @@ export default function generateChartData(selectedCandles, allCandles){
         let priorCandle = parseInt(candleString)-300;
         let followingCandle = parseInt(candleString) + 300;
         while (allCandles[priorCandle] === undefined){
+          if (priorCandle < parseInt(candleString) - 3000){
+            break
+          }
           priorCandle -= 300
         }
         while (allCandles[followingCandle] === undefined){
+          if (followingCandle > parseInt(candleString) + 3000){
+            break
+          }
           followingCandle += 300
+        }
+        if (allCandles[followingCandle] === undefined){
+          followingCandle = previousCandle
+        }
+        if (allCandles[priorCandle] === undefined){
+          priorCandle = followingCandle
         }
         priorCandle = allCandles[priorCandle]
         followingCandle = allCandles[followingCandle]
