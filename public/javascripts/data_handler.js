@@ -50,7 +50,8 @@ function selectOpeningCandles(candles, timeFrame){
 }
 
 function volatileOpen(prices, percentChange){
-  if((prices[0] - prices[2]) / prices[0] >= (parseFloat(percentChange) / 100) || (prices[1] - prices[0]) / prices[0] >= (parseFloat(percentChange) / 100)){
+
+  if((prices[1] - prices[2]) / prices[1] >= (parseFloat(percentChange) / 10)){
     return true
   } else{
     return false
@@ -59,8 +60,6 @@ function volatileOpen(prices, percentChange){
 }
 
 function selectVolatileCandles(openingCandles, percentChange){
-
-  debugger
 
   let mornings = openingCandles.map(morning => {
     let high;
