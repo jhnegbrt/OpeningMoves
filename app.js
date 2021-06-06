@@ -1,19 +1,30 @@
 const express = require('express')
 const app = express()
+//do i need these unused imports?
 const path = require('path')
 const fetch = require('node-fetch');
 const { response } = require('express');
 const PORT = process.env.PORT || 8000;
+const requestCSV = require('request')
+const csv = require('csvtojson')
 
 app.use(express.static('public'))
 
 app.get('/alphaVantage', (request, response) =>{
 
-  fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY_EXTENDED&symbol=IBM&interval=15min&slice=year1month1&apikey=53VI4OM5S9T1PSSI`)
-  .then(response =>response.text())
-  .then(body =>{
-    debugger
+  csv()
+  .fromStream(requestCSV.get(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY_EXTENDED&symbol=IBM&interval=15min&slice=year1month1&apikey=53VI4OM5S9T1PSSI`))
+  .then((results)=>{
+    response.send(results)
   })
+  // fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY_EXTENDED&symbol=IBM&interval=15min&slice=year1month1&apikey=53VI4OM5S9T1PSSI`)
+  // .then(response =>{
+  //   debugger
+  //   return response.text()
+  // })
+  // .then(body =>{
+  //   debugger
+  // })
 })
 
 app.get('/search', (request, response) => {
