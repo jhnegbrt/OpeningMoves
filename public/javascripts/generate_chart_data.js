@@ -24,7 +24,7 @@ export default function generateChartData(selectedCandles, allCandles){
           followingCandle += 300
         }
         if (allCandles[followingCandle] === undefined){
-          followingCandle = previousCandle
+          followingCandle = priorCandle
         }
         if (allCandles[priorCandle] === undefined){
           priorCandle = followingCandle

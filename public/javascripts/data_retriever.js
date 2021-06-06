@@ -2,9 +2,14 @@ const axios = require('axios');
 
 async function query(queryString, from, to){
 
-  let token = "c23h2raad3ieeb1lcqf0"
-  let query = queryString.concat(`&from=${from}&to=${to}&token=${token}`)
-  let response = await axios.get(`/search?${query}`)
+  // let token = "c23h2raad3ieeb1lcqf0"
+  // let query = queryString.concat(`&from=${from}&to=${to}&token=${token}`)
+
+
+  // let response = await axios.get(`/search?${query}`)
+
+
+  let response = await axios.get(`/alphaVantage`)
   .then((response) => {
     return(response.data)
   })
@@ -37,6 +42,7 @@ export default async function retrieveData(ticker, dataRange) {
     let resolution = "5"
     let to = String(Math.floor(Date.now() / 1000))
     let from = String(Math.floor(Date.now() / 1000) - 2505600)
+    debugger
     let queryString = `symbol=${symbol}&resolution=${resolution}`
 
     if (dataRange === "3m"){
