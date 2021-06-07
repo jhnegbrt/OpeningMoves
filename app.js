@@ -11,20 +11,14 @@ const csv = require('csvtojson')
 app.use(express.static('public'))
 
 app.get('/alphaVantage', (request, response) =>{
-
+  
+  let {symbol, interval, slice } = request.query
+  
   csv()
-  .fromStream(requestCSV.get(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY_EXTENDED&symbol=IBM&interval=15min&slice=year1month1&apikey=53VI4OM5S9T1PSSI`))
+  .fromStream(requestCSV.get(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY_EXTENDED&symbol=${symbol}&interval=${interval}&slice=${slice}&apikey=53VI4OM5S9T1PSSI`))
   .then((results)=>{
     response.send(results)
   })
-  // fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY_EXTENDED&symbol=IBM&interval=15min&slice=year1month1&apikey=53VI4OM5S9T1PSSI`)
-  // .then(response =>{
-  //   debugger
-  //   return response.text()
-  // })
-  // .then(body =>{
-  //   debugger
-  // })
 })
 
 app.get('/search', (request, response) => {
