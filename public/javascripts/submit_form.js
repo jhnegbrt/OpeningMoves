@@ -28,8 +28,8 @@ async function inValidInput(errors){
 async function validInput(dataRange, ticker, percentChange, timeFrame){
   let modalInterval = await renderLoadingModal(dataRange, ticker)
   let data = await retrieveData(ticker, dataRange)
-  let allCandles = convertData(data)
-  let filteredData = filterData(allCandles, percentChange, timeFrame)
+  // let allCandles = convertData(data)
+  let filteredData = filterData(data, percentChange, timeFrame)
   let openingCandles = filteredData.openingCandles
   let selectedCandles = filteredData.selectedCandles
   let firstSelectedCandles = selectedCandles.map(object=>{
@@ -59,10 +59,9 @@ export default async function submitForm(form){
   
   form.preventDefault()
   let ticker = form.target.ticker.value
-  let percentChange = form.target.percentChange.value
+  let percentChange = parseInt(form.target.percentChange.value)
   let dataRange = form.target.dataRange.value
   let timeFrame = parseInt(form.target.timeFrame.value) / 5
-
   clearErrors()
   let {valid, errors} = validateInput(ticker, percentChange)
 

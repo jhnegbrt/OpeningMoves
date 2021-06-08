@@ -1,30 +1,69 @@
-export function convertData(data){
-  let candles = {};
-  //put each candle together
-  for(let i = 0; i < data["c"].length; i++){
-    candles[data["t"][i]] = {
-      c: data["c"][i],
-      h: data["h"][i],
-      l: data["l"][i],
-      o: data["o"][i],
-      t: data["t"][i],
-      v: data["v"][i]
-    }
-  }
-  return candles
-}
+// export function convertData(data){
+//   let candles = {};
+//   //put each candle together
+//   for(let i = 0; i < data["c"].length; i++){
+//     candles[data["t"][i]] = {
+//       c: data["c"][i],
+//       h: data["h"][i],
+//       l: data["l"][i],
+//       o: data["o"][i],
+//       t: data["t"][i],
+//       v: data["v"][i]
+//     }
+//   }
+//   return candles
+// }
+
+// what do I have?
+
+// I have an array of candles with dates
+
+//what do I need?
+
+//I need an array of candles with just the selected dates
 
 export function filterData(candles, percentChange, timeFrame){
 
+  
+
+  let mornings = createMornings(candles, timeFrame)
+  debugger
   let openingCandles = selectOpeningCandles(candles, timeFrame)
   let filteredCandles = selectVolatileCandles(openingCandles, percentChange, timeFrame)
   return {selectedCandles: filteredCandles, openingCandles: openingCandles}
 
 }
 
+function createMornings(candles, timeFrame){
+  debugger
+  let mornings = {}
+  for (let i = candles.length - 1; i >= 0; i--){
+    let hours = candles[i].time.slice(11, 13)
+    hours = parseInt(hours)
+    let minutes = candles[i].time.slice(14, 16)
+    minutes = parseInt(minutes)
+    if (hours === 9 && minutes >= 30 && minutes < (30 + timeFrame * 5)){
+      console.log(candles[i])
+      let dateString = candles[i].time.slice(0, 10)
+      if(mornings[dateString] !== undefined){
+        if (mornings[dateString].high < candles[i].high){
+          mornings[dateString].high = candles[i].high
+        } else if (mornings[dateString].low > candles[i].low){
+          mornings[dateString].low = candles[i].low
+        }
+      } else {
+        mornings[dateString] = candles[i]
+      }
+    }
+  }
+  return mornings
+}
+
 function createDateString(date){
   return date.getDate() + date.getMonth() + date.getFullYear()
 }
+
+
 
 
 function selectOpeningCandles(candles, timeFrame){
@@ -47,6 +86,12 @@ function selectOpeningCandles(candles, timeFrame){
     }
   }
   return openingCandles
+}
+
+function selectOpeningCandles(candles, timeFrame){
+
+  time = candles[0].time.slice(11,16)
+
 }
 
 function volatileOpen(prices, percentChange){

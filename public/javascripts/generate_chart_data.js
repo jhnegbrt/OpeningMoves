@@ -1,5 +1,7 @@
 export default function generateChartData(selectedCandles, allCandles){
 
+
+  //needs to return an array of arrays, inner arrays are arrays of candle objects
   let charts = []
   for (let i = 0; i < selectedCandles.length; i++){
     let chart = {}

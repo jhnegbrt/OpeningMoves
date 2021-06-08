@@ -20,7 +20,7 @@ async function query(queryString){
 async function queryHelper(queryString, times){
 
   let results = []
-  for(let i = 1; i < times; i++){
+  for(let i = 1; i <= times; i++){
     let month = i
     let year = 1
     if (i === 13){
