@@ -35,7 +35,9 @@ export function filterData(candles, percentChange, timeFrame){
 }
 
 function createMornings(candles, timeFrame){
-  debugger
+  //returns an array of obects, where objects have a key of date, which points to a hash
+  //containing open, high, and low (open === price @ 9:30, high/low === highest/lowest
+  // within morning timeFrame)
   let mornings = {}
   for (let i = candles.length - 1; i >= 0; i--){
     let hours = candles[i].time.slice(11, 13)
@@ -64,29 +66,29 @@ function createDateString(date){
 }
 
 
+// TO BE DELETED
 
-
-function selectOpeningCandles(candles, timeFrame){
-  let openingCandles = []
-  for(const candle in candles){
-    let date = new Date(candle * 1000)
-    let convertedTime = date.toLocaleTimeString("en-US", {timeZone: "America/New_York"})
-    let minutes = parseInt(convertedTime.slice(-8,-6))
-    if (convertedTime.slice(-2) === "AM" && parseInt(convertedTime) === 9 && (30 + 5 * timeFrame) > minutes && minutes >= 30){
-      if (openingCandles.length === 0){
-        openingCandles.push([[date, candles[candle]]])
-      } else {
-        let lastCandleDate = openingCandles[openingCandles.length-1][0][0]
-        if (createDateString(lastCandleDate) === createDateString(date)){
-          openingCandles[openingCandles.length-1].push([date, candles[candle]])
-        } else {
-          openingCandles.push([[date, candles[candle]]])
-        }
-      }
-    }
-  }
-  return openingCandles
-}
+// function selectOpeningCandles(candles, timeFrame){
+//   let openingCandles = []
+//   for(const candle in candles){
+//     let date = new Date(candle * 1000)
+//     let convertedTime = date.toLocaleTimeString("en-US", {timeZone: "America/New_York"})
+//     let minutes = parseInt(convertedTime.slice(-8,-6))
+//     if (convertedTime.slice(-2) === "AM" && parseInt(convertedTime) === 9 && (30 + 5 * timeFrame) > minutes && minutes >= 30){
+//       if (openingCandles.length === 0){
+//         openingCandles.push([[date, candles[candle]]])
+//       } else {
+//         let lastCandleDate = openingCandles[openingCandles.length-1][0][0]
+//         if (createDateString(lastCandleDate) === createDateString(date)){
+//           openingCandles[openingCandles.length-1].push([date, candles[candle]])
+//         } else {
+//           openingCandles.push([[date, candles[candle]]])
+//         }
+//       }
+//     }
+//   }
+//   return openingCandles
+// }
 
 function selectOpeningCandles(candles, timeFrame){
 
