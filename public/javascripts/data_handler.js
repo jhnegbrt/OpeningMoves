@@ -27,24 +27,38 @@ export function filterData(candles, percentChange, timeFrame){
   
 
   let mornings = createMornings(candles, timeFrame)
+  let volatileMornings = selectVolatileMornings(percentChange, mornings)
+
   debugger
-  let openingCandles = selectOpeningCandles(candles, timeFrame)
   let filteredCandles = selectVolatileCandles(openingCandles, percentChange, timeFrame)
   return {selectedCandles: filteredCandles, openingCandles: openingCandles}
 
 }
 
+function selectVolatileMornings(percentChange, mornings){
+  let volatileMornings = []
+  for (let date in mornings){
+    date = mornings[date]
+    if (((date.high - date.low) / date.open) * 100 > percentChange){
+      volatileMornings.push(date)
+    }
+  }
+  return volatileMornings
+}
+
 function createMornings(candles, timeFrame){
-  //returns an array of obects, where objects have a key of date, which points to a hash
+  //returns an object of obects with keys of dates, which points to a hash
   //containing open, high, and low (open === price @ 9:30, high/low === highest/lowest
   // within morning timeFrame)
   let mornings = {}
-  for (let i = candles.length - 1; i >= 0; i--){
+  
+  for (let i = 0; i < candles.length; i++){
     let hours = candles[i].time.slice(11, 13)
     hours = parseInt(hours)
     let minutes = candles[i].time.slice(14, 16)
     minutes = parseInt(minutes)
     if (hours === 9 && minutes >= 30 && minutes < (30 + timeFrame * 5)){
+      debugger
       console.log(candles[i])
       let dateString = candles[i].time.slice(0, 10)
       if(mornings[dateString] !== undefined){
