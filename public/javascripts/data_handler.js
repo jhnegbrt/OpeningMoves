@@ -46,6 +46,16 @@ function selectVolatileMornings(percentChange, mornings){
   return volatileMornings
 }
 
+function checkTime(hours, minutes, timeFrame){
+  if (hours === 9 && minutes >= 35 && minutes < (35 + timeFrame * 5)){
+    return true
+  } else if (timeFrame === 6){
+    if (hours === 10 && minutes === 0){
+      return true
+    }
+  }
+}
+
 function createMornings(candles, timeFrame){
   //returns an object of obects with keys of dates, which points to a hash
   //containing open, high, and low (open === price @ 9:30, high/low === highest/lowest
@@ -57,8 +67,7 @@ function createMornings(candles, timeFrame){
     hours = parseInt(hours)
     let minutes = candles[i].time.slice(14, 16)
     minutes = parseInt(minutes)
-    if (hours === 9 && minutes >= 30 && minutes < (30 + timeFrame * 5)){
-      debugger
+    if (checkTime(hours, minutes, timeFrame) === true){
       console.log(candles[i])
       let dateString = candles[i].time.slice(0, 10)
       if(mornings[dateString] !== undefined){
