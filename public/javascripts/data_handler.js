@@ -34,9 +34,9 @@ export function filterData(candles, percentChange, timeFrame){
 function selectVolatileMornings(percentChange, mornings){
   let volatileMornings = {}
   for (let date in mornings){
-    date = mornings[date]
-    if (((date.high - date.low) / date.open) * 100 > percentChange){
-      volatileMornings[date] = mornings[date]
+    let candle = mornings[date]
+    if (((candle.high - candle.low) / candle.open) * 100 > percentChange){
+      volatileMornings[date] = candle
     }
   }
   return volatileMornings
