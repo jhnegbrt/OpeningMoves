@@ -30,13 +30,14 @@ async function validInput(dataRange, ticker, percentChange, timeFrame){
   let data = await retrieveData(ticker, dataRange)
   // let allCandles = convertData(data)
   let filteredData = filterData(data, percentChange, timeFrame)
-  let openingCandles = filteredData.openingCandles
-  let selectedCandles = filteredData.selectedCandles
-  let firstSelectedCandles = selectedCandles.map(object=>{
-    return Object.keys(object)[0]
-  })
-  let charts = generateChartData(firstSelectedCandles, allCandles)
 
+  let mornings = filteredData.mornings
+  let volatileMornings = filteredData.volatileMornings
+  // let firstSelectedCandles = selectedCandles.map(object=>{
+  //   return Object.keys(object)[0]
+  // })
+  let charts = generateChartData(volatileMornings, data)
+  debugger
   let master = {charts, ticker, percentChange, timeFrame, openingCandles, selectedCandles}
 
   createTabs(master)
