@@ -64,7 +64,6 @@ function createMornings(candles, timeFrame){
     let minutes = candles[i].time.slice(14, 16)
     minutes = parseInt(minutes)
     if (checkTime(hours, minutes, timeFrame) === true){
-      console.log(candles[i])
       let dateString = candles[i].time.slice(0, 10)
       if(mornings[dateString] !== undefined){
         if (mornings[dateString].high < candles[i].high){

@@ -1,13 +1,31 @@
+
+function validTime(time){
+  let hours = parseInt(time.slice(0, 2))
+  let minutes = parseInt(time.slice(3, 5))
+  if (hours === 9 && minutes >= 35){
+    return true
+  } else if (hours > 9 && hours < 16){
+    return true
+  } else if (hours === 16 && minutes === 0){
+    return true
+  } else {
+    return false
+  }
+}
+
 export default function generateChartData(mornings, data){
 
   let charts = {}
   for (let i = data.length - 1; i >= 0; i--){
     let date = data[i].time.slice(0, 10)
+    let time = data[i].time.slice(11, 16)
     if (mornings[date]){
-      if (charts[date]){
-        charts[date].push(data[i])
-      } else{
-        charts[date] = [data[i]]
+      if (validTime(time)){
+        if (charts[date]){
+          charts[date].push(data[i])
+        } else{
+          charts[date] = [data[i]]
+        }
       }
     }
   }
