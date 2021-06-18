@@ -1,6 +1,7 @@
 import createChart from '../create_chart'
 import renderOverview from './render_overview'
 import {removeSelectedTab} from '../util/remove'
+import createDateString from '../util/date'
 
 function createOverviewTab(master, chartTabs){
 
@@ -10,13 +11,6 @@ function createOverviewTab(master, chartTabs){
   tab.appendChild(overviewText)
   tab.addEventListener("click", ()=>renderOverview(master))
   chartTabs.appendChild(tab)
-}
-
-function createDateString(date){
-  let yr = date.slice(0, 4)
-  let month = parseInt(date.slice(5, 7))
-  let day = parseInt(date.slice(8, 10))
-  return month + "/" + day + "/" + yr
 }
 
 export default function createTabs(master){
@@ -33,6 +27,7 @@ export default function createTabs(master){
     e.target.classList.add("selected")
 
     let newChartDataArray = []
+    debugger
     let newChart = master.charts[parseInt(e.target.dataset.value)]
     for (const candle in newChart){
       newChartDataArray.push(newChart[candle])

@@ -14,8 +14,10 @@ function addDate(master, overviewContainer){
 
   let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
-  let firstDay = master.openingCandles[0][0][0]
-  let lastDay = master.openingCandles[master.openingCandles.length-1][0][0]
+  debugger
+  let dates = Object.keys(master.mornings)
+  let firstDay = dates[0]
+  let lastDay = dates[dates.length-1]
 
   firstDay = `${days[firstDay.getDay()]}, ${months[firstDay.getMonth()]} ${firstDay.getDate()}, ${firstDay.getFullYear()}`
   lastDay = `${days[lastDay.getDay()]}, ${months[lastDay.getMonth()]} ${lastDay.getDate()}, ${lastDay.getFullYear()}`
