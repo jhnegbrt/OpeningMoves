@@ -10,9 +10,9 @@ export default function generateChartData(mornings, data){
         charts[date] = [data[i]]
       }
     }
-    return charts
   }
-  
+  return charts
+
   // //needs to return an array of arrays, inner arrays are arrays of candle objects
   // let charts = []
   // for (let i = 0; i < selectedCandles.length; i++){
