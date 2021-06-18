@@ -12,8 +12,16 @@ function createOverviewTab(master, chartTabs){
   chartTabs.appendChild(tab)
 }
 
+function createDateString(date){
+  let yr = date.slice(0, 4)
+  let month = parseInt(date.slice(5, 7))
+  let day = parseInt(date.slice(8, 10))
+  return month + "/" + day + "/" + yr
+}
+
 export default function createTabs(master){
 
+  //removes tabs from previous query
   let oldTabs = document.querySelectorAll(".chart-tab")
   oldTabs.forEach((oldTab) =>{
     return oldTab.parentElement.removeChild(oldTab)
@@ -39,12 +47,10 @@ export default function createTabs(master){
   let chartTabs = document.getElementById("chart-tabs")
 
   createOverviewTab(master, chartTabs)
-  master.charts.forEach((chart, i) =>{
+  Object.keys(master.charts).forEach((date, i) =>{
     let tab = document.createElement("li")
     tab.setAttribute("data-value", i)
-    let unix = parseInt(Object.keys(chart)[0])
-    let date = new Date(unix * 1000)
-    let dateString = String(date.getMonth() + 1) + "/" + String(date.getDate()) + "/" + String(date.getFullYear())
+    let dateString = createDateString(date)
     let dateNode = document.createTextNode(dateString)
     tab.appendChild(dateNode)
     tab.addEventListener("click", handleClick)
