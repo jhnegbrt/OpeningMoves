@@ -28,21 +28,14 @@ async function inValidInput(errors){
 async function validInput(dataRange, ticker, percentChange, timeFrame){
   let modalInterval = await renderLoadingModal(dataRange, ticker)
   let data = await retrieveData(ticker, dataRange)
-  // let allCandles = convertData(data)
   let filteredData = filterData(data, percentChange, timeFrame)
-
   let mornings = filteredData.mornings
   let volatileMornings = filteredData.volatileMornings
-  // let firstSelectedCandles = selectedCandles.map(object=>{
-  //   return Object.keys(object)[0]
-  // })
   let charts = generateChartData(volatileMornings, data)
-  debugger
-  let master = {charts, ticker, percentChange, timeFrame, openingCandles, selectedCandles}
+  let master = {charts, ticker, percentChange, timeFrame, mornings, volatileMornings}
 
   createTabs(master)
   renderOverview(master)
-
   renderModalClose(modalInterval)
 
 }
