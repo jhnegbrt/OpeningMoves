@@ -42,7 +42,7 @@ function addHeader(overviewContainer){
 function addSummary(master, overviewContainer){
   let volatilePercent = (Object.keys(master.charts).length/Object.keys(master.mornings).length * 100).toFixed(2)
   let string = `Of the ${Object.keys(master.mornings).length} trading days within your data range, ${master.ticker} moved 
-  ${master.percentChange}% or more within the first ${master.timeFrame * 5} minutes of the stock market open ${master.charts.length} times (${volatilePercent}% of days).`
+  ${master.percentChange}% or more within the first ${master.timeFrame * 5} minutes of the stock market open ${Object.keys(master.charts).length} times (${volatilePercent}% of days).`
   let textNode = document.createTextNode(string)
   let element = document.createElement("h3")
   element.appendChild(textNode)
@@ -57,26 +57,26 @@ function addAverageExcursion(master, overviewContainer){
   let positiveExcursions = []
   let negativeExcursions = []
 
-  
-  master.selectedCandles.forEach(day =>{
-    let array = Object.values(day)[0]
-    let positiveChange = ((array[1] - array[0]) / array[0]) * 100
-    let negativeChange = ((array[0] - array[2]) / array[0]) * 100
+  let mornings = master.mornings
+  for(const day in mornings){
+    let open = mornings[day].open
+    let positiveChange = ((mornings[day].high - open) / open) * 100
+    let negativeChange = ((open - mornings[day].low) / open) * 100
     if (positiveChange >= parseInt(master.percentChange)){
-      positiveExcursions.push(array)
-      positiveCount += (positiveChange / array[0]) * 100
+      positiveExcursions.push(day)
+      positiveCount += positiveChange
     }
     if (negativeChange >= parseInt(master.percentChange)){
-      negativeExcursions.push(array)
-      negativeCount += (negativeChange / array[0]) * 100
+      negativeExcursions.push(day)
+      negativeCount += negativeChange
     }
-  })
+  }
 
-  let aNExcursion = (negativeCount / negativeExcursions.length) * 100
-  let aPExcursion = (positiveCount / positiveExcursions.length) * 100
-  let avgExcursion = (((positiveCount + negativeCount)) / master.selectedCandles.length) * 100
+  let aNExcursion = (negativeCount / negativeExcursions.length)
+  let aPExcursion = (positiveCount / positiveExcursions.length)
+  let avgExcursion = (((positiveCount + negativeCount)) / Object.keys(master.charts).length)
   
-  let averageText = document.createTextNode(`The average 'Morning Move' across all ${master.selectedCandles.length} selected days was ${avgExcursion.toFixed(2)}%`)
+  let averageText = document.createTextNode(`The average 'Morning Move' across all ${Object.keys(master.charts).length} selected days was ${avgExcursion.toFixed(2)}%`)
   let positiveText = document.createTextNode(`The average 'Morning Move' when ${master.ticker} moved upward, across ${positiveExcursions.length} days was ${aPExcursion.toFixed(2)}%`)
   let negativeText = document.createTextNode(`The average 'Morning Move' when ${master.ticker} moved downward, across ${negativeExcursions.length} days was ${aNExcursion.toFixed(2)}%`)
   let average = document.createElement("li")

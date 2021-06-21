@@ -10,7 +10,8 @@ function selectVolatileMornings(percentChange, mornings){
   let volatileMornings = {}
   for (let date in mornings){
     let candle = mornings[date]
-    if (((candle.high - candle.low) / candle.open) * 100 > percentChange){
+    if (((candle.high - candle.open) / candle.open) * 100 > percentChange ||
+    ((candle.open - candle.low) / candle.open) * 100 > percentChange ){
       volatileMornings[date] = candle
     }
   }
