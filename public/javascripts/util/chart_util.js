@@ -1,37 +1,25 @@
-function getDailyMax(chartArray){
+export default function getDailyVar(chartArray, x){
 
-  let maxPrice = 0
+  let price;
   for (let i = 0; i < chartArray.length; i++){
-    if(chartArray[i]["h"] > maxPrice){
-      maxPrice = chartArray[i]["h"]
+    if(price === undefined){
+      price = chartArray[i][x]
+    } else if (chartArray[i][x] < price && x ==="low"){
+      price = chartArray[i][x]
+    } else if (chartArray[i][x] > price && x === "high"){
+      price = chartArray[i][x]
     }
   }
-
-  return maxPrice
+  return parseFloat(price)
 }
 
-function getDailyMin(chartArray){
+// export default function getChartMinMax(chartArray){
 
-  let minPrice;
-  for (let i = 0; i < chartArray.length; i++){
-    if(minPrice === undefined || chartArray[i]["l"] < minPrice){
-      minPrice = chartArray[i]["l"]
-    }
-  }
-  return minPrice
+//   let min = parseFloat(getDailyVar(chartArray, "low"))
+//   let max = parseFloat(getDailyVar(chartArray, "high"))
 
-}
+//   let dailyRange = max - min
+//   debugger
+//   return [max + dailyRange * .6, min - dailyRange * .6]
 
-export default function getChartMinMAx(chartArray){
-
-  let min = getDailyMin(chartArray)
-  let max = getDailyMax(chartArray)
-
-  let dailyRange = max - min
-
-  return [max + dailyRange * .6, min - dailyRange * .6]
-
-
-
-
-}
+// }

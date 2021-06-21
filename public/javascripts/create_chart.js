@@ -1,4 +1,4 @@
-import getChartMinMax from './util/chart_util'
+import getDailyVar from './util/chart_util'
 import {removeOverview, removeInstructions} from "./util/remove"
 
 
@@ -25,8 +25,11 @@ function renderNoCharts(ticker){
 
 function renderCharts(chartDataArray, ticker){
 
-  let [chartMax, chartMin] = getChartMinMax(chartDataArray)
-  
+  let chartMax = getDailyVar(chartDataArray, "high")
+  let chartMin = getDailyVar(chartDataArray, "low")
+  let dailyRange = chartMax-chartMin
+  chartMax = chartMax + dailyRange * .6
+  chartMin = chartMin - dailyRange * .6
 
   removeInstructions()
   removeOverview()
@@ -51,7 +54,7 @@ function renderCharts(chartDataArray, ticker){
 
   const xScale = d3
     .scaleBand()
-    .domain(chartDataArray.map((dataPoint) => dataPoint.t))
+    .domain(chartDataArray.map((dataPoint) => dataPoint.time))
     .rangeRound([margin.left, containerSize.width.baseVal.value])
     .padding(0.16)
 
@@ -73,16 +76,16 @@ function renderCharts(chartDataArray, ticker){
     .append('rect')
     .classed('wick', true)
     .style('fill', data =>{
-      if (data.o > data.c){
+      if (data.open > data.close){
         return 'red'
       } else{
         return 'green'
       }
     })
     .attr('width', 1)
-    .attr('height', data => yScale(data.h - data.l) - margin.bottom)
-    .attr('x', data => xScale(data.t) + 3)
-    .attr('y', data => yScale(chartMax - data.h))
+    .attr('height', data => yScale(data.high - data.low) - margin.bottom)
+    .attr('x', data => xScale(data.time) + 3)
+    .attr('y', data => yScale(chartMax - data.high))
 
   const bodies = container
     .selectAll('.body')
@@ -93,7 +96,7 @@ function renderCharts(chartDataArray, ticker){
     .style('fill', data =>{
       if (data.flag === true){
         return 'yellow'
-      } else if (data.o > data.c){
+      } else if (data.open > data.close){
         return 'red'
       } else{
         return 'green'
@@ -101,37 +104,39 @@ function renderCharts(chartDataArray, ticker){
     })
     .attr('width', xScale.bandwidth())
     .attr('height', data => {
-      if (data.o > data.c){
-        return yScale(data.o - data.c) - margin.bottom
+      if (data.open > data.close){
+        return yScale(data.open - data.close) - margin.bottom
       } else{
-        return yScale(data.c-data.o) - margin.bottom
+        return yScale(data.close - data.open) - margin.bottom
       }
     })
-    .attr('x', data => xScale(data.t))
+    .attr('x', data => xScale(data.time))
     .attr('y', data => {
-      if (data.o > data.c){
-        return yScale(chartMax - data.o)
+      if (data.open > data.close){
+        return yScale(chartMax - data.open)
       } else {
-        return yScale(chartMax - data.c)
+        return yScale(chartMax - data.close)
       }
       
     })
 
     const x_axis = d3.axisBottom()
       .scale(xScale)
-      .tickValues(xScale.domain().filter(function(unix){
-        let date = new Date(unix * 1000 + 10800000)
-        return date.getMinutes() === 0 || date.getMinutes() === 30
-      }))
+      .tickValues(xScale.domain())
+      // .filter(function(unix){
+      //   let date = new Date(unix * 1000 + 10800000)
+      //   return date.getMinutes() === 0 || date.getMinutes() === 30
+      // }))
       .tickFormat((d) =>{
-        let date = new Date(d * 1000 + 10800000)
-        let minutes;
-        let hours;
-        date.getMinutes() === 0 ? minutes = "00" : ""
+        return d
+        // let date = new Date(d * 1000 + 10800000)
+        // let minutes;
+        // let hours;
+        // date.getMinutes() === 0 ? minutes = "00" : ""
 
-        parseInt(date.getHours()) > 12 ? hours = parseInt(date.getHours() - 12) : undefined
-        let amPm = date.getHours() < 12 ? "AM" : "PM"
-        return (hours ? String(hours) : date.getHours()) + ":" + (minutes || date.getMinutes()) + ` ${amPm}`
+        // parseInt(date.getHours()) > 12 ? hours = parseInt(date.getHours() - 12) : undefined
+        // let amPm = date.getHours() < 12 ? "AM" : "PM"
+        // return (hours ? String(hours) : date.getHours()) + ":" + (minutes || date.getMinutes()) + ` ${amPm}`
       })
       
       

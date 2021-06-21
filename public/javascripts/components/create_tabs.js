@@ -25,12 +25,7 @@ export default function createTabs(master){
 
     removeSelectedTab()
     e.target.classList.add("selected")
-
-    let newChartDataArray = []
-    debugger
-    for (const candle in master.charts){
-      newChartDataArray.push(master.charts[candle])
-    }
+    let newChartDataArray = master.charts[e.target.dataset.value]
     d3.select("#second").selectAll('.body').remove()
     d3.select("#second").selectAll('.wick').remove()
     d3.select("#second").selectAll('g').remove()
@@ -43,7 +38,7 @@ export default function createTabs(master){
   createOverviewTab(master, chartTabs)
   Object.keys(master.charts).forEach((date, i) =>{
     let tab = document.createElement("li")
-    tab.setAttribute("data-value", i)
+    tab.setAttribute("data-value", date)
     let dateString = createDateString(date)
     let dateNode = document.createTextNode(dateString)
     tab.appendChild(dateNode)
