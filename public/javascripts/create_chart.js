@@ -123,11 +123,21 @@ function renderCharts(chartDataArray, ticker){
     const x_axis = d3.axisBottom()
       .scale(xScale)
       .tickValues(xScale.domain().filter(function(date, i){
-        let time = date.slice(11, 15).concat(0)
-        if (i % 6 === 0) return time 
+        return i % 6 === 0
       }))
-      .tickFormat((d) =>{
-        return d
+      .tickFormat((date) =>{
+        debugger
+        let time = date.slice(11, 15).concat(0)
+        let hours = time.slice(0, 2)
+        if (hours > 12){
+          return (hours - 12).toString().concat(time.slice(2, 6)).concat(" PM")
+        } else if(hours === 12) {
+          return time.concat(" PM")
+        } else if (hours === "09"){
+          return time.slice(1, 5).concat(" AM")
+        } else {
+          return time.concat(" AM")
+        }
         // let date = new Date(d * 1000 + 10800000)
         // let minutes;
         // let hours;
