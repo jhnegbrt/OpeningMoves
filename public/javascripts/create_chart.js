@@ -122,11 +122,10 @@ function renderCharts(chartDataArray, ticker){
 
     const x_axis = d3.axisBottom()
       .scale(xScale)
-      .tickValues(xScale.domain())
-      // .filter(function(unix){
-      //   let date = new Date(unix * 1000 + 10800000)
-      //   return date.getMinutes() === 0 || date.getMinutes() === 30
-      // }))
+      .tickValues(xScale.domain().filter(function(date, i){
+        let time = date.slice(11, 15).concat(0)
+        if (i % 6 === 0) return time 
+      }))
       .tickFormat((d) =>{
         return d
         // let date = new Date(d * 1000 + 10800000)
