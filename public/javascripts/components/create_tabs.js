@@ -28,9 +28,8 @@ export default function createTabs(master){
 
     let newChartDataArray = []
     debugger
-    let newChart = master.charts[parseInt(e.target.dataset.value)]
-    for (const candle in newChart){
-      newChartDataArray.push(newChart[candle])
+    for (const candle in master.charts){
+      newChartDataArray.push(master.charts[candle])
     }
     d3.select("#second").selectAll('.body').remove()
     d3.select("#second").selectAll('.wick').remove()
