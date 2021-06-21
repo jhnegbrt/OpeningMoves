@@ -1,4 +1,5 @@
 import {removeCharts, removeOverview, removeSelectedTab, removeInstructions} from "../util/remove"
+import createDateString from '../util/date'
 
 function addClickTabInstructions(overviewContainer){
   let text = document.createTextNode("Use tabs on right to view these charts")
@@ -14,13 +15,12 @@ function addDate(master, overviewContainer){
 
   let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
-  debugger
   let dates = Object.keys(master.mornings)
   let firstDay = dates[0]
   let lastDay = dates[dates.length-1]
 
-  firstDay = `${days[firstDay.getDay()]}, ${months[firstDay.getMonth()]} ${firstDay.getDate()}, ${firstDay.getFullYear()}`
-  lastDay = `${days[lastDay.getDay()]}, ${months[lastDay.getMonth()]} ${lastDay.getDate()}, ${lastDay.getFullYear()}`
+  firstDay = createDateString(firstDay)
+  lastDay = createDateString(lastDay)
 
   let dateString = `${master.ticker}: ${firstDay} to ${lastDay}`
   dateString = document.createTextNode(dateString)
@@ -40,8 +40,8 @@ function addHeader(overviewContainer){
 }
 
 function addSummary(master, overviewContainer){
-  let volatilePercent = (master.charts.length/master.openingCandles.length * 100).toFixed(2)
-  let string = `Of the ${master.openingCandles.length} trading days within your data range, ${master.ticker} moved 
+  let volatilePercent = (Object.keys(master.charts).length/Object.keys(master.mornings).length * 100).toFixed(2)
+  let string = `Of the ${Object.keys(master.mornings).length} trading days within your data range, ${master.ticker} moved 
   ${master.percentChange}% or more within the first ${master.timeFrame * 5} minutes of the stock market open ${master.charts.length} times (${volatilePercent}% of days).`
   let textNode = document.createTextNode(string)
   let element = document.createElement("h3")
