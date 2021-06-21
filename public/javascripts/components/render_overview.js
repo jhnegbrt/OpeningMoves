@@ -72,24 +72,27 @@ function addAverageExcursion(master, overviewContainer){
     }
   }
 
-  let aNExcursion = (negativeCount / negativeExcursions.length)
-  let aPExcursion = (positiveCount / positiveExcursions.length)
-  let avgExcursion = (((positiveCount + negativeCount)) / Object.keys(master.charts).length)
-  
-  let averageText = document.createTextNode(`The average 'Morning Move' across all ${Object.keys(master.charts).length} selected days was ${avgExcursion.toFixed(2)}%`)
-  let positiveText = document.createTextNode(`The average 'Morning Move' when ${master.ticker} moved upward, across ${positiveExcursions.length} days was ${aPExcursion.toFixed(2)}%`)
-  let negativeText = document.createTextNode(`The average 'Morning Move' when ${master.ticker} moved downward, across ${negativeExcursions.length} days was ${aNExcursion.toFixed(2)}%`)
-  let average = document.createElement("li")
-  average.appendChild(averageText)
-  let negative = document.createElement("li")
-  negative.appendChild(negativeText)
-  let positive = document.createElement("li")
-  positive.appendChild(positiveText)
-  let averages = document.createElement("ul")
-  averages.appendChild(average)
-  averages.appendChild(positive)
-  averages.appendChild(negative)
-  overviewContainer.appendChild(averages)
+  if (negativeExcursions.length + positiveExcursions.length > 0){
+    let aNExcursion = (negativeCount / negativeExcursions.length)
+    let aPExcursion = (positiveCount / positiveExcursions.length)
+    let avgExcursion = (((positiveCount + negativeCount)) / Object.keys(master.charts).length)
+    
+    let averageText = document.createTextNode(`The average 'Morning Move' across all ${Object.keys(master.charts).length} selected days was ${avgExcursion.toFixed(2)}%`)
+    let positiveText = document.createTextNode(`The average 'Morning Move' when ${master.ticker} moved upward, across ${positiveExcursions.length} days was ${aPExcursion.toFixed(2)}%`)
+    let negativeText = document.createTextNode(`The average 'Morning Move' when ${master.ticker} moved downward, across ${negativeExcursions.length} days was ${aNExcursion.toFixed(2)}%`)
+    let average = document.createElement("li")
+    average.appendChild(averageText)
+    let negative = document.createElement("li")
+    negative.appendChild(negativeText)
+    let positive = document.createElement("li")
+    positive.appendChild(positiveText)
+    let averages = document.createElement("ul")
+    averages.appendChild(average)
+    averages.appendChild(positive)
+    averages.appendChild(negative)
+    overviewContainer.appendChild(averages)
+
+  }
   
 }
 

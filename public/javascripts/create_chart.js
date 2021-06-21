@@ -126,7 +126,6 @@ function renderCharts(chartDataArray, ticker){
         return i % 6 === 0
       }))
       .tickFormat((date) =>{
-        debugger
         let time = date.slice(11, 15).concat(0)
         let hours = time.slice(0, 2)
         if (hours > 12){
@@ -138,14 +137,6 @@ function renderCharts(chartDataArray, ticker){
         } else {
           return time.concat(" AM")
         }
-        // let date = new Date(d * 1000 + 10800000)
-        // let minutes;
-        // let hours;
-        // date.getMinutes() === 0 ? minutes = "00" : ""
-
-        // parseInt(date.getHours()) > 12 ? hours = parseInt(date.getHours() - 12) : undefined
-        // let amPm = date.getHours() < 12 ? "AM" : "PM"
-        // return (hours ? String(hours) : date.getHours()) + ":" + (minutes || date.getMinutes()) + ` ${amPm}`
       })
       
       
