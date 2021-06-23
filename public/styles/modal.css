@@ -4,7 +4,7 @@
   overflow-y: hidden;
   overflow-x: hidden;
   z-index: 2;
-  background-color:rgba(20, 20, 20, 0.377);
+  background-color:rgba(20, 20, 20, 0.95);
   position: fixed;
   top: 0;
   left: 0
@@ -13,7 +13,6 @@
 .loading-modal{
 
   width: 50%;
-  height: 50%;
   margin-left: 25%;
   margin-top: 10%;
   background-color: rgb(63, 77, 70);
@@ -22,6 +21,8 @@
   border-radius: 25px;
   font-family: 'Poppins', sans-serif;
   font-size: 3vh;
+  padding: 2%;
+  box-sizing: border-box
 }
 
 .hide{
@@ -31,7 +32,6 @@
 .loading-modal p{
   color: White;
   text-align: center;
-  margin-top: 2vh;
 }
 
 /* NEWS */
