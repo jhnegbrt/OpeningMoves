@@ -41,8 +41,8 @@
   background-color: white;
   border-radius: 10px;
   height: 70%;
-  margin-top: 3vh;
-  height: 80%
+  height: 80%;
+  margin-bottom: 1.5vh;
 }
 
 .news-block{
@@ -79,9 +79,28 @@
   color: rgb(91, 158, 88);
 }
 
-/* .news-block p{
-  width: 25%;
-} */
+
+.text-holder{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text-holder::before {
+  content: "";
+  width: 3vh;
+  height: 3vh;
+  border-radius: 50%;
+  border:1vh solid rgb(63, 77, 70);
+  border-top:1vh solid rgb(91, 158, 88);
+  animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg)
+  }
+}
 
 #button-container{
   position:relative;
