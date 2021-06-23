@@ -13,9 +13,6 @@ export async function renderLoadingModal(dataRange, ticker){
     page.appendChild(modalContainer)
     let newsBits = news.data.slice(0, 5)
     renderNews(newsBits, 0)
-    let modalText = document.createElement("p")
-    let text = document.createTextNode("Processing over 80,000 data points...")
-    modalText.appendChild(text)
     let textHolder = document.createElement("div")
     textHolder.classList.add("text-holder")
     textHolder.appendChild(modalText)
@@ -35,6 +32,7 @@ export async function renderLoadingModal(dataRange, ticker){
 
 
 export function renderModalClose(modalInterval){
+  debugger
   let modal = document.getElementsByClassName("loading-modal")
   let buttonContainer = document.createElement("div")
   buttonContainer.setAttribute("id", "button-container")

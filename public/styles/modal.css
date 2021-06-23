@@ -88,11 +88,11 @@
 
 .text-holder::before {
   content: "";
-  width: 3vh;
-  height: 3vh;
+  width: 4vh;
+  height: 4vh;
   border-radius: 50%;
-  border:1vh solid rgb(63, 77, 70);
-  border-top:1vh solid rgb(91, 158, 88);
+  border:1vh solid rgb(165, 177, 171);
+  border-top-color: rgb(91, 158, 88);
   animation: spin 1s ease infinite;
 }
 
