@@ -37,3 +37,4 @@ export default function generateChartData(mornings, data){
   }
   return charts
 }
+

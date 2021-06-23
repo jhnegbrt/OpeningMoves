@@ -54,3 +54,40 @@ function createMornings(candles, timeFrame){
   }
   return mornings
 }
+
+export function cleanData(charts){
+  let newCharts = charts
+  for(const day in newCharts){
+    let dayChart = newCharts[day]
+    let dailyHigh;
+    let dailyLow;
+    for (let i = 0; i < dayChart.length; i++){
+      if (i === 0){
+        dailyHigh = dayChart[i].high
+        dailyLow = dayChart[i].low
+      } else{
+        if (Math.floor(dayChart[i].high) === Math.floor(dailyHigh)){
+          if (dayChart[i].close > dayChart[i].open){
+            newCharts[day][i].high = dayChart[i].close
+          } else {
+            newCharts[day][i].high = dayChart[i].open
+          }
+        }
+        if (Math.floor(dayChart[i].low) === Math.floor(dailyLow)){
+          if (dayChart[i].close < dayChart[i].open){
+            newCharts[day][i].low = dayChart[i].close
+          } else {
+            newCharts[day][i].low = dayChart[i].open
+          }
+        }
+        if (dayChart[i].high > dailyHigh){
+          dailyHigh = dayChart[i].high
+        }
+        if (dayChart[i].low < dailyLow){
+          dailyLow = dayChart[i].low
+        }
+      }
+    }
+  }
+  return newCharts
+}
