@@ -29,7 +29,7 @@ export function renderNews(newsBits){
       i++
     }
     switchNews(newsBits, i)
-  },2500)
+  },4000)
   return modalInterval
 }
 
@@ -40,7 +40,13 @@ function switchNews(newsBits, i){
     oldNews[0].parentElement.removeChild(oldNews[0])
   }
   let newsImg = document.createElement("img")
-  newsImg.setAttribute("src", newsBits[i].image)
+  if (newsBits[i].image === ""){
+    newsImg.setAttribute("src", "../../images/image-unavailable.jpg")
+    newsImg.classList.add("news-image-unavail")
+  } else {
+    newsImg.setAttribute("src", newsBits[i].image)
+    newsImg.classList.add("news-image-avail")
+  }
   newsImg.classList.add("news-image")
   let newsBlock = document.createElement("div")
   let news = document.createElement("div")

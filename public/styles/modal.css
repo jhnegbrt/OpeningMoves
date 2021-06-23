@@ -55,8 +55,15 @@
 }
 
 .news-image{
-  width: 30%;
   height: auto
+}
+
+.news-image-avail{
+  width: 30%
+}
+
+.news-image-unavail{
+  width: 18%
 }
 
 .news-snippet{
