@@ -32,8 +32,6 @@ async function validInput(dataRange, ticker, percentChange, timeFrame){
   let mornings = filteredData.mornings
   let volatileMornings = filteredData.volatileMornings
   let charts = generateChartData(volatileMornings, data)
-  charts = cleanData(charts)
-  debugger
   let master = {charts, ticker, percentChange, timeFrame, mornings, volatileMornings}
 
   createTabs(master)
