@@ -1,4 +1,4 @@
-import {getNews, renderNews} from '../../util/modal_utils'
+import {getNews, renderNews} from '../util/modal_utils'
 
 export async function renderLoadingModal(dataRange, ticker){
 
