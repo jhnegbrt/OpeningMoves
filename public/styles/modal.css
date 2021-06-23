@@ -11,7 +11,7 @@
 }
 
 .loading-modal{
-
+  height: 40%;
   width: 50%;
   margin-left: 25%;
   margin-top: 10%;
@@ -37,22 +37,26 @@
 /* NEWS */
 
 #news-container{
-  height: 65%;
+  display: flex;
+  background-color: white;
+  border-radius: 10px;
+  height: 70%;
   margin-top: 3vh;
-}
-.news-image{
-  width: 20%;
-  height: auto
+  height: 80%
 }
 
 .news-block{
-  background-color: white;
   display: flex;
   justify-content: space-around;
-  border-radius: 10px;
+  align-items: center;
   padding: 2%;
   margin-right: 3%;
   margin-left: 3%
+}
+
+.news-image{
+  width: 30%;
+  height: auto
 }
 
 .news-snippet{
