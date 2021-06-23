@@ -86,10 +86,10 @@
   align-items: center;
 }
 
-.text-holder::before {
-  content: "";
+.modal-spinner {
   width: 4vh;
   height: 4vh;
+  margin: 0 auto;
   border-radius: 50%;
   border:1vh solid rgb(165, 177, 171);
   border-top-color: rgb(91, 158, 88);

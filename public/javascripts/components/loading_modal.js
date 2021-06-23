@@ -14,11 +14,10 @@ export async function renderLoadingModal(dataRange, ticker){
     let newsBits = news.data.slice(0, 5)
     renderNews(newsBits, 0)
     let textHolder = document.createElement("div")
-    textHolder.classList.add("text-holder")
-    textHolder.appendChild(modalText)
+    textHolder.classList.add("modal-spinner")
     modal.appendChild(textHolder)
-    // return modalInterval
   } else {
+    //fix this
     let modalText = document.createElement("p")
     let text = document.createTextNode("No news available!")
     modalText.appendChild(text)
