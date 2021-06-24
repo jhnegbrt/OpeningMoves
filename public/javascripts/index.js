@@ -7,7 +7,6 @@ const axios = require('axios');
 document.addEventListener('DOMContentLoaded', loadPage)
 
 async function loadPage(){
-  debugger
   activateEnterButton()
   let form = document.querySelector("form")
   form.onsubmit = submitForm

@@ -31,8 +31,9 @@ export async function renderLoadingModal(dataRange, ticker){
 
 
 export function renderModalClose(modalInterval){
-  debugger
   let modal = document.getElementsByClassName("loading-modal")
+  let spinner = document.getElementsByClassName("modal-spinner")[0]
+  spinner.remove()
   let buttonContainer = document.createElement("div")
   buttonContainer.setAttribute("id", "button-container")
   let closeButton = document.createElement("button")
