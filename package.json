@@ -13,12 +13,11 @@
     "npm": "6.4.1"
   },
   "scripts": {
-    "build": "webpack --watch",
     "start": "node app.js",
     "server": "nodemon app.js",
     "server:debug": "nodemon --inspect app.js",
-    "start:debug": "DEBUG=* node app.js"
-    
+    "start:debug": "DEBUG=* node app.js",
+    "postinstall": "webpack"
   },
   "dependencies": {
     "axios": "^0.18.0",
