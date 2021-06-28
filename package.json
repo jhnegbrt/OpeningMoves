@@ -17,8 +17,8 @@
     "start": "node app.js",
     "server": "nodemon app.js",
     "server:debug": "nodemon --inspect app.js",
-    "start:debug": "DEBUG=* node app.js",
-    "postinstall": "webpack"
+    "start:debug": "DEBUG=* node app.js"
+    
   },
   "dependencies": {
     "axios": "^0.18.0",
