@@ -93,14 +93,23 @@
 .charts-overview{
   position: absolute;
   width: 70%;
-  height: 70%;
-  top: 15%;
   left: 15%;
   border-radius: 15px;
   font-family: 'Poppins', sans-serif;
   background-color: white;
   padding: 3%;
   box-sizing: border-box;
+}
+
+.charts-instructions{
+  height: 70%;
+  top: 15%
+}
+
+.charts-overview{
+  top: 27%;
+  height: 45%;
+  font-size: 2vh;
 }
 
 .charts-instructions{
@@ -125,8 +134,26 @@
   margin-bottom: 1.5%
 }
 
+.charts-overview ul{
+  border: 1px solid #176a34;
+  padding: 1vh;
+  margin: 1vh;
+}
+
+.charts-overview li{
+  margin-bottom: 1vh
+}
+
+.charts-overview li:last-child{
+  margin-bottom: 0;
+}
+
 .charts-overview h3:first-of-type{
   font-style: italic;
+}
+
+.charts-overview li p{
+  display: inline
 }
 
 .charts-overview p{

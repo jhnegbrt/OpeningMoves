@@ -35,7 +35,6 @@ async function validInput(dataRange, ticker, percentChange, timeFrame){
   let master = {charts, ticker, percentChange, timeFrame, mornings, volatileMornings}
   createTabs(master)
   renderOverview(master)
-  debugger
   renderModalClose(modalInterval)
 
 }

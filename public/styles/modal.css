@@ -119,8 +119,8 @@
   margin-top: 4vh;
   height: 4vh;
   font-size: 1.7vh;
-  animation: glowing 2000ms infinite
-
+  animation: glowing 2000ms infinite;
+  font-weight: 500
 }
 
 .modal-close-button:hover{

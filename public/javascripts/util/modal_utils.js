@@ -62,6 +62,7 @@ function switchNews(newsBits, i){
   newsLink.appendChild(newsLinkText)
   newsLink.setAttribute("href", newsBits[i].url)
   newsLink.setAttribute("target", "_blank")
+  newsLink.setAttribute("SameSite", "Lax")
   let newsLinkAuthor = document.createElement("p")
   let newsLinkAuthorText = document.createTextNode("-" + newsBits[i].source)
   newsLinkAuthor.appendChild(newsLinkAuthorText)
