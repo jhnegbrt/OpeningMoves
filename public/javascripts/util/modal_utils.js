@@ -52,7 +52,8 @@ function switchNews(newsBits, i){
   let news = document.createElement("div")
   news.classList.add("news-snippet")
   let newsHeadline = document.createElement("p")
-  let newsHeadlineText = document.createTextNode(newsBits[i].headline)
+  let processedText = processText(newsBits[i].headline)
+  let newsHeadlineText = document.createTextNode(processedText)
   newsHeadline.appendChild(newsHeadlineText)
   let newsLink = document.createElement("a")
   let newsLinkText = document.createTextNode("Full Story...")
@@ -71,7 +72,13 @@ function switchNews(newsBits, i){
   newsContainer.appendChild(newsBlock)
 }
 
-export function createDateString(unix){
+
+function processText(text){
+  text = text.replace(/;(?=[^\s])/g, ", ")
+  return text
+}
+
+function createDateString(unix){
 
   let date = new Date(unix)
   let yyyy = date.getFullYear()
