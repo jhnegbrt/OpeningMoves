@@ -12,10 +12,11 @@ export async function renderLoadingModal(dataRange, ticker){
     modalContainer.appendChild(modal)
     page.appendChild(modalContainer)
     let newsBits = news.data.slice(0, 5)
-    renderNews(newsBits, 0)
+    let interval = renderNews(newsBits, 0)
     let textHolder = document.createElement("div")
     textHolder.classList.add("modal-spinner")
     modal.appendChild(textHolder)
+    return interval
   } else {
     //fix this
     let modalText = document.createElement("p")

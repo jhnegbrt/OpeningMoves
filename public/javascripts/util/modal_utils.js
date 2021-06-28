@@ -34,6 +34,8 @@ export function renderNews(newsBits){
 }
 
 
+
+
 function switchNews(newsBits, i){
   let oldNews = document.getElementsByClassName("news-block")
   if (oldNews.length > 0){
