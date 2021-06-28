@@ -78,8 +78,8 @@ function addAverageExcursion(master, overviewContainer){
     let avgExcursion = (((positiveCount + negativeCount)) / Object.keys(master.charts).length)
     
     let averageText = document.createTextNode(`The average 'Morning Move' across all ${Object.keys(master.charts).length} selected days was ${avgExcursion.toFixed(2)}%`)
-    let positiveText = document.createTextNode(`The average 'Morning Move' when ${master.ticker} moved upward, across ${positiveExcursions.length} days was ${aPExcursion.toFixed(2)}%`)
-    let negativeText = document.createTextNode(`The average 'Morning Move' when ${master.ticker} moved downward, across ${negativeExcursions.length} days was ${aNExcursion.toFixed(2)}%`)
+    let positiveText = document.createTextNode(`The average 'Morning Move' when ${master.ticker} moved upward (across ${positiveExcursions.length} days) was ${aPExcursion.toFixed(2)}%`)
+    let negativeText = document.createTextNode(`The average 'Morning Move' when ${master.ticker} moved downward (across ${negativeExcursions.length} days) was ${aNExcursion.toFixed(2)}%`)
     let average = document.createElement("li")
     average.appendChild(averageText)
     let negative = document.createElement("li")
