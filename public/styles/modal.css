@@ -43,6 +43,7 @@
   height: 70%;
   height: 80%;
   margin-bottom: 1.5vh;
+  line-height: 3.8vh;
 }
 
 .news-block{
@@ -118,7 +119,7 @@
   border: none;
   margin-top: 4vh;
   height: 4vh;
-  font-size: 1.7vh;
+  font-size: 2vh;
   animation: glowing 2000ms infinite;
   font-weight: 500
 }

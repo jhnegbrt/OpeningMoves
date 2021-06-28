@@ -29,7 +29,7 @@ export function renderNews(newsBits){
       i++
     }
     switchNews(newsBits, i)
-  },4000)
+  },5500)
   return modalInterval
 }
 
@@ -58,7 +58,7 @@ function switchNews(newsBits, i){
   let newsHeadlineText = document.createTextNode(processedText)
   newsHeadline.appendChild(newsHeadlineText)
   let newsLink = document.createElement("a")
-  let newsLinkText = document.createTextNode("Full Story...")
+  let newsLinkText = document.createTextNode("Click for full story")
   newsLink.appendChild(newsLinkText)
   newsLink.setAttribute("href", newsBits[i].url)
   newsLink.setAttribute("target", "_blank")
@@ -68,8 +68,8 @@ function switchNews(newsBits, i){
   newsLinkAuthor.appendChild(newsLinkAuthorText)
   newsBlock.classList.add("news-block")
   news.appendChild(newsHeadline)
-  news.appendChild(newsLink)
   news.appendChild(newsLinkAuthor)
+  news.appendChild(newsLink)
   newsBlock.appendChild(newsImg)
   newsBlock.appendChild(news)
   let newsContainer = document.getElementById("news-container")
