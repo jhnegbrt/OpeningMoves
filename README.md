@@ -21,9 +21,15 @@ Opening Moves is stock data visualization tool for finding trends and patterns a
 
 ## Features:
 
-### Instroduction Modal
+### Introduction Modal
+
+Upon entering, users are greeted with a motivation for the application as well as a basic introduction to the application's work flow.
 
 ![introduction](public/images/introduction_modal.PNG)
+
+### Data Entry
+
+
 
 ## Tech Stack:
 ### Front-End:
