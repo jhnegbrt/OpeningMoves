@@ -93,6 +93,46 @@ When the data summary is rendered, the user will also have access to a series of
 
 ![data_entry](public/images/sample_chart.PNG)
 
+As d3 is an extremely low level library (it consider itself a data driven shape drawing library as opposed to a graphing library), each element of the graph is rendered independently. For example, separate code is required to draw the wick and body of each candle.
+
+```javascript
+ // public/javascripts/create_chart.js
+  
+  const bodies = container
+    .selectAll('.body')
+    .data(chartDataArray)
+    .enter()
+    .append('rect')
+    .classed('body', true)
+    .style('fill', data =>{
+      if (data.flag === true){
+        return 'yellow'
+      } else if (data.open > data.close){
+        return 'red'
+      } else{
+        return 'green'
+      }
+    })
+    .attr('width', xScale.bandwidth())
+    .attr('height', data => {
+      if (data.open > data.close){
+        return yScale(data.open - data.close) - margin.bottom
+      } else{
+        return yScale(data.close - data.open) - margin.bottom
+      }
+    })
+    .attr('x', data => xScale(data.time))
+    .attr('y', data => {
+      if (data.open > data.close){
+        return yScale(chartMax - data.open)
+      } else {
+        return yScale(chartMax - data.close)
+      }
+      
+    })
+
+```
+
 ### Loading Modal
 
 The data fetching, parsing, and filtering takes a (relatively) long time. For improved user experience, we render a loading modal while the charts are loading. This modal displays links to news articles related to the stock the user requested information about.
