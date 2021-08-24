@@ -65,6 +65,7 @@ On successful form entry, submitForm calls validInput to begin the process of fe
 
 ```javascript
  // public/javascripts/submit_form.js
+ 
  async function validInput(dataRange, ticker, percentChange, timeFrame){
    let modalInterval = await renderLoadingModal(dataRange, ticker)
    let data = await retrieveData(ticker, dataRange)
