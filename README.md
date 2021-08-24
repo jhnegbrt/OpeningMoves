@@ -11,9 +11,9 @@ Opening Moves is stock data visualization tool for finding trends and patterns a
  1. [Features](#features)
     - [Intoduction Modal](#introduction-modal)
     - [Custom Data Filters](#data-entry)
+    - [Data Summary](data-summary)
     - [Charts](#charts)
     - [Loading Modal](#loading-modal)
-    - [Data Summary](data-summary)
  2. [Tech Stack](#tech-stack])
     - [Backend](#backend)
     - [Frontend](#frontend)
@@ -80,6 +80,22 @@ On successful form entry, submitForm calls validInput to begin the process of fe
  }
 
 ```
+
+### Data Summary
+
+Upon receiving parsed and filtered data, the application will render a data summary report based on the parameters entered by the user:
+
+![data_entry](public/images/summary.PNG)
+
+### Charts
+
+When the data summary is rendered, the user will also have access to a series of tabs on the right hand side to view a chart representing each day that met that specified criteria. These charts are rendered with d3.js
+
+![data_entry](public/images/sample_chart.PNG)
+
+### Loading Modal
+
+The data fetching, parsing, and filtering takes a (relatively) long time. For improved user experience, we render a loading modal while the charts are loading. This modal displays links to news articles related to the stock the user requested information about.
 
 ## Tech Stack:
 ### Front-End:
