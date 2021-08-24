@@ -29,7 +29,56 @@ Upon entering, users are greeted with a motivation for the application as well a
 
 ### Data Entry
 
+Users can specify four parameters to make a request to generate charts:
+1. Ticker (e.g. TSLA for Tesla)
+2. % Change: The application will find all of the days that Tesla moved said percentage within a given timeframe (see point 3)
+3. Timeframe: Users specify the time frame (beginning at 9:00 AM EST) they are interested in observing the aforementioned change
+4. Data Range: The period of time from which the application will extract data
+
 ![data_entry](public/images/data_entry.PNG)
+
+```javascript
+// public/javascripts/submit_form.js
+
+ //form submit handler
+ export default function submitForm(form){
+
+   form.preventDefault()
+   let ticker = form.target.ticker.value
+   let percentChange = parseInt(form.target.percentChange.value)
+   let dataRange = form.target.dataRange.value
+   let timeFrame = parseInt(form.target.timeFrame.value) / 5
+   clearErrors()
+   let {valid, errors} = validateInput(ticker, percentChange)
+
+   if (valid){
+     validInput(dataRange, ticker, percentChange, timeFrame)
+   } else {
+     inValidInput(errors)
+   }
+
+ }
+
+```
+
+On successful form entry, submitForm calls validInput to begin the process of fetching and filtering data. Asynchronous requests handled using async/await:
+
+```javascript
+ // public/javascripts/submit_form.js
+ async function validInput(dataRange, ticker, percentChange, timeFrame){
+   let modalInterval = await renderLoadingModal(dataRange, ticker)
+   let data = await retrieveData(ticker, dataRange)
+   let filteredData = filterData(data, percentChange, timeFrame)
+   let mornings = filteredData.mornings
+   let volatileMornings = filteredData.volatileMornings
+   let charts = generateChartData(volatileMornings, data)
+   let master = {charts, ticker, percentChange, timeFrame, mornings, volatileMornings}
+   createTabs(master)
+   renderOverview(master)
+   renderModalClose(modalInterval)
+ }
+
+```
 
 ## Tech Stack:
 ### Front-End:
