@@ -29,7 +29,7 @@ Upon entering, users are greeted with a motivation for the application as well a
 
 ### Data Entry
 
-
+![data_entry](public/images/data_entry.PNG)
 
 ## Tech Stack:
 ### Front-End:
