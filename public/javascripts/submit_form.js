@@ -36,7 +36,6 @@ async function validInput(dataRange, ticker, percentChange, timeFrame){
   createTabs(master)
   renderOverview(master)
   renderModalClose(modalInterval)
-
 }
 
 function clearErrors(){
@@ -47,9 +46,8 @@ function clearErrors(){
 }
 
 
-export default async function submitForm(form){
+export default function submitForm(form){
 
-  
   form.preventDefault()
   let ticker = form.target.ticker.value
   let percentChange = parseInt(form.target.percentChange.value)
